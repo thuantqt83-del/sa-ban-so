@@ -14,7 +14,7 @@
 :root{
   --nen0:#0a1020;--nen1:#101a30;--kinh:rgba(255,255,255,.07);--kinh2:rgba(255,255,255,.12);--vien:rgba(255,255,255,.16);
   --chu:#f1f5f9;--phu:#aab6cb;--vang:#fbbf24;--ta:#ef4444;--dich:#38bdf8;--hcan:#fb923c;--dung:#22c55e;--sai:#fb7185;
-  --bo:20px;--bong:0 18px 50px rgba(0,0,0,.4);--thanh-tren:62px;--thanh-duoi:66px;
+  --bo:20px;--bong:0 18px 50px rgba(0,0,0,.4);--thanh-tren:62px;--thanh-duoi:50px;
 }
 *{box-sizing:border-box}
 html,body{margin:0}
@@ -34,34 +34,37 @@ button{font-family:inherit;font-size:inherit;color:inherit}
 .thuong-hieu{display:flex;align-items:center;gap:9px;background:none;border:0;cursor:pointer;padding:2px 4px;text-align:left;flex:none}
 .thuong-hieu b{display:block;font-size:18px;letter-spacing:.06em;background:linear-gradient(90deg,#fde68a,#f59e0b,#ef4444);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:900;white-space:nowrap}
 .thuong-hieu small{display:block;color:var(--phu);font-size:11.5px;margin-top:-3px;font-weight:600;white-space:nowrap}
-.tab-cd{display:flex;gap:6px;margin-left:10px;padding:4px;border-radius:16px;background:rgba(255,255,255,.05);border:1px solid var(--vien)}
-.nut-cd{display:flex;align-items:center;gap:8px;border:0;background:transparent;border-radius:12px;padding:6px 12px;cursor:pointer;font-weight:800;font-size:14.5px;white-space:nowrap;transition:.2s}
-.nut-cd i{font-style:normal;font-size:19px}
-.nut-cd small{display:block;font-size:11px;color:var(--phu);font-weight:700;line-height:1}
+.tab-cd{display:flex;gap:7px;margin-left:10px}
+.nut-cd{display:flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.24);background:rgba(37,52,104,.78);color:#e0f2fe;border-radius:999px;padding:7px 12px;cursor:pointer;font-weight:800;font-size:14.5px;white-space:nowrap;transition:.2s;box-shadow:0 3px 0 rgba(0,0,0,.35)}
+.nut-cd i{font-style:normal;font-size:16px}
+.nut-cd small{display:none}
 .nut-cd span{line-height:1.15;text-align:left}
-.nut-cd:hover{background:var(--kinh2)}
-.nut-cd.dang{background:linear-gradient(135deg,color-mix(in srgb,var(--m) 70%,#000),color-mix(in srgb,var(--m) 35%,#7f1d1d));box-shadow:0 6px 18px color-mix(in srgb,var(--m) 40%,transparent)}
-.nut-cd.dang small{color:#fff}
-#thanh nav{display:flex;gap:6px;margin-left:auto}
-.dh,.chip-ma,.nut-nhac{border:1px solid var(--vien);background:var(--kinh);border-radius:999px;padding:7px 13px;cursor:pointer;font-weight:700;font-size:14.5px;transition:.2s;white-space:nowrap}
-.dh:hover,.chip-ma:hover,.nut-nhac:hover{background:var(--kinh2);transform:translateY(-1px)}
-.dh.dang{background:linear-gradient(135deg,#7c3aed,#4338ca);border-color:transparent}
+.nut-cd .ok{color:#4ade80;font-weight:900;margin-left:4px}
+.nut-cd:hover{background:rgba(59,82,160,.92);transform:translateY(-1px)}
+.nut-cd.dang{background:linear-gradient(180deg,#fde68a,#fbbf24);color:#3b2400;border-color:#fff7d6;box-shadow:0 3px 0 #b45309,0 8px 18px rgba(251,191,36,.35)}
+.nut-cd.dang .ok{color:#15803d}
+#thanh nav{display:flex;gap:7px;margin-left:auto}
+.dh,.chip-ma,.nut-nhac{border:1px solid rgba(255,255,255,.28);background:var(--kinh);border-radius:999px;padding:7px 13px;cursor:pointer;font-weight:800;font-size:14.5px;transition:.2s;white-space:nowrap;flex:none;box-shadow:0 3px 0 rgba(0,0,0,.3)}
+.dh:hover,.chip-ma:hover,.nut-nhac:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.dh[data-man="hoc"]{background:linear-gradient(180deg,#b4a7fb,#7c6cf0);color:#fff;text-shadow:0 1px 2px rgba(30,20,90,.6)}
+.dh[data-man="luyen-de"]{background:linear-gradient(180deg,#fef08a,#fbbf24);color:#3b2400}
+.dh[data-man="giao-vien"]{background:linear-gradient(180deg,#fbcfe8,#f472b6);color:#4a0d2b}
+.dh.dang{box-shadow:0 0 0 3px rgba(255,255,255,.7),0 3px 0 rgba(0,0,0,.3)}
+#thanh nav .dh .an-dt{display:inline}
 .chip-ma{color:#fde68a;max-width:150px;overflow:hidden;text-overflow:ellipsis}
+.nut-nhac{padding:7px 12px;font-size:17px}
+@media (max-width:1500px){.nut-nhac .an-dt{display:none}}
+@media (max-width:1400px){.thuong-hieu small,.nut-cd i{display:none}}
 .nut-nhac.tat{opacity:.7}
 
 /* ---------- thanh điều hướng dưới ---------- */
-#dieu-huong{position:fixed;left:0;right:0;bottom:0;z-index:45;height:var(--thanh-duoi);display:flex;align-items:center;gap:12px;padding:8px 14px;background:rgba(8,12,26,.88);backdrop-filter:blur(12px);border-top:1px solid var(--vien)}
-.nut-dh{display:flex;align-items:center;justify-content:center;gap:8px;min-height:46px;min-width:64px;padding:8px 20px;font-size:20px!important;border-radius:14px;border:1px solid var(--vien);background:var(--kinh2);cursor:pointer;font-weight:900;font-size:16px;flex:none}
-.nut-dh.tien{background:linear-gradient(135deg,#f59e0b,#dc2626);border-color:transparent;box-shadow:0 8px 22px rgba(220,38,38,.35)}
+#dieu-huong{position:fixed;left:0;right:0;bottom:0;z-index:45;height:var(--thanh-duoi);display:flex;align-items:center;gap:12px;padding:6px 14px;background:rgba(8,12,26,.88);backdrop-filter:blur(12px);border-top:1px solid var(--vien)}
+.nut-dh{display:flex;align-items:center;justify-content:center;gap:6px;min-height:36px;min-width:48px;padding:4px 14px;font-size:15px!important;border-radius:11px;border:1px solid var(--vien);background:var(--kinh2);cursor:pointer;font-weight:900;font-size:16px;flex:none}
+.nut-dh.tien{background:linear-gradient(135deg,#f59e0b,#dc2626);border-color:transparent;box-shadow:0 4px 12px rgba(220,38,38,.3)}
 .nut-dh.nhay{animation:nhay-nut 1.2s ease-in-out infinite}
 .nut-dh:disabled{opacity:.4;cursor:not-allowed}
 @keyframes nhay-nut{0%,100%{box-shadow:0 0 0 0 rgba(251,191,36,.6)}50%{box-shadow:0 0 0 10px rgba(251,191,36,0)}}
 .hanh-trinh{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px;align-items:center}
-.chang{display:flex;gap:4px;align-items:center;flex-wrap:nowrap;overflow:hidden;max-width:100%}
-.chang button{border:1px solid var(--vien);background:transparent;border-radius:999px;padding:2px 10px;font-size:12.5px;font-weight:800;cursor:pointer;white-space:nowrap;color:var(--phu)}
-.chang button.dang{background:#fde68a;color:#1f1300;border-color:transparent}
-.chang button.qua{color:#86efac;border-color:rgba(134,239,172,.4)}
-.chang i{width:10px;height:2px;background:var(--vien);flex:none}
 .buoc-nho{display:flex;gap:4px;align-items:center;font-size:12.5px;color:var(--phu);white-space:nowrap;overflow:hidden;max-width:100%}
 .buoc-nho b{color:#fde68a}
 .cham-buoc{display:inline-flex;gap:3px;margin:0 6px}
@@ -112,28 +115,56 @@ button{font-family:inherit;font-size:inherit;color:inherit}
 .hang-sao .sao.sang{color:#fbbf24;text-shadow:0 0 10px rgba(251,191,36,.6)}
 
 /* ---------- trang chủ ---------- */
-.trang-chu{display:grid;grid-template-columns:1.05fr 1.2fr;gap:24px;align-items:center;min-height:calc(100vh - var(--thanh-tren) - var(--thanh-duoi) - 30px)}
-.nhan-tren{display:inline-block;padding:5px 14px;border-radius:999px;background:rgba(251,191,36,.14);border:1px solid rgba(251,191,36,.4);color:#fde68a;font-weight:700;font-size:14px}
-.ten-lon{margin:12px 0 0;font-size:clamp(54px,6.6vw,104px);line-height:.95;font-weight:900;letter-spacing:.03em;background:linear-gradient(100deg,#fff7d6 10%,#fbbf24 45%,#ef4444 90%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 6px 24px rgba(239,68,68,.35))}
-.ten-phu{font-size:clamp(24px,2.8vw,40px);font-weight:900;color:#fde68a;letter-spacing:.08em;margin-top:6px}
-.khau-hieu{font-size:clamp(17px,1.5vw,22px);margin:8px 0 14px;color:#e2e8f0}
-.khau-hieu b{color:#fca5a5}
+.trang-chu{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:16px;min-height:480px;height:calc(100vh - var(--th-do,var(--thanh-tren)) - var(--thanh-duoi) - 28px);height:calc(100dvh - var(--th-do,var(--thanh-tren)) - var(--thanh-duoi) - 28px)}
+.tc-trai{display:flex;flex-direction:column;justify-content:center;justify-content:safe center;min-height:0;overflow:auto;padding:clamp(16px,2.6vh,30px) clamp(18px,2.4vw,36px);border-radius:28px;background:linear-gradient(180deg,#fffdf5,#fff4d6);border:2px solid #fff;box-shadow:0 18px 50px rgba(0,0,0,.4);color:#44403c}
+.ten-lon{margin:0;display:flex;flex-wrap:wrap;gap:0 .22em;font-size:clamp(44px,min(5.2vw,10vh),88px);line-height:1.02;font-weight:900;letter-spacing:.02em}
+.ten-lon span,.ten-phu span{-webkit-text-stroke:.07em #1e1b4b;paint-order:stroke fill;text-shadow:.04em .06em 0 #1e1b4b,.08em .12em 0 #312e81,0 .2em .3em rgba(30,27,75,.3)}
+.ten-lon .c1{color:#a855f7}.ten-lon .c2{color:#facc15}.ten-lon .c3{color:#4ade80}
+.ten-phu{display:flex;flex-wrap:wrap;gap:0 .3em;font-size:clamp(22px,min(2.5vw,4.8vh),40px);font-weight:900;letter-spacing:.06em;margin-top:4px}
+.ten-phu .c4{color:#fb923c}.ten-phu .c5{color:#f472b6}
+.khau-hieu{font-size:clamp(16px,min(1.5vw,2.8vh),22px);margin:10px 0 12px;color:#44403c;line-height:1.4}
+.khau-hieu b{color:#9a3412}
 .dac-diem{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
-.dac-diem div{display:flex;gap:10px;align-items:center;padding:8px 12px;border-radius:14px;background:var(--kinh);border:1px solid var(--vien);font-size:14.5px;font-weight:600}
-.dac-diem span{font-size:22px}
+.dac-diem div{display:flex;gap:10px;align-items:center;padding:8px 12px;border-radius:16px;font-size:clamp(13.5px,1.05vw,15.5px);font-weight:700;line-height:1.25;color:#1f2937;box-shadow:inset 0 0 0 1px rgba(255,255,255,.7),0 3px 8px rgba(0,0,0,.14)}
+.dac-diem div:nth-child(1){background:linear-gradient(135deg,#fde68a,#fbbf24)}
+.dac-diem div:nth-child(2){background:linear-gradient(135deg,#fecdd3,#fb7185)}
+.dac-diem div:nth-child(3){background:linear-gradient(135deg,#dbeafe,#93c5fd)}
+.dac-diem div:nth-child(4){background:linear-gradient(135deg,#d1fae5,#6ee7b7)}
+.dac-diem div:nth-child(5){background:linear-gradient(135deg,#ede9fe,#c4b5fd)}
+.dac-diem div:nth-child(6){background:linear-gradient(135deg,#ccfbf1,#5eead4)}
+.dac-diem span{display:grid;place-items:center;flex:none;width:38px;height:38px;border-radius:11px;background:#fff;font-size:21px;box-shadow:0 2px 6px rgba(0,0,0,.18)}
 .luoi-nut{display:flex;gap:10px;flex-wrap:wrap}
-.ba-tran{display:grid;grid-template-rows:repeat(3,1fr);gap:12px}
-.the-tran{position:relative;display:grid;grid-template-columns:200px 1fr;gap:16px;align-items:center;padding:10px;border-radius:20px;border:1px solid var(--vien);background:var(--kinh);cursor:pointer;text-align:left;overflow:hidden;transition:transform .2s,box-shadow .2s;border-left:5px solid var(--m)}
-.the-tran:hover{transform:translateX(-4px);box-shadow:0 14px 34px rgba(0,0,0,.4)}
-.the-tran .anh{height:112px;border-radius:14px;overflow:hidden}
+.luoi-nut .nut{font-size:clamp(15px,1.2vw,18px);padding:10px 18px;white-space:nowrap;border-radius:18px;min-height:48px;border:0;font-weight:800}
+.luoi-nut .nut.chinh{background:linear-gradient(180deg,#fde047,#f59e0b);color:#3b2400;box-shadow:0 5px 0 #b45309,0 10px 20px rgba(180,83,9,.3)}
+.luoi-nut .nut.tim{background:linear-gradient(180deg,#a78bfa,#7c3aed);color:#fff;box-shadow:0 5px 0 #4c1d95,0 10px 20px rgba(76,29,149,.3)}
+.luoi-nut .nut:not(.chinh):not(.tim){background:#eceff6;color:#1f2937;box-shadow:0 5px 0 #b8bfd0}
+.tc-phai{display:grid;grid-template-rows:minmax(0,1fr) auto;gap:12px;min-height:0}
+.tc-xem{position:relative;display:flex;flex-direction:column;min-height:0;border-radius:24px;overflow:hidden;border:2px solid rgba(255,255,255,.3);background:radial-gradient(900px 500px at 50% 40%,rgba(30,58,48,.75),rgba(8,12,26,.8));box-shadow:var(--bong)}
+.tc-xem-ban{position:relative;flex:1;min-height:0}
+.tc-xem .san-khau{cursor:default;pointer-events:none}
+.tc-xem .phu-lop{display:none}
+.tc-xem .tam{top:42%}
+.tc-xem .ban-3d{animation:xoay-360 48s linear infinite}
+@keyframes xoay-360{from{--xoay:0deg}to{--xoay:360deg}}
+.tc-chu-giai{position:absolute;left:12px;top:10px;z-index:5;display:flex;flex-direction:column;gap:3px;padding:5px 10px;border-radius:10px;background:rgba(8,12,26,.62);pointer-events:none}
+.tc-chu-giai span{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:11px;color:#e2e8f0;white-space:nowrap}
+.tc-chu-giai svg{display:block;flex:none}
+.ba-tran{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.the-tran{display:flex;flex-direction:column;padding:0;overflow:hidden;border-radius:14px;border:2px solid #fff;background:#fff;color:#1f2937;cursor:pointer;text-align:left;box-shadow:0 8px 20px rgba(0,0,0,.35);transition:transform .2s,box-shadow .2s}
+.the-tran:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.45)}
+.the-tran .anh{height:clamp(28px,4.4vh,46px);flex:none}
 .the-tran .anh svg{width:100%;height:100%;display:block}
-.the-tran h3{margin:0;font-size:21px;color:var(--m)}
-.the-tran p{margin:4px 0 6px;font-size:14px;color:#dbe2ee}
-.the-tran .dong{display:flex;gap:8px;flex-wrap:wrap}
+.the-tran .nd{flex:1;padding:5px 10px 6px;background:linear-gradient(180deg,#fff,color-mix(in srgb,var(--m) 24%,#fff))}
+.the-tran h3{margin:0;font-size:clamp(12.5px,.95vw,14.5px);color:#1f2937;line-height:1.25}
+.the-tran .dong{display:flex;justify-content:space-between;align-items:center;gap:6px;margin-top:2px}
+.the-tran .nam{font-size:11px;font-weight:800;padding:1px 8px;border-radius:999px;background:rgba(0,0,0,.08)}
+.the-tran .sao{font-size:12.5px;letter-spacing:1px;color:#d1d5db}
+.the-tran .sao b{color:#f59e0b;font-weight:400}
 
 /* ---------- SA BÀN 3D ---------- */
-.sb-khung{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(360px,1fr);gap:14px;height:calc(100vh - var(--thanh-tren) - var(--thanh-duoi) - 26px);min-height:600px}
-.sb-trai{position:relative;overflow:hidden;padding:0;background:radial-gradient(900px 500px at 50% 40%,rgba(30,58,48,.55),rgba(8,12,26,.6))}
+.sb-khung{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(360px,1fr);gap:14px;height:calc(100vh - var(--th-do,var(--thanh-tren)) - var(--thanh-duoi) - 26px);min-height:440px}
+.sb-cot{display:flex;flex-direction:column;gap:6px;min-width:0;min-height:0}
+.sb-trai{position:relative;overflow:hidden;padding:0;display:flex;flex-direction:column;flex:1 1 auto;min-height:0;background:radial-gradient(900px 500px at 50% 40%,rgba(30,58,48,.55),rgba(8,12,26,.6))}
 .san-khau{position:absolute;inset:0;perspective:1800px;perspective-origin:50% 28%;overflow:hidden;touch-action:none;cursor:grab}
 .san-khau.keo{cursor:grabbing}
 .tam{position:absolute;left:50%;top:53%;width:0;height:0;transform-style:preserve-3d}
@@ -169,6 +200,21 @@ button{font-family:inherit;font-size:inherit;color:inherit}
 .nhan-uv.chon .noi{background:#fde047;color:#1f1300;border-style:solid;border-color:#fff}
 .bb{pointer-events:none}
 .bb .noi{pointer-events:auto}
+/* hiệu ứng trên sa bàn: máy bay, quân dù, pháo, súng, nổ — chạy cùng lời kể */
+.bb.hu .noi{pointer-events:none}
+.hu .lat{display:inline-block;transform:scaleX(-1)}
+.hu-bong{position:absolute;width:58px;height:18px;margin:-9px 0 0 -29px;border-radius:50%;background:rgba(0,0,0,.3);filter:blur(3px);pointer-events:none}
+.hu-du .noi{animation:hu-lac 1s ease-in-out infinite alternate}
+.hu-no .noi{animation:hu-no .85s ease-out forwards}
+.hu-khoi .noi{animation:hu-khoi 1.9s ease-out forwards}
+.hu-lua .noi{animation:hu-lua .3s ease-out forwards}
+.hu-dan svg{filter:drop-shadow(0 0 5px #f59e0b)}
+.hu-mb .noi{filter:drop-shadow(0 6px 6px rgba(0,0,0,.35))}
+.vat.hu-cho{visibility:hidden}
+@keyframes hu-lac{from{transform:rotate(-9deg)}to{transform:rotate(9deg)}}
+@keyframes hu-no{0%{transform:scale(calc(.2 * var(--to,1)));opacity:1}50%{opacity:1}100%{transform:scale(calc(1.5 * var(--to,1)));opacity:0}}
+@keyframes hu-khoi{0%{transform:scale(.3);opacity:.7}100%{transform:scale(1.9) translateY(-16px);opacity:0}}
+@keyframes hu-lua{0%{transform:scale(.4);opacity:1}100%{transform:scale(1.4);opacity:0}}
 .canh-vat .noi{pointer-events:none!important}
 .canh-vat .noi svg{display:block;overflow:visible}
 .qd-dau .nut-nghe,.ai-dau .nut-nghe{margin-left:auto}
@@ -206,26 +252,26 @@ button{font-family:inherit;font-size:inherit;color:inherit}
 .phu-lop .ho{fill:none;stroke:#ef4444;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}
 .phu-lop .mo{opacity:.2}
 .phu-lop>g{transition:opacity .5s}
-/* nút điều khiển camera, tiêu đề trên sa bàn */
-.sb-tieu{position:absolute;left:14px;top:12px;z-index:5;display:flex;flex-direction:column;gap:4px;pointer-events:none}
-.sb-tieu b{font-size:20px;text-shadow:0 2px 10px rgba(0,0,0,.8)}
-.sb-tieu span{font-size:13.5px;color:#e2e8f0;text-shadow:0 2px 8px rgba(0,0,0,.9)}
-.chu-giai{display:flex;gap:10px;flex-wrap:wrap;font-size:12.5px;color:#e2e8f0;margin-top:2px}
-.chu-giai i{display:inline-block;width:22px;height:5px;border-radius:3px;vertical-align:middle;margin-right:5px}
-.cam-nut{position:absolute;right:12px;top:12px;z-index:5;display:flex;gap:6px}
-.cam-nut button{width:40px;height:40px;border-radius:12px;border:1px solid var(--vien);background:rgba(8,12,26,.7);cursor:pointer;font-size:17px;font-weight:900}
+/* chú thích mũi tên xanh, đỏ (góc trên trái) và cột nút camera (góc trên phải) nằm trong sa bàn; thanh tiến trình dưới sa bàn */
+.sb-giua{flex:1;min-height:0;display:flex}
+.sb-ban{position:relative;flex:1;min-width:0;overflow:hidden}
+.chu-giai{position:absolute;left:10px;top:10px;z-index:5;display:flex;flex-direction:column;gap:3px;padding:5px 10px;border-radius:10px;background:rgba(8,12,26,.62);font-size:11px;font-weight:700;line-height:1.25;color:#e2e8f0;pointer-events:none}
+.chu-giai span{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.chu-giai svg{display:block;flex:none}
+.cam-nut{position:absolute;right:10px;top:10px;z-index:5;display:flex;flex-direction:column;gap:6px;padding:6px;border-radius:12px;background:rgba(8,12,26,.55)}
+.cam-nut button{width:34px;height:34px;border-radius:11px;border:1px solid var(--vien);background:rgba(8,12,26,.7);cursor:pointer;font-size:17px;font-weight:900}
 .cam-nut button:hover{background:rgba(30,41,59,.9)}
-.truc-moc{position:absolute;left:12px;right:12px;bottom:10px;z-index:5;padding:8px 12px 6px;border-radius:16px;background:rgba(8,12,26,.72);border:1px solid var(--vien);backdrop-filter:blur(6px)}
-.truc-moc .duong{position:relative;height:42px}
-.truc-moc .duong::before{content:"";position:absolute;left:0;right:0;top:15px;height:4px;border-radius:2px;background:linear-gradient(90deg,#38bdf8,#fbbf24,#ef4444);opacity:.6}
-.moc-b{position:absolute;top:0;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:2px;border:0;background:none;cursor:pointer;padding:0}
-.moc-b i{display:block;width:16px;height:16px;border-radius:50%;margin-top:9px;border:2px solid #fff;background:#475569}
+.truc-moc{flex:none;align-self:center;width:min(100%,780px);padding:3px 16px 2px;border-radius:12px;background:rgba(8,12,26,.6);border:1px solid var(--vien)}
+.truc-moc .duong{position:relative;height:30px}
+.truc-moc .duong::before{content:"";position:absolute;left:0;right:0;top:8px;height:3px;border-radius:2px;background:linear-gradient(90deg,#38bdf8,#fbbf24,#ef4444);opacity:.6}
+.moc-b{position:absolute;top:0;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:1px;border:0;background:none;cursor:pointer;padding:0}
+.moc-b i{display:block;width:12px;height:12px;border-radius:50%;margin-top:3.5px;border:2px solid #fff;background:#475569}
 .moc-b.ta i{background:var(--ta)}.moc-b.dich i{background:var(--dich)}.moc-b.hc i{background:var(--hcan)}.moc-b.qd i{background:#fde047;border-radius:3px;transform:rotate(45deg)}
 .moc-b.tq i,.moc-b.kq i{background:#e2e8f0}
 .moc-b.sau i{opacity:.35}
 .moc-b.sau small{opacity:.6}
-.moc-b.dang i{box-shadow:0 0 0 4px rgba(253,224,71,.45);width:20px;height:20px;margin-top:7px}
-.moc-b small{font-size:10.5px;font-weight:800;color:#cbd5e1;white-space:nowrap}
+.moc-b.dang i{box-shadow:0 0 0 3px rgba(253,224,71,.45);width:15px;height:15px;margin-top:2px}
+.moc-b small{font-size:9.5px;font-weight:800;color:#cbd5e1;white-space:nowrap}
 .moc-b.dang small{color:#fde047}
 .sb-phai{padding:12px 14px;overflow:auto;min-height:0;display:flex;flex-direction:column;gap:10px}
 /* thước phim */
@@ -353,7 +399,7 @@ body.phim-to .phim .phu-de{font-size:22px}
 .tab.dang{background:linear-gradient(135deg,#7c3aed,#4338ca);border-color:transparent}
 .hoi-khung{display:grid;grid-template-columns:1.6fr 1fr;gap:14px}
 .hoi-trai{padding:14px;display:flex;flex-direction:column;gap:10px}
-.hoi-log{height:calc(100vh - var(--thanh-tren) - var(--thanh-duoi) - 300px);min-height:300px;overflow:auto;display:flex;flex-direction:column;gap:14px;padding:6px}
+.hoi-log{height:calc(100vh - var(--th-do,var(--thanh-tren)) - var(--thanh-duoi) - 300px);min-height:300px;overflow:auto;display:flex;flex-direction:column;gap:14px;padding:6px}
 .tin{display:flex}
 .tin.hs{justify-content:flex-end}
 .tin .bong-noi{max-width:88%}
@@ -396,7 +442,7 @@ body.phim-to .phim .phu-de{font-size:22px}
 .che-do button{padding:10px 16px;border-radius:14px;border:2px solid var(--vien);background:var(--kinh);cursor:pointer;font-weight:800;text-align:left}
 .che-do button small{display:block;font-weight:600;color:var(--phu);font-size:12.5px}
 .che-do button.dang{border-color:#fbbf24;background:rgba(251,191,36,.15)}
-.luoi-de{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.luoi-de{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
 .the-de{display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:16px;cursor:pointer;text-align:left;transition:transform .18s}
 .the-de:hover{transform:translateY(-3px)}
 .the-de .so-de{font-size:30px;font-weight:900;color:#fde68a;line-height:1}
@@ -483,40 +529,65 @@ body.chup #phao-giay{display:none}
   .an-dt{display:none}
   .luoi-de{grid-template-columns:repeat(3,1fr)}
 }
+@media (max-width:1240px){
+  #thanh{flex-wrap:wrap;height:auto;padding:6px 10px;gap:6px}
+  :root{--thanh-tren:100px}
+  .tab-cd{order:3;width:100%;margin-left:0;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
+  .tab-cd::-webkit-scrollbar{display:none}
+  .nut-cd{flex:none}
+}
 @media (max-width:1100px){
   .sb-khung{grid-template-columns:1fr;height:auto}
   .sb-trai{height:62vh;min-height:420px}
-  .trang-chu,.hoi-khung{grid-template-columns:1fr}
+  .hoi-khung{grid-template-columns:1fr}
   .luoi-kpi{grid-template-columns:repeat(3,1fr)}
   .luoi-the{grid-template-columns:repeat(3,1fr)}
   .ban-nhap{position:fixed;left:0;right:0;bottom:var(--thanh-duoi);max-width:none;text-align:center;background:rgba(8,12,26,.9);padding:2px 8px;z-index:44;font-size:10.5px}
   #man{padding-bottom:calc(var(--thanh-duoi) + 34px)}
 }
+@media (max-width:900px){
+  .trang-chu{grid-template-columns:1fr;height:auto}
+  .tc-xem{height:min(52vh,420px)}
+}
 @media (max-width:820px){
-  #thanh{flex-wrap:wrap;height:auto;padding:6px 10px;gap:6px}
-  :root{--thanh-tren:112px}
-  .tab-cd{order:3;width:100%;margin-left:0;justify-content:space-between}
-  .nut-cd{flex:1;justify-content:center;padding:6px}
-  .nut-cd span{display:none}
+  :root{--thanh-tren:140px}
   .thuong-hieu small{display:none}
-  .luoi-de,.luoi-bd,.de-khung,.kq-dau,.luoi-cham,.dac-diem{grid-template-columns:1fr}
-  .the-tran{grid-template-columns:110px 1fr}
-  .the-tran .anh{height:80px}
+  .chip-ma{order:1;margin-left:auto}
+  .nut-nhac{order:2}
+  #thanh nav{order:4;width:100%;margin-left:0}
+  #thanh nav .dh{flex:1;justify-content:center;text-align:center;padding:7px 8px}
+  .luoi-de,.luoi-bd,.de-khung,.kq-dau,.luoi-cham{grid-template-columns:1fr}
+  /* trang chủ trên điện thoại: gọn trong 1 màn hình, bỏ sa bàn xem trước */
+  .trang-chu{min-height:calc(100dvh - var(--th-do,var(--thanh-tren)) - var(--thanh-duoi) - 24px);gap:10px;grid-template-rows:auto auto}
+  .tc-trai{padding:14px;border-radius:22px;justify-content:flex-start;overflow:visible}
+  .ten-lon{font-size:clamp(38px,13vw,54px)}
+  .ten-phu{font-size:clamp(17px,5.4vw,24px)}
+  .khau-hieu{font-size:15px;margin:6px 0 8px}
+  .dac-diem{gap:6px;margin-bottom:10px}
+  .dac-diem div{padding:6px 8px;gap:7px;font-size:12.5px;border-radius:13px}
+  .dac-diem span{width:30px;height:30px;font-size:17px;border-radius:9px}
+  .luoi-nut .nut{flex:1;min-height:44px;padding:8px 12px}
+  .luoi-nut .nut:not(.chinh){display:none}
+  .tc-xem{display:none}
+  .tc-phai{grid-template-rows:auto}
+  .ba-tran{gap:7px}
+  .the-tran{border-radius:14px}
+  .the-tran .anh{height:46px}
+  .the-tran .nd{padding:6px 8px 7px}
+  .the-tran h3{font-size:12.5px}
+  .the-tran .nam{display:none}
+  .the-tran .dong{justify-content:center}
   .luoi-the{grid-template-columns:repeat(2,1fr)}
   .luoi-kpi{grid-template-columns:repeat(2,1fr)}
   .de-trai{position:static}
-  .chang{display:none}
-  .nut-dh{padding:8px 12px;font-size:14px}
+  .nut-dh{padding:4px 12px;font-size:14px}
   .nut-dh .an-dt{display:none}
   .chu-thich-mt,.luoi-vst{grid-template-columns:1fr}
   #man{padding:10px 12px calc(var(--thanh-duoi) + 12px)}
-  /* điện thoại: chú giải không đè lên bản đồ; nút xoay/phóng nằm trên thanh mốc, không đè tiêu đề */
-  .chu-giai{display:none}
-  .sb-tieu{right:8px;left:10px;top:8px}
-  .sb-tieu b{font-size:16px;line-height:1.2}
-  .sb-tieu span{font-size:12px}
-  .cam-nut{top:auto;bottom:72px;right:8px;width:150px;flex-wrap:wrap;justify-content:flex-end;gap:5px}
-  .cam-nut button{width:34px;height:34px;font-size:15px}
+  /* điện thoại: chú giải chữ nhỏ hơn */
+  .chu-giai{font-size:10px;padding:4px 8px}
+  .cam-nut{right:8px;top:8px;padding:5px;gap:5px}
+  .cam-nut button{width:32px;height:32px;font-size:14px}
 }
 </style>
 </head>
@@ -537,7 +608,7 @@ body.chup #phao-giay{display:none}
   <nav>
     <button class="dh" data-man="hoc" onclick="di('hoc')">🤖<span class="an-dt"> Học cùng AI</span></button>
     <button class="dh" data-man="luyen-de" onclick="di('luyen-de')">📝<span class="an-dt"> Luyện đề</span></button>
-    <button class="dh" data-man="giao-vien" onclick="di('giao-vien')" aria-label="Bảng giáo viên">👩‍🏫</button>
+    <button class="dh" data-man="giao-vien" onclick="di('giao-vien')" aria-label="Bảng giáo viên">👩‍🏫<span class="an-dt"> Giáo viên</span></button>
   </nav>
   <button id="chip-ma" class="chip-ma" onclick="hoiMa()">👥 Mã nhóm</button>
   <button id="nut-nhac" class="nut-nhac" onclick="batTatNhac()" aria-label="Bật tắt nhạc">🎵</button>
@@ -545,7 +616,7 @@ body.chup #phao-giay{display:none}
 <main id="man"></main>
 <nav id="dieu-huong" aria-label="Điều hướng các phần">
   <button class="nut-dh" id="nut-lui" onclick="quayLai()" title="Quay lại (PageUp)" aria-label="Quay lại">◀</button>
-  <div class="hanh-trinh"><div class="chang" id="chang"></div><div class="buoc-nho" id="buoc-nho"></div></div>
+  <div class="hanh-trinh"><div class="buoc-nho" id="buoc-nho"></div></div>
   <button class="nut-dh tien" id="nut-tien" onclick="tienLen()" title="Tiến lên (PageDown)" aria-label="Tiến lên">▶</button>
 </nav>
 <div id="hop-thoai" class="an"></div>
@@ -1177,6 +1248,391 @@ DL.de = [
           {chu: "Sau Hiệp định, cả nước Việt Nam được giải phóng hoàn toàn.", dung: false}],
         giai: "Chỉ miền Bắc được hoàn toàn giải phóng; nhiệm vụ giải phóng miền Nam, thống nhất đất nước vẫn tiếp tục."}
     ]
+  },
+  {
+    id: "de-4", ten: "Đề 4", mo_ta: "Tổng hợp 1945 – 1954, mức độ cơ bản: bối cảnh, ba chiến dịch, Na-va, Giơ-ne-vơ",
+    phan1: [
+      {cd: "1945", muc: "Biết", hoi: "Theo quyết định của Hội nghị Pốt-xđam, quân đội Anh vào Đông Dương từ vĩ tuyến 16 trở vào Nam với danh nghĩa", pa: ["giúp Việt Nam xây dựng chính quyền.", "giải giáp quân đội Nhật.", "thay thế quân đội Pháp.", "chống lại quân Trung Hoa Dân quốc."], da: 1, giai: "Danh nghĩa là giải giáp quân Nhật, thực chất quân Anh dọn đường cho thực dân Pháp trở lại xâm lược Nam Bộ."},
+      {cd: "1945", muc: "Biết", hoi: "Ngày 23/9/1945 gắn với sự kiện nào sau đây?", pa: ["Thực dân Pháp đánh chiếm Sài Gòn, nhân dân Nam Bộ bước vào cuộc kháng chiến.", "Chủ tịch Hồ Chí Minh đọc Tuyên ngôn độc lập.", "Hiệp định Sơ bộ được kí kết.", "Cuộc kháng chiến toàn quốc bùng nổ."], da: 0, giai: "Tuyên ngôn độc lập: 2/9/1945; Hiệp định Sơ bộ: 6/3/1946; toàn quốc kháng chiến: 19/12/1946."},
+      {cd: "1945", muc: "Biết", hoi: "Theo Hiệp định Sơ bộ (6/3/1946), Việt Nam đồng ý cho bao nhiêu quân Pháp ra miền Bắc thay quân Trung Hoa Dân quốc?", pa: ["10.000 quân, rút dần trong 3 năm.", "20.000 quân, rút dần trong 10 năm.", "15.000 quân, rút dần trong 5 năm.", "50.000 quân, đóng quân lâu dài."], da: 2, giai: "15.000 quân Pháp ra Bắc thay quân Trung Hoa Dân quốc, số quân này rút dần trong 5 năm."},
+      {cd: "1945", muc: "Hiểu", hoi: "Mục đích chủ yếu của việc kí Hiệp định Sơ bộ (6/3/1946) là", pa: ["chấm dứt hoàn toàn chiến tranh với Pháp.", "đẩy nhanh quân Trung Hoa Dân quốc về nước, tranh thủ thời gian hòa hoãn để chuẩn bị lực lượng.", "nhờ Pháp giúp đỡ xây dựng đất nước.", "liên minh với Pháp chống Trung Hoa Dân quốc."], da: 1, giai: "«Hòa để tiến»: tránh phải đối phó cùng lúc với nhiều kẻ thù, có thêm thời gian chuẩn bị kháng chiến."},
+      {cd: "1945", muc: "Biết", hoi: "Văn kiện nào sau đây KHÔNG thể hiện đường lối kháng chiến chống thực dân Pháp?", pa: ["Tuyên ngôn độc lập (2/9/1945).", "Lời kêu gọi toàn quốc kháng chiến (19/12/1946).", "Tác phẩm Kháng chiến nhất định thắng lợi (1947).", "Chỉ thị Toàn dân kháng chiến (12/12/1946)."], da: 0, giai: "Đường lối kháng chiến thể hiện trong Chỉ thị Toàn dân kháng chiến, Lời kêu gọi toàn quốc kháng chiến và tác phẩm của Trường Chinh."},
+      {cd: "chung", muc: "Vận dụng", hoi: "Từ việc ta chọn đánh Đông Khê (1950) và tiến công Lai Châu (12/1953), có thể thấy điểm chung trong cách chọn hướng tiến công là", pa: ["đánh vào nơi địch mạnh nhất.", "chờ địch tấn công trước rồi mới đánh.", "chỉ đánh ở vùng đồng bằng.", "đánh vào hướng quan trọng mà địch tương đối yếu, buộc địch phải phân tán hoặc điều quân ứng cứu."], da: 3, giai: "Chọn nơi vừa sức, có ý nghĩa chiến lược để thắng chắc và tạo thế có lợi — đúng như các quyết định trên sa bàn."},
+      {cd: "1945", muc: "Hiểu", hoi: "Kháng chiến «toàn diện» có nghĩa là", pa: ["chỉ đánh địch trên mặt trận quân sự.", "đánh địch trên tất cả các mặt trận: quân sự, chính trị, kinh tế, văn hóa, ngoại giao.", "chỉ dựa vào lực lượng vũ trang.", "đánh địch ở khắp nơi cùng một lúc."], da: 1, giai: "Toàn diện là trên mọi mặt trận; «đánh khắp nơi» là một cách hiểu sai thường gặp."},
+      {cd: "vb", muc: "Biết", hoi: "Ngày 7/10/1947, thực dân Pháp", pa: ["rút khỏi Việt Bắc.", "mở cuộc tấn công lên căn cứ địa Việt Bắc.", "kí Hiệp định Sơ bộ.", "đề ra Kế hoạch Rơ-ve."], da: 1, giai: "Ngày 7/10/1947, quân dù Pháp nhảy xuống Bắc Kạn, Chợ Mới, Chợ Đồn, mở đầu cuộc tấn công lên Việt Bắc."},
+      {cd: "vb", muc: "Hiểu", hoi: "Vì sao thực dân Pháp chọn Việt Bắc làm mục tiêu tấn công năm 1947?", pa: ["Vì Việt Bắc có nhiều tài nguyên khoáng sản nhất.", "Vì Việt Bắc giáp với Lào.", "Vì Việt Bắc là nơi đặt cơ quan đầu não kháng chiến và tập trung bộ đội chủ lực của ta.", "Vì Việt Bắc là vùng đồng bằng dễ tiến quân."], da: 2, giai: "Pháp muốn tiêu diệt đầu não và chủ lực để nhanh chóng kết thúc chiến tranh."},
+      {cd: "vb", muc: "Hiểu", hoi: "Thất bại ở Việt Bắc (1947) buộc thực dân Pháp phải", pa: ["chuyển sang đánh lâu dài, thực hiện chính sách «dùng người Việt đánh người Việt, lấy chiến tranh nuôi chiến tranh».", "kết thúc chiến tranh ngay.", "rút toàn bộ quân về nước.", "kí Hiệp định Giơ-ne-vơ."], da: 0, giai: "«Đánh nhanh, thắng nhanh» phá sản, Pháp buộc phải chuyển sang đánh lâu dài với ta."},
+      {cd: "bg", muc: "Biết", hoi: "Tháng 6/1950, Trung ương Đảng quyết định mở chiến dịch", pa: ["Việt Bắc.", "Hòa Bình.", "Biên giới.", "Điện Biên Phủ."], da: 2, giai: "Chiến dịch Biên giới thu – đông 1950 do ta chủ động mở."},
+      {cd: "bg", muc: "Biết", hoi: "Đầu năm 1950, những nước nào lần lượt công nhận và đặt quan hệ ngoại giao với Việt Nam Dân chủ Cộng hòa?", pa: ["Trung Quốc, Liên Xô và các nước dân chủ nhân dân.", "Anh, Pháp, Mỹ.", "Nhật Bản, Hàn Quốc.", "Ấn Độ, In-đô-nê-xi-a."], da: 0, giai: "Đây là chuyển biến quốc tế có lợi, đặt ra yêu cầu khai thông biên giới để liên lạc với quốc tế."},
+      {cd: "bg", muc: "Biết", hoi: "Một trong những nội dung chính của Kế hoạch Rơ-ve (1949) là", pa: ["tăng cường phòng ngự trên Đường số 4, thiết lập Hành lang Đông – Tây.", "xây dựng tập đoàn cứ điểm ở Điện Biên Phủ.", "rút quân khỏi Đông Dương.", "giành thắng lợi quyết định trong 18 tháng."], da: 0, giai: "Khóa biên giới Việt – Trung, cô lập Việt Bắc. «18 tháng» và Điện Biên Phủ thuộc Kế hoạch Na-va (1953)."},
+      {cd: "1951", muc: "Biết", hoi: "Đại hội đại biểu toàn quốc lần thứ II của Đảng (2/1951) bầu ai làm Tổng Bí thư?", pa: ["Trường Chinh.", "Hồ Chí Minh.", "Lê Duẩn.", "Trần Phú."], da: 0, giai: "Đại hội bầu Chủ tịch Hồ Chí Minh làm Chủ tịch Đảng, Trường Chinh làm Tổng Bí thư."},
+      {cd: "vb", muc: "Vận dụng", hoi: "Nhận xét nào đúng về vai trò của căn cứ địa Việt Bắc trong cuộc kháng chiến chống Pháp?", pa: ["Là trung tâm kinh tế lớn nhất cả nước.", "Là nơi đặt cơ quan đầu não, là hậu phương quan trọng của cả nước.", "Chỉ có ý nghĩa với các tỉnh miền núi phía Bắc.", "Là nơi diễn ra trận quyết chiến chiến lược năm 1954."], da: 1, giai: "Trận quyết chiến chiến lược 1954 diễn ra ở Điện Biên Phủ (Tây Bắc), không phải Việt Bắc."},
+      {cd: "1951", muc: "Hiểu", hoi: "Mục đích của Kế hoạch Đờ Lát đơ Tát-xi-nhi (cuối năm 1950) là", pa: ["kết thúc chiến tranh trong 18 tháng.", "khóa chặt biên giới Việt – Trung.", "rút quân khỏi Bắc Bộ.", "xây dựng lực lượng cơ động mạnh, lập phòng tuyến công sự, «vành đai trắng» để giành lại quyền chủ động."], da: 3, giai: "Ra đời sau thất bại ở Biên giới 1950, nhằm giành lại quyền chủ động đã mất."},
+      {cd: "chung", muc: "Vận dụng", hoi: "Điểm chung của Kế hoạch Rơ-ve (1949) và Kế hoạch Na-va (1953) là", pa: ["đều nhằm rút quân khỏi Đông Dương.", "đều do Mỹ trực tiếp chỉ huy quân đội.", "đều có sự đồng ý, giúp sức của Mỹ, nhằm giành lại thế chủ động cho Pháp.", "đều thành công."], da: 2, giai: "Mỹ ngày càng can thiệp sâu; cả hai kế hoạch đều bị ta làm phá sản (Biên giới 1950, Điện Biên Phủ 1954)."},
+      {cd: "dbp", muc: "Biết", hoi: "Trong cuộc Tiến công chiến lược Đông – Xuân 1953 – 1954, quân ta mở đầu bằng cuộc tiến công vào", pa: ["Sài Gòn.", "Hà Nội.", "Lai Châu.", "Huế."], da: 2, giai: "Tháng 12/1953 ta tiến công Lai Châu, Na-va phải tăng cường lực lượng cho Điện Biên Phủ."},
+      {cd: "dbp", muc: "Biết", hoi: "Chỉ huy trưởng chiến dịch Điện Biên Phủ là", pa: ["Tổng Bí thư Trường Chinh.", "Đại tướng Võ Nguyên Giáp.", "Phạm Văn Đồng.", "Hoàng Văn Thái."], da: 1, giai: "Đại tướng Võ Nguyên Giáp là Tổng Tư lệnh, trực tiếp chỉ huy chiến dịch."},
+      {cd: "dbp", muc: "Hiểu", hoi: "Cuối tháng 1/1954, ta chuyển phương châm từ «đánh nhanh, thắng nhanh» sang «đánh chắc, tiến chắc» vì", pa: ["ta muốn kéo dài chiến tranh.", "ta không đủ quân.", "Pháp đề nghị đàm phán.", "địch đã tăng cường lực lượng, tập đoàn cứ điểm mạnh lên, đánh nhanh không bảo đảm chắc thắng."], da: 3, giai: "Quyết định dựa trên thực tế chiến trường — đúng như Quyết định 1 trên sa bàn Điện Biên Phủ."},
+      {cd: "gnv", muc: "Biết", hoi: "Theo Hiệp định Giơ-ne-vơ (1954), giới tuyến quân sự tạm thời ở Việt Nam là", pa: ["vĩ tuyến 16.", "vĩ tuyến 38.", "vĩ tuyến 18.", "vĩ tuyến 17."], da: 3, giai: "Vĩ tuyến 17 là giới tuyến quân sự tạm thời; vĩ tuyến 16 là ranh giới giải giáp quân Nhật năm 1945."},
+      {cd: "gnv", muc: "Hiểu", hoi: "Hiệp định Giơ-ne-vơ (1954) là văn bản pháp lí quốc tế", pa: ["công nhận chủ quyền của Pháp ở Đông Dương.", "thống nhất ngay Việt Nam.", "ghi nhận các quyền dân tộc cơ bản của nhân dân Việt Nam, Lào, Cam-pu-chia.", "cho phép Mỹ đóng quân ở Việt Nam."], da: 2, giai: "Các nước tham dự cam kết tôn trọng độc lập, chủ quyền, thống nhất, toàn vẹn lãnh thổ của ba nước Đông Dương."},
+      {cd: "chung", muc: "Vận dụng", hoi: "Điểm giống nhau giữa Hiệp định Sơ bộ (1946) và Hiệp định Giơ-ne-vơ (1954) là", pa: ["đều công nhận Việt Nam là quốc gia độc lập hoàn toàn.", "đều quy định Pháp rút quân ngay lập tức.", "đều do Mỹ đứng ra tổ chức.", "đều là kết quả của đấu tranh ngoại giao, phản ánh so sánh lực lượng trên chiến trường."], da: 3, giai: "Kết quả trên bàn đàm phán phụ thuộc vào thực lực và thắng lợi trên chiến trường."},
+      {cd: "chung", muc: "Vận dụng", hoi: "Bài học nào từ cuộc kháng chiến chống Pháp vẫn còn giá trị trong sự nghiệp bảo vệ Tổ quốc hiện nay?", pa: ["Không cần xây dựng hậu phương.", "Chỉ dựa vào sức mạnh quân sự.", "Phụ thuộc vào một nước lớn.", "Phát huy sức mạnh khối đại đoàn kết toàn dân tộc, kết hợp sức mạnh dân tộc với sức mạnh thời đại."], da: 3, giai: "Đại đoàn kết và kết hợp sức mạnh dân tộc với sức mạnh thời đại là bài học xuyên suốt."}
+    ],
+    phan2: [
+      {cd: "1945", tu_lieu: "Ngày 6/3/1946, Chủ tịch Hồ Chí Minh thay mặt Chính phủ Việt Nam Dân chủ Cộng hòa kí với đại diện Chính phủ Pháp Hiệp định Sơ bộ. Theo đó, Chính phủ Pháp công nhận Việt Nam là một quốc gia tự do, có chính phủ, nghị viện, quân đội và tài chính riêng, nằm trong khối Liên hiệp Pháp; Việt Nam đồng ý cho 15.000 quân Pháp ra Bắc thay quân Trung Hoa Dân quốc, số quân này sẽ rút dần trong 5 năm.", nguon: "(Tóm tắt tư liệu lịch sử)",
+        y: [{chu: "Hiệp định Sơ bộ công nhận Việt Nam là một quốc gia độc lập hoàn toàn.", dung: false},
+          {chu: "Hiệp định giúp Việt Nam tránh phải đối phó cùng lúc với nhiều kẻ thù.", dung: true},
+          {chu: "Quân Pháp ra Bắc theo Hiệp định để thay thế quân Trung Hoa Dân quốc.", dung: true},
+          {chu: "Theo Hiệp định, quân Pháp được đóng quân vĩnh viễn ở miền Bắc.", dung: false}],
+        giai: "Pháp chỉ công nhận Việt Nam là «quốc gia tự do» trong khối Liên hiệp Pháp; quân Pháp phải rút dần trong 5 năm."},
+      {cd: "vb", tu_lieu: "Thu – đông năm 1947, thực dân Pháp tấn công căn cứ địa Việt Bắc theo nhiều hướng: quân dù nhảy xuống Bắc Kạn, Chợ Mới, Chợ Đồn; một cánh bộ binh, cơ giới từ Lạng Sơn theo Đường số 4 lên Cao Bằng; một cánh quân thủy – bộ ngược sông Hồng, sông Lô lên Tuyên Quang. Quân dân Việt Nam chủ động phản công, buộc đại bộ phận quân Pháp phải rút chạy.", nguon: "(Tóm tắt tư liệu lịch sử)",
+        y: [{chu: "Pháp tấn công Việt Bắc bằng cả quân dù, bộ binh, cơ giới và thủy quân.", dung: true},
+          {chu: "Cuộc tấn công của Pháp nhằm thực hiện Kế hoạch Rơ-ve.", dung: false},
+          {chu: "Chiến thắng Việt Bắc là chiến dịch phản công lớn đầu tiên của quân dân Việt Nam.", dung: true},
+          {chu: "Sau chiến dịch, quân Pháp rút hoàn toàn khỏi Đông Dương.", dung: false}],
+        giai: "Kế hoạch Rơ-ve ra đời năm 1949. Sau Việt Bắc, Pháp chuyển sang đánh lâu dài chứ không rút khỏi Đông Dương."},
+      {cd: "dbp", tu_lieu: "Thực hiện phương hướng tiến công vào những hướng quan trọng về chiến lược mà địch tương đối yếu, trong Đông – Xuân 1953 – 1954, quân dân Việt Nam mở các cuộc tiến công ở Lai Châu, Trung Lào, Hạ Lào và Đông Bắc Cam-pu-chia, Thượng Lào, Bắc Tây Nguyên. Lực lượng cơ động của Pháp bị phân tán ra nhiều nơi như Điện Biên Phủ, Xê-nô, Luông Pha-bang, Plây-cu…", nguon: "(Tóm tắt tư liệu lịch sử)",
+        y: [{chu: "Cuộc Tiến công chiến lược Đông – Xuân buộc lực lượng cơ động của Pháp phải phân tán.", dung: true},
+          {chu: "Quân ta tập trung đánh vào nơi địch mạnh nhất là đồng bằng Bắc Bộ.", dung: false},
+          {chu: "Điện Biên Phủ trở thành nơi tập trung binh lực của Pháp sau khi ta tiến công Lai Châu.", dung: true},
+          {chu: "Cuộc Tiến công Đông – Xuân chỉ diễn ra trên lãnh thổ Việt Nam.", dung: false}],
+        giai: "Ta tiến công cả ở Lào và Cam-pu-chia, vào nơi địch tương đối yếu, làm Kế hoạch Na-va phá sản bước đầu."},
+      {cd: "gnv", tu_lieu: "Hiệp định Giơ-ne-vơ (21/7/1954) quy định: các nước tham dự Hội nghị cam kết tôn trọng các quyền dân tộc cơ bản là độc lập, chủ quyền, thống nhất và toàn vẹn lãnh thổ của Việt Nam, Lào, Cam-pu-chia; các bên tham chiến ngừng bắn, lập lại hòa bình trên toàn Đông Dương; ở Việt Nam, vĩ tuyến 17 là giới tuyến quân sự tạm thời; Việt Nam tiến tới thống nhất bằng cuộc tổng tuyển cử tự do trong cả nước vào tháng 7/1956.", nguon: "(Tóm tắt tư liệu lịch sử)",
+        y: [{chu: "Hiệp định ghi nhận quyền độc lập, chủ quyền, thống nhất và toàn vẹn lãnh thổ của Việt Nam.", dung: true},
+          {chu: "Vĩ tuyến 17 là biên giới quốc gia chia Việt Nam thành hai nước.", dung: false},
+          {chu: "Hiệp định quy định tổng tuyển cử thống nhất đất nước vào tháng 7/1956.", dung: true},
+          {chu: "Hiệp định chỉ quy định ngừng bắn ở Việt Nam, không đề cập tới Lào và Cam-pu-chia.", dung: false}],
+        giai: "Vĩ tuyến 17 chỉ là giới tuyến quân sự TẠM THỜI, không phải biên giới quốc gia; hòa bình lập lại trên toàn Đông Dương."}
+    ]
+  },
+  {
+    id: "de-5", ten: "Đề 5", mo_ta: "Trọng tâm 1945 – 1946: hòa hoãn, kháng chiến toàn quốc bùng nổ, đường lối kháng chiến",
+    phan1: [
+      {cd: "1945", muc: "Biết", hoi: "Sau Cách mạng tháng Tám, quân Trung Hoa Dân quốc vào miền Bắc Việt Nam (từ vĩ tuyến 16 trở ra) với danh nghĩa", pa: ["thay thế quân đội Pháp.", "giúp đỡ chính quyền cách mạng.", "giải giáp quân đội Nhật.", "chống lại quân đội Anh."], da: 2, giai: "Danh nghĩa giải giáp quân Nhật; thực chất cùng tay sai tìm cách lật đổ chính quyền cách mạng."},
+      {cd: "1945", muc: "Biết", hoi: "Từ tháng 9/1945 đến trước ngày 6/3/1946, để tập trung kháng chiến chống Pháp ở Nam Bộ, Chính phủ Việt Nam Dân chủ Cộng hòa chủ trương", pa: ["hòa với Pháp để chống Trung Hoa Dân quốc.", "nhờ quân Anh giúp đỡ.", "đánh cả Pháp và Trung Hoa Dân quốc.", "tạm thời hòa hoãn, tránh xung đột với quân Trung Hoa Dân quốc ở miền Bắc."], da: 3, giai: "Hòa hoãn với quân Trung Hoa Dân quốc ở miền Bắc để tập trung lực lượng chống Pháp ở miền Nam."},
+      {cd: "1945", muc: "Biết", hoi: "Hiệp ước Hoa – Pháp (28/2/1946) được kí giữa", pa: ["Pháp và Anh.", "Việt Nam và Pháp.", "Pháp và Trung Hoa Dân quốc.", "Việt Nam và Trung Hoa Dân quốc."], da: 2, giai: "Theo Hiệp ước, Trung Hoa Dân quốc đồng ý cho Pháp đưa quân ra miền Bắc thay mình."},
+      {cd: "1945", muc: "Hiểu", hoi: "Hiệp ước Hoa – Pháp (28/2/1946) đặt nhân dân Việt Nam trước sự lựa chọn", pa: ["rút toàn bộ lực lượng khỏi miền Bắc.", "liên minh với Anh hoặc với Mỹ.", "hoặc cầm súng chống Pháp ngay, hoặc hòa hoãn, nhân nhượng Pháp để đẩy quân Trung Hoa Dân quốc về nước.", "tiếp tục hòa hoãn với Trung Hoa Dân quốc."], da: 2, giai: "Ta chọn hòa hoãn với Pháp (Hiệp định Sơ bộ) để tránh phải đối đầu với nhiều kẻ thù cùng lúc."},
+      {cd: "1945", muc: "Biết", hoi: "Theo bản Tạm ước (14/9/1946), Việt Nam nhân nhượng cho Pháp thêm một số quyền lợi về", pa: ["quân sự và chính trị.", "kinh tế và văn hóa.", "ngoại giao.", "lãnh thổ."], da: 1, giai: "Tạm ước kéo dài thời gian hòa hoãn để ta chuẩn bị lực lượng."},
+      {cd: "1945", muc: "Biết", hoi: "Hội nghị Ban Thường vụ Trung ương Đảng họp ở Vạn Phúc (Hà Đông) ngày 18 – 19/12/1946 đã quyết định", pa: ["phát động cuộc kháng chiến toàn quốc.", "kí Hiệp định Sơ bộ.", "mở chiến dịch Việt Bắc.", "rút cơ quan đầu não khỏi Việt Bắc."], da: 0, giai: "Ngay sau đó, tối 19/12/1946, cuộc kháng chiến toàn quốc bùng nổ."},
+      {cd: "1945", muc: "Hiểu", hoi: "Nguyên nhân trực tiếp dẫn tới cuộc kháng chiến toàn quốc chống thực dân Pháp (19/12/1946) là", pa: ["Pháp và Trung Hoa Dân quốc kí Hiệp ước Hoa – Pháp.", "Pháp gửi tối hậu thư đòi giải tán lực lượng tự vệ, giao quyền kiểm soát Thủ đô cho quân Pháp.", "quân Trung Hoa Dân quốc rút về nước.", "Pháp tấn công lên Việt Bắc."], da: 1, giai: "Tối hậu thư 18/12/1946 cho thấy Pháp quyết cướp nước ta lần nữa, ta không thể nhân nhượng thêm."},
+      {cd: "1945", muc: "Biết", hoi: "Cuộc chiến đấu của quân dân Hà Nội trong những ngày đầu toàn quốc kháng chiến kéo dài", pa: ["56 ngày đêm.", "hai năm.", "12 ngày đêm.", "60 ngày đêm."], da: 3, giai: "60 ngày đêm (19/12/1946 – 17/2/1947). «56 ngày đêm» là chiến dịch Điện Biên Phủ."},
+      {cd: "1945", muc: "Biết", hoi: "Đơn vị tiêu biểu trong cuộc chiến đấu ở Hà Nội (19/12/1946 – 17/2/1947) là", pa: ["Trung đoàn Thủ đô.", "Đại đoàn 308.", "các đoàn quân Nam tiến.", "liên quân Việt – Lào."], da: 0, giai: "Trung đoàn Thủ đô chiến đấu suốt 60 ngày đêm rồi rút ra ngoài an toàn."},
+      {cd: "1945", muc: "Hiểu", hoi: "Kháng chiến «toàn dân» được thể hiện qua", pa: ["chỉ dựa vào lực lượng du kích.", "chỉ quân đội chính quy tham gia đánh giặc.", "chỉ người dân thành thị tham gia kháng chiến.", "mỗi người dân là một chiến sĩ, mỗi làng xóm là một pháo đài."], da: 3, giai: "Toàn dân đánh giặc, mọi người, mọi nơi đều tham gia kháng chiến."},
+      {cd: "1945", muc: "Vận dụng", hoi: "Bài học rút ra từ việc hòa hoãn với Trung Hoa Dân quốc rồi với Pháp (1945 – 1946) là", pa: ["lợi dụng mâu thuẫn trong hàng ngũ kẻ thù, phân hóa và cô lập kẻ thù chính.", "nhân nhượng mọi yêu cầu của kẻ thù.", "đánh tất cả kẻ thù cùng một lúc.", "dựa vào nước lớn này để chống nước lớn khác."], da: 0, giai: "Nhân nhượng có nguyên tắc, không nhân nhượng vô hạn — kiên định mục tiêu độc lập."},
+      {cd: "1945", muc: "Vận dụng", hoi: "Vì sao cuối năm 1946, nhân dân Việt Nam không thể tiếp tục nhân nhượng thực dân Pháp?", pa: ["Vì ta đã có đủ vũ khí hiện đại.", "Vì Pháp càng lấn tới, quyết tâm cướp nước ta lần nữa; nhân nhượng thêm là mất nước.", "Vì Liên Xô đã đưa quân giúp đỡ.", "Vì quân Trung Hoa Dân quốc ủng hộ ta."], da: 1, giai: "Đúng như Lời kêu gọi: «chúng ta càng nhân nhượng, thực dân Pháp càng lấn tới»."},
+      {cd: "vb", muc: "Biết", hoi: "Trong chiến dịch Việt Bắc thu – đông 1947, quân ta đánh chìm nhiều tàu chiến, ca nô của địch trên", pa: ["sông Hồng ở Hà Nội.", "sông Bến Hải.", "sông Đà.", "sông Lô (khu vực Đoan Hùng, Khe Lau)."], da: 3, giai: "Phục kích trên sông Lô, bẻ gãy gọng kìm phía tây của địch."},
+      {cd: "vb", muc: "Vận dụng", hoi: "Vì sao quân ta chọn đèo Bông Lau trên Đường số 4 để phục kích đoàn xe Pháp (1947)?", pa: ["Đèo dốc, đường hẹp, hai bên núi rừng — xe cơ giới khó xoay trở, dễ bị chặn đánh.", "Đây là nơi địch đóng nhiều đồn bốt nhất.", "Đây là vùng đồng bằng trống trải.", "Vì gần Hà Nội, dễ tiếp tế."], da: 0, giai: "Lợi dụng địa hình hiểm trở để lấy ít đánh nhiều."},
+      {cd: "bg", muc: "Biết", hoi: "Anh hùng La Văn Cầu gắn với trận đánh nào?", pa: ["Trận Him Lam (1954).", "Trận Đông Khê (1950).", "Trận đèo Bông Lau (1947).", "Trận chiến đấu ở Hà Nội (1946)."], da: 1, giai: "La Văn Cầu là anh hùng trong trận Đông Khê, chiến dịch Biên giới 1950."},
+      {cd: "bg", muc: "Hiểu", hoi: "Chiến dịch Biên giới 1950 mở đường liên lạc quốc tế giữa Việt Nam với", pa: ["Pháp và Mỹ.", "Trung Quốc, Liên Xô và các nước dân chủ nhân dân.", "Nhật Bản.", "Anh."], da: 1, giai: "Khai thông biên giới Việt – Trung giúp ta nhận được sự ủng hộ của các nước xã hội chủ nghĩa."},
+      {cd: "1951", muc: "Biết", hoi: "Từ năm 1953, Đảng và Chính phủ phát động phong trào nào nhằm thực hiện khẩu hiệu «người cày có ruộng»?", pa: ["Triệt để giảm tô và cải cách ruộng đất.", "Bình dân học vụ.", "Tuần lễ vàng.", "Thi đua ái quốc."], da: 0, giai: "Phát động quần chúng triệt để giảm tô, tiến hành cải cách ruộng đất."},
+      {cd: "1951", muc: "Hiểu", hoi: "Việc thành lập Ngân hàng Quốc gia Việt Nam và phát hành giấy bạc mới (1951) góp phần", pa: ["khôi phục quan hệ với Pháp.", "kết thúc chiến tranh.", "xây dựng nền tài chính độc lập, phục vụ kháng chiến.", "xóa bỏ thuế nông nghiệp."], da: 2, giai: "Củng cố hậu phương về kinh tế – tài chính."},
+      {cd: "dbp", muc: "Biết", hoi: "Ngày 20/11/1953, thực dân Pháp cho quân nhảy dù chiếm đóng", pa: ["Bắc Kạn.", "Lai Châu.", "Hòa Bình.", "Điện Biên Phủ."], da: 3, giai: "Từ đây Pháp xây dựng Điện Biên Phủ thành tập đoàn cứ điểm mạnh nhất Đông Dương."},
+      {cd: "dbp", muc: "Biết", hoi: "Anh hùng Phan Đình Giót lấy thân mình lấp lỗ châu mai trong trận tiến công", pa: ["đồi A1.", "cứ điểm Him Lam.", "cứ điểm Đông Khê.", "cứ điểm Bản Kéo."], da: 1, giai: "Ngày 13/3/1954, trận mở màn chiến dịch Điện Biên Phủ."},
+      {cd: "dbp", muc: "Hiểu", hoi: "Việc ta kéo pháo vào trận địa kiên cố trên các sườn núi bao quanh lòng chảo Điện Biên Phủ nhằm", pa: ["bảo đảm pháo an toàn, bắn được lâu dài, áp đảo hỏa lực địch.", "phòng ngự trước quân Pháp.", "bảo vệ Sở chỉ huy chiến dịch.", "chặn đường rút của địch sang Lào."], da: 0, giai: "Gắn với phương châm «đánh chắc, tiến chắc»."},
+      {cd: "gnv", muc: "Biết", hoi: "Phái đoàn Chính phủ Việt Nam Dân chủ Cộng hòa tại Hội nghị Giơ-ne-vơ (1954) do ai dẫn đầu?", pa: ["Hồ Chí Minh.", "Võ Nguyên Giáp.", "Phạm Văn Đồng.", "Trường Chinh."], da: 2, giai: "Phó Thủ tướng Phạm Văn Đồng dẫn đầu phái đoàn."},
+      {cd: "chung", muc: "Vận dụng", hoi: "Điểm giống nhau giữa cuộc chiến đấu ở các đô thị phía Bắc vĩ tuyến 16 (1946 – 1947) và chiến dịch Việt Bắc (1947) là", pa: ["đều kết thúc cuộc kháng chiến.", "đều do ta chủ động mở chiến dịch tiến công.", "đều diễn ra ở vùng rừng núi.", "đều góp phần làm thất bại chiến lược «đánh nhanh, thắng nhanh» của Pháp."], da: 3, giai: "Các đô thị làm thất bại một bước, Việt Bắc làm thất bại hoàn toàn chiến lược ấy."},
+      {cd: "1945", muc: "Vận dụng", hoi: "Nhận xét nào đúng về vai trò của Hà Nội trong những ngày đầu toàn quốc kháng chiến?", pa: ["Hà Nội không có vai trò gì đáng kể.", "Hà Nội là nơi kết thúc cuộc kháng chiến.", "Hà Nội vừa giam chân địch, vừa bảo đảm cho cơ quan đầu não rút lên chiến khu an toàn.", "Hà Nội bị Pháp chiếm ngay trong ngày đầu tiên."], da: 2, giai: "Cuộc chiến đấu 60 ngày đêm tạo thời gian cho ta chuyển sang kháng chiến lâu dài."}
+    ],
+    phan2: [
+      {cd: "1945", tu_lieu: "Ngày 18/12/1946, thực dân Pháp gửi tối hậu thư đòi Chính phủ Việt Nam Dân chủ Cộng hòa giải tán lực lượng tự vệ chiến đấu, giao quyền kiểm soát Thủ đô cho quân Pháp. Ngày 18 và 19/12/1946, Hội nghị Ban Thường vụ Trung ương Đảng họp ở Vạn Phúc (Hà Đông), quyết định phát động cuộc kháng chiến toàn quốc. Tối 19/12/1946, cuộc kháng chiến toàn quốc bùng nổ.", nguon: "(Tóm tắt tư liệu lịch sử)",
+        y: [{chu: "Cuộc kháng chiến toàn quốc bùng nổ khi thực dân Pháp bội ước, đẩy mạnh xâm lược.", dung: true},
+          {chu: "Quyết định phát động kháng chiến toàn quốc được đưa ra tại Hội nghị ở Vạn Phúc (Hà Đông).", dung: true},
+          {chu: "Việt Nam chủ động gây chiến với Pháp trước khi Pháp gửi tối hậu thư.", dung: false},
+          {chu: "Tối hậu thư của Pháp đòi Việt Nam công nhận Hiệp định Giơ-ne-vơ.", dung: false}],
+        giai: "Pháp bội ước và gửi tối hậu thư; Hiệp định Giơ-ne-vơ mãi tới năm 1954 mới được kí."},
+      {cd: "1945", tu_lieu: "Đường lối kháng chiến chống thực dân Pháp là kháng chiến toàn dân, toàn diện, trường kì, tự lực cánh sinh và tranh thủ sự ủng hộ của quốc tế. Đường lối đó được thể hiện trong Chỉ thị Toàn dân kháng chiến của Trung ương Đảng (12/12/1946), Lời kêu gọi toàn quốc kháng chiến của Chủ tịch Hồ Chí Minh (19/12/1946) và tác phẩm Kháng chiến nhất định thắng lợi của Trường Chinh (1947).", nguon: "(Tóm tắt tư liệu lịch sử)",
+        y: [{chu: "Chỉ thị Toàn dân kháng chiến ra đời trước Lời kêu gọi toàn quốc kháng chiến.", dung: true},
+          {chu: "Tác phẩm Kháng chiến nhất định thắng lợi là của Chủ tịch Hồ Chí Minh.", dung: false},
+          {chu: "Kháng chiến trường kì nhằm từng bước chuyển hóa so sánh lực lượng có lợi cho ta.", dung: true},
+          {chu: "Tranh thủ sự ủng hộ của quốc tế mâu thuẫn với tinh thần tự lực cánh sinh.", dung: false}],
+        giai: "Tác phẩm là của Trường Chinh. Tự lực cánh sinh (dựa vào sức mình là chính) đi cùng tranh thủ sự ủng hộ quốc tế."},
+      {cd: "bg", tu_lieu: "Năm 1950, tình hình thế giới có nhiều chuyển biến có lợi cho cuộc kháng chiến của Việt Nam: nước Cộng hòa Nhân dân Trung Hoa ra đời (1/10/1949); đầu năm 1950, Trung Quốc, Liên Xô và các nước dân chủ nhân dân lần lượt công nhận và đặt quan hệ ngoại giao với Việt Nam Dân chủ Cộng hòa. Trong khi đó, Mỹ ngày càng can thiệp sâu vào cuộc chiến tranh ở Đông Dương.", nguon: "(Tóm tắt tư liệu lịch sử)",
+        y: [{chu: "Việc Trung Quốc, Liên Xô công nhận Việt Nam Dân chủ Cộng hòa giúp ta phá thế bị bao vây, cô lập.", dung: true},
+          {chu: "Năm 1950, Mỹ rút khỏi cuộc chiến tranh ở Đông Dương.", dung: false},
+          {chu: "Mở đường liên lạc quốc tế qua biên giới Việt – Trung là một yêu cầu đặt ra cho chiến dịch Biên giới 1950.", dung: true},
+          {chu: "Nước Cộng hòa Nhân dân Trung Hoa ra đời sau chiến dịch Biên giới 1950.", dung: false}],
+        giai: "Mỹ ngày càng can thiệp sâu chứ không rút; Cộng hòa Nhân dân Trung Hoa ra đời ngày 1/10/1949."},
+      {cd: "dbp", tu_lieu: "Cuối tháng 1/1954, trước những thay đổi của địch, Đại tướng Võ Nguyên Giáp – Chỉ huy trưởng chiến dịch – quyết định chuyển phương châm tác chiến từ «đánh nhanh, thắng nhanh» sang «đánh chắc, tiến chắc». Bộ đội ta kéo pháo ra, chuẩn bị lại trận địa, xây dựng hệ thống giao thông hào bao quanh và tiến dần vào tập đoàn cứ điểm.", nguon: "(Tóm tắt tư liệu lịch sử)",
+        y: [{chu: "Quyết định chuyển phương châm xuất phát từ thực tế địch tăng cường lực lượng, tập đoàn cứ điểm ngày càng mạnh.", dung: true},
+          {chu: "«Đánh chắc, tiến chắc» là đánh từng bước, chuẩn bị chắc thắng mới đánh.", dung: true},
+          {chu: "Việc chuyển phương châm làm ta mất thế chủ động trên chiến trường.", dung: false},
+          {chu: "Trong đoạn tư liệu, «đánh nhanh, thắng nhanh» là chiến lược của thực dân Pháp.", dung: false}],
+        giai: "Ở đây «đánh nhanh, thắng nhanh» là phương án ban đầu của ta — khác với chiến lược của Pháp năm 1946 – 1947."}
+    ]
+  },
+  {
+    id: "de-6", ten: "Đề 6", mo_ta: "Trọng tâm 1947 – 1950: chiến dịch Việt Bắc, xây dựng hậu phương, chiến dịch Biên giới",
+    phan1: [
+      {cd: "vb", muc: "Biết", hoi: "Cuộc tấn công lên căn cứ địa Việt Bắc thu – đông năm 1947 do bên nào chủ động mở?", pa: ["Quân đội Việt Nam.", "Thực dân Pháp.", "Quân Trung Hoa Dân quốc.", "Quân Anh."], da: 1, giai: "Pháp tấn công trước, ta phản công — vì vậy Việt Bắc là chiến dịch phản công."},
+      {cd: "vb", muc: "Biết", hoi: "Quân dù Pháp nhảy xuống những địa điểm nào trong cuộc tấn công lên Việt Bắc năm 1947?", pa: ["Bắc Kạn, Chợ Mới, Chợ Đồn.", "Đông Khê, Thất Khê.", "Him Lam, Bản Kéo.", "Hòa Bình, Sơn La."], da: 0, giai: "Đông Khê, Thất Khê thuộc Biên giới 1950; Him Lam, Bản Kéo thuộc Điện Biên Phủ."},
+      {cd: "vb", muc: "Biết", hoi: "Trong cuộc tấn công lên Việt Bắc năm 1947, cánh quân thủy – bộ của Pháp tiến lên Tuyên Quang theo", pa: ["Đường số 4.", "sông Đà.", "sông Hồng, sông Lô.", "Đường số 6."], da: 2, giai: "Gọng kìm phía tây ngược sông Hồng, sông Lô; gọng kìm phía đông theo Đường số 4."},
+      {cd: "vb", muc: "Hiểu", hoi: "Âm mưu của Pháp khi dùng hai gọng kìm (Đường số 4 và sông Hồng, sông Lô) trong cuộc tấn công lên Việt Bắc là", pa: ["bao vây, khép kín căn cứ địa Việt Bắc, cô lập cơ quan đầu não.", "khai thông biên giới Việt – Trung.", "rút quân về Hà Nội.", "tiến xuống đồng bằng Bắc Bộ."], da: 0, giai: "Hai gọng kìm định khép lại, vây chặt căn cứ địa — xem Quyết định 2 trên sa bàn Việt Bắc."},
+      {cd: "vb", muc: "Hiểu", hoi: "Đối với lực lượng vũ trang Việt Nam, chiến thắng Việt Bắc thu – đông 1947 có ý nghĩa", pa: ["ta xây dựng được lực lượng không quân.", "quân ta giải phóng được Hà Nội.", "ta giành thế chủ động trên toàn Đông Dương.", "bộ đội chủ lực được bảo toàn và trưởng thành trong chiến đấu."], da: 3, giai: "Bộ đội ta thu nhiều vũ khí, ngày càng trưởng thành."},
+      {cd: "vb", muc: "Vận dụng", hoi: "Điểm sáng tạo trong cách đánh của quân dân Việt Nam ở chiến dịch Việt Bắc 1947 là", pa: ["đánh một trận quyết chiến lớn ngay từ đầu.", "dùng xe tăng và máy bay đánh địch.", "dựa vào địa hình rừng núi, kết hợp bao vây, chặn đánh trên đường bộ và đường sông với chiến tranh du kích.", "rút khỏi căn cứ địa để bảo toàn lực lượng."], da: 2, giai: "Ta không quyết chiến khi lực lượng còn yếu mà đánh linh hoạt, tiêu hao địch."},
+      {cd: "chung", muc: "Biết", hoi: "Ngày 11/6/1948, Chủ tịch Hồ Chí Minh ra lời kêu gọi", pa: ["toàn quốc kháng chiến.", "tổ chức Tuần lễ vàng.", "thi đua ái quốc.", "chống nạn đói."], da: 2, giai: "Lời kêu gọi thi đua ái quốc (11/6/1948) thúc đẩy xây dựng hậu phương."},
+      {cd: "chung", muc: "Biết", hoi: "Phong trào nào được đẩy mạnh nhằm xóa nạn mù chữ trong những năm kháng chiến chống Pháp?", pa: ["Bình dân học vụ.", "Đồng khởi.", "Phá ấp chiến lược.", "Tuần lễ vàng."], da: 0, giai: "Bình dân học vụ là phong trào xóa mù chữ; Đồng khởi, phá ấp chiến lược thuộc thời kì chống Mỹ."},
+      {cd: "chung", muc: "Hiểu", hoi: "Việc xây dựng hậu phương kháng chiến trong những năm 1947 – 1950 có tác dụng gì?", pa: ["Thay thế hoàn toàn cho mặt trận quân sự.", "Kết thúc chiến tranh.", "Buộc Pháp kí hiệp định.", "Đáp ứng ngày càng tốt hơn nhu cầu sức người, sức của của cuộc kháng chiến."], da: 3, giai: "Hậu phương vững mạnh là cơ sở để ta chuyển sang tiến công từ năm 1950."},
+      {cd: "bg", muc: "Biết", hoi: "Kế hoạch Rơ-ve được thực dân Pháp đề ra vào năm", pa: ["1947.", "1949.", "1951.", "1953."], da: 1, giai: "Rơ-ve (1949), Đờ Lát đơ Tát-xi-nhi (cuối 1950), Na-va (1953)."},
+      {cd: "bg", muc: "Biết", hoi: "Hành lang Đông – Tây của Pháp được thiết lập trên tuyến", pa: ["Cao Bằng – Lạng Sơn.", "Hải Phòng – Hà Nội – Hòa Bình – Sơn La.", "Huế – Đà Nẵng.", "Sài Gòn – Cần Thơ."], da: 1, giai: "Hành lang Đông – Tây nhằm cắt đứt liên lạc giữa Việt Bắc với Liên khu III, Liên khu IV."},
+      {cd: "bg", muc: "Biết", hoi: "Chủ tịch Hồ Chí Minh trực tiếp ra mặt trận theo dõi, chỉ đạo chiến dịch nào sau đây?", pa: ["Chiến dịch Biên giới 1950.", "Chiến dịch Hòa Bình.", "Chiến dịch Thượng Lào.", "Chiến dịch Tây Bắc."], da: 0, giai: "Chủ tịch Hồ Chí Minh ra mặt trận Biên giới, theo dõi trận Đông Khê."},
+      {cd: "bg", muc: "Biết", hoi: "Sau chiến dịch Biên giới 1950, quân ta giải phóng tuyến biên giới Việt – Trung từ", pa: ["Hà Giang đến Lạng Sơn.", "Lào Cai đến Móng Cái.", "Cao Bằng đến Đình Lập.", "Lai Châu đến Cao Bằng."], da: 2, giai: "Giải phóng vùng biên giới từ Cao Bằng đến Đình Lập — xem điểm Đình Lập trên sa bàn Biên giới."},
+      {cd: "bg", muc: "Hiểu", hoi: "Vì sao quân Pháp trên Đường số 4 dễ bị quân ta đánh bại khi rút chạy (10/1950)?", pa: ["Vì quân Pháp không có vũ khí.", "Vì phải rời công sự, hành quân qua vùng núi rừng hiểm trở, bị chia cắt từng cánh.", "Vì Mỹ ngừng viện trợ.", "Vì được lệnh đầu hàng."], da: 1, giai: "Đánh địch ngoài công sự, trên địa hình có lợi cho ta — Quyết định 2 trên sa bàn Biên giới."},
+      {cd: "bg", muc: "Vận dụng", hoi: "So với chiến dịch Việt Bắc 1947, chiến dịch Biên giới 1950 cho thấy bước phát triển của quân đội ta ở chỗ", pa: ["lần đầu đánh địch ở đồng bằng.", "từ đánh du kích chuyển sang phòng ngự.", "lần đầu sử dụng không quân.", "từ phản công chuyển sang chủ động mở chiến dịch tiến công lớn."], da: 3, giai: "Việt Bắc: phản công; Biên giới: chiến dịch tiến công lớn đầu tiên của bộ đội chủ lực."},
+      {cd: "chung", muc: "Hiểu", hoi: "Chiến thắng nào đánh dấu bước chuyển của quân đội Việt Nam sang thế chủ động tiến công trên chiến trường chính Bắc Bộ?", pa: ["Chiến thắng Việt Bắc 1947.", "Chiến thắng Biên giới 1950.", "Chiến thắng Điện Biên Phủ 1954.", "Hiệp định Giơ-ne-vơ 1954."], da: 1, giai: "Từ sau Biên giới 1950, ta giành và giữ quyền chủ động trên chiến trường chính."},
+      {cd: "bg", muc: "Biết", hoi: "Mỹ bắt đầu can thiệp trực tiếp, viện trợ ngày càng nhiều cho Pháp trong chiến tranh Đông Dương từ năm", pa: ["1950.", "1945.", "1954.", "1946."], da: 0, giai: "Từ năm 1950, Mỹ ngày càng can thiệp sâu vào cuộc chiến tranh ở Đông Dương."},
+      {cd: "1945", muc: "Hiểu", hoi: "Sau cuộc chiến đấu ở Hà Nội (1946 – 1947), Trung đoàn Thủ đô rút ra ngoài an toàn. Điều đó có ý nghĩa", pa: ["buộc Pháp kí hiệp định ngừng bắn.", "chấm dứt hoàn toàn kháng chiến ở Hà Nội.", "cho thấy ta thất bại ở Hà Nội.", "bảo toàn lực lượng để tiếp tục kháng chiến lâu dài."], da: 3, giai: "Phù hợp với đường lối kháng chiến trường kì."},
+      {cd: "1951", muc: "Biết", hoi: "Chiến dịch Trần Hưng Đạo (Trung du) diễn ra vào thời gian nào?", pa: ["Năm 1953.", "Năm 1947.", "Cuối năm 1950 – đầu năm 1951.", "Năm 1954."], da: 2, giai: "Mở đầu các chiến dịch ở trung du, đồng bằng Bắc Bộ sau Biên giới 1950."},
+      {cd: "dbp", muc: "Biết", hoi: "Theo Kế hoạch Na-va, từ thu – đông năm nào Pháp dự định chuyển sang tiến công chiến lược ở Bắc Bộ?", pa: ["Thu – đông 1953.", "Thu – đông 1954.", "Xuân 1953.", "Hè 1952."], da: 1, giai: "Bước 2 của Kế hoạch Na-va bắt đầu từ thu – đông 1954."},
+      {cd: "dbp", muc: "Hiểu", hoi: "Cuộc Tiến công chiến lược Đông – Xuân 1953 – 1954 đã buộc Pháp phải", pa: ["rút khỏi Đông Dương ngay lập tức.", "tập trung toàn bộ lực lượng ở đồng bằng Bắc Bộ.", "phân tán lực lượng cơ động ra nhiều nơi.", "kí Hiệp định Sơ bộ."], da: 2, giai: "Lực lượng cơ động bị xé lẻ: Điện Biên Phủ, Xê-nô, Luông Pha-bang, Plây-cu…"},
+      {cd: "gnv", muc: "Biết", hoi: "Hiệp định Giơ-ne-vơ (1954) quy định tổng tuyển cử tự do để thống nhất Việt Nam vào", pa: ["tháng 7/1955.", "tháng 4/1975.", "tháng 12/1954.", "tháng 7/1956."], da: 3, giai: "Tổng tuyển cử dự kiến vào tháng 7/1956."},
+      {cd: "chung", muc: "Vận dụng", hoi: "Nhận xét nào đúng về mối quan hệ giữa tiền tuyến và hậu phương trong kháng chiến chống Pháp?", pa: ["Hậu phương chi viện sức người, sức của cho tiền tuyến; thắng lợi ở tiền tuyến bảo vệ, mở rộng hậu phương.", "Hậu phương và tiền tuyến tách rời nhau.", "Chỉ tiền tuyến quyết định thắng lợi.", "Hậu phương chỉ có vai trò ở giai đoạn cuối."], da: 0, giai: "Tiền tuyến và hậu phương gắn bó, tác động qua lại."},
+      {cd: "vb", muc: "Vận dụng", hoi: "Căn cứ địa Việt Bắc được chọn làm nơi đặt cơ quan đầu não kháng chiến chủ yếu vì", pa: ["Pháp chưa từng tấn công nơi đây.", "có nhiều thành phố lớn.", "gần biển, thuận lợi giao thông đường thủy.", "địa hình rừng núi hiểm trở, có cơ sở chính trị vững chắc, thuận lợi liên lạc với quốc tế."], da: 3, giai: "Pháp đã tấn công Việt Bắc năm 1947 nhưng thất bại."}
+    ],
+    phan2: [
+      {cd: "vb", tu_lieu: "Khi quân dù Pháp nhảy xuống Bắc Kạn, Chợ Mới, Chợ Đồn (10/1947), quân dân Việt Bắc chủ động bao vây, tiến công quân dù, bảo vệ an toàn cơ quan đầu não. Trên Đường số 4, quân ta phục kích, chặn đánh đoàn xe địch, tiêu biểu là trận đèo Bông Lau; trên sông Lô, quân ta đánh chìm nhiều tàu chiến, ca nô của địch.", nguon: "(Tóm tắt tư liệu lịch sử)",
+        y: [{chu: "Quân ta đã đánh địch cả trên đường bộ và đường sông.", dung: true},
+          {chu: "Ta dồn toàn bộ chủ lực đánh một trận quyết chiến ở Bắc Kạn.", dung: false},
+          {chu: "Bảo vệ cơ quan đầu não là nhiệm vụ hàng đầu khi quân dù đổ xuống.", dung: true},
+          {chu: "Trận đèo Bông Lau diễn ra trên sông Lô.", dung: false}],
+        giai: "Bông Lau ở trên Đường số 4. Ta không quyết chiến mà bao vây, đánh linh hoạt."},
+      {cd: "chung", tu_lieu: "Trong những năm 1947 – 1950, cùng với đẩy mạnh kháng chiến, Việt Nam chú trọng xây dựng hậu phương về mọi mặt: chính trị (củng cố chính quyền, mặt trận), kinh tế (tăng gia sản xuất, thực hiện giảm tô), văn hóa – giáo dục (đẩy mạnh Bình dân học vụ, tiến hành cải cách giáo dục năm 1950). Ngày 11/6/1948, Chủ tịch Hồ Chí Minh ra lời kêu gọi thi đua ái quốc.", nguon: "(Tóm tắt tư liệu lịch sử)",
+        y: [{chu: "Hậu phương được xây dựng toàn diện trên nhiều lĩnh vực.", dung: true},
+          {chu: "Phong trào Bình dân học vụ nhằm xóa nạn mù chữ.", dung: true},
+          {chu: "Lời kêu gọi thi đua ái quốc ra đời sau Hiệp định Giơ-ne-vơ.", dung: false},
+          {chu: "Trong kháng chiến, ta chỉ tập trung vào quân sự, chưa chú ý phát triển giáo dục.", dung: false}],
+        giai: "Lời kêu gọi thi đua ái quốc: 11/6/1948. Năm 1950 ta còn tiến hành cải cách giáo dục."},
+      {cd: "bg", tu_lieu: "Tháng 6/1950, Trung ương Đảng quyết định mở chiến dịch Biên giới nhằm tiêu diệt một bộ phận sinh lực địch, khai thông biên giới Việt – Trung, mở rộng và củng cố căn cứ địa Việt Bắc, tạo đà thúc đẩy cuộc kháng chiến tiến lên.", nguon: "(Tóm tắt tư liệu lịch sử)",
+        y: [{chu: "Khai thông biên giới Việt – Trung là một mục tiêu của chiến dịch.", dung: true},
+          {chu: "Chiến dịch Biên giới do thực dân Pháp chủ động mở.", dung: false},
+          {chu: "Chiến dịch nhằm củng cố, mở rộng căn cứ địa Việt Bắc.", dung: true},
+          {chu: "Chiến dịch Biên giới được mở sau khi Pháp đề ra Kế hoạch Na-va.", dung: false}],
+        giai: "Ta chủ động mở chiến dịch (1950); Kế hoạch Na-va mãi tới năm 1953 mới ra đời."},
+      {cd: "1951", tu_lieu: "Sau thất bại ở Biên giới 1950, thực dân Pháp đề ra Kế hoạch Đờ Lát đơ Tát-xi-nhi (12/1950): tập trung xây dựng lực lượng cơ động mạnh, xây dựng phòng tuyến công sự bê tông bao quanh trung du và đồng bằng Bắc Bộ, lập «vành đai trắng», ráo riết bình định vùng tạm chiếm.", nguon: "(Tóm tắt tư liệu lịch sử)",
+        y: [{chu: "Kế hoạch Đờ Lát đơ Tát-xi-nhi ra đời sau thất bại của Pháp ở chiến dịch Biên giới.", dung: true},
+          {chu: "Mục tiêu của kế hoạch là giành lại quyền chủ động trên chiến trường cho Pháp.", dung: true},
+          {chu: "Kế hoạch Đờ Lát đơ Tát-xi-nhi được đề ra trước Kế hoạch Rơ-ve.", dung: false},
+          {chu: "Theo kế hoạch, Pháp rút toàn bộ quân khỏi đồng bằng Bắc Bộ.", dung: false}],
+        giai: "Thứ tự: Rơ-ve (1949) → Đờ Lát đơ Tát-xi-nhi (1950) → Na-va (1953). Pháp tăng cường chứ không rút khỏi đồng bằng."}
+    ]
+  },
+  {
+    id: "de-7", ten: "Đề 7", mo_ta: "Trọng tâm 1951 – 1953: Đại hội II, hậu phương, các chiến dịch, Kế hoạch Đờ Lát đơ Tát-xi-nhi",
+    phan1: [
+      {cd: "1951", muc: "Biết", hoi: "Đại hội đại biểu toàn quốc lần thứ II của Đảng (2/1951) bầu Chủ tịch Hồ Chí Minh làm", pa: ["Tổng Bí thư.", "Tổng Tư lệnh.", "Thủ tướng Chính phủ.", "Chủ tịch Đảng."], da: 3, giai: "Hồ Chí Minh: Chủ tịch Đảng; Trường Chinh: Tổng Bí thư."},
+      {cd: "1951", muc: "Hiểu", hoi: "Đại hội đại biểu toàn quốc lần thứ II của Đảng (2/1951) được gọi là", pa: ["«Đại hội thống nhất đất nước».", "«Đại hội đổi mới».", "«Đại hội kháng chiến thắng lợi».", "«Đại hội thành lập Đảng»."], da: 2, giai: "Đại hội bổ sung, hoàn chỉnh đường lối, đưa kháng chiến tới thắng lợi."},
+      {cd: "1951", muc: "Biết", hoi: "Đại hội Chiến sĩ thi đua và Cán bộ gương mẫu toàn quốc lần thứ nhất (5/1952) đã bầu ra bao nhiêu anh hùng?", pa: ["5.", "12.", "9.", "7."], da: 3, giai: "Bảy anh hùng, trong đó có Cù Chính Lan, La Văn Cầu, Trần Đại Nghĩa…"},
+      {cd: "1951", muc: "Biết", hoi: "Anh hùng nào sau đây được bầu tại Đại hội Chiến sĩ thi đua và Cán bộ gương mẫu toàn quốc lần thứ nhất (1952)?", pa: ["Nguyễn Văn Trỗi.", "Phan Đình Giót.", "Tô Vĩnh Diện.", "Cù Chính Lan."], da: 3, giai: "Phan Đình Giót, Tô Vĩnh Diện hi sinh năm 1954; Nguyễn Văn Trỗi thuộc thời kì chống Mỹ."},
+      {cd: "1951", muc: "Biết", hoi: "Năm 1951, cơ quan tài chính nào được thành lập ở vùng tự do?", pa: ["Ngân hàng Đông Dương.", "Ngân hàng Quốc gia Việt Nam.", "Ngân hàng Nhà nước Pháp.", "Ngân hàng Nông nghiệp."], da: 1, giai: "Ngân hàng Quốc gia Việt Nam được thành lập, phát hành giấy bạc mới."},
+      {cd: "1951", muc: "Biết", hoi: "Chiến dịch Hòa Bình diễn ra vào thời gian", pa: ["cuối năm 1951 – đầu năm 1952.", "năm 1947.", "năm 1950.", "năm 1954."], da: 0, giai: "Một trong các chiến dịch giữ vững quyền chủ động của ta (1951 – 1953)."},
+      {cd: "1951", muc: "Biết", hoi: "Chiến dịch Tây Bắc (thu – đông 1952) diễn ra ở", pa: ["Nam Bộ.", "đồng bằng Bắc Bộ.", "biên giới Việt – Trung.", "vùng rừng núi Tây Bắc Việt Nam."], da: 3, giai: "Chiến dịch giải phóng một vùng rộng lớn ở Tây Bắc."},
+      {cd: "1951", muc: "Biết", hoi: "Chiến dịch Thượng Lào (xuân – hè 1953) là chiến dịch phối hợp giữa quân đội Việt Nam với", pa: ["quân đội Pháp.", "quân giải phóng Lào (Pa-thét Lào).", "quân đội Trung Quốc.", "quân đội Anh."], da: 1, giai: "Liên quân Việt – Lào giải phóng một vùng rộng lớn ở Thượng Lào."},
+      {cd: "1951", muc: "Biết", hoi: "Các chiến dịch Trung du, Đường số 18, Hà – Nam – Ninh (1951) diễn ra ở", pa: ["vùng trung du và đồng bằng Bắc Bộ.", "Tây Nguyên.", "Thượng Lào.", "Nam Bộ."], da: 0, giai: "Ba chiến dịch năm 1951 đều đánh vào vùng trung du, đồng bằng Bắc Bộ."},
+      {cd: "1951", muc: "Hiểu", hoi: "Kết quả chung của các chiến dịch ta mở ở trung du và đồng bằng Bắc Bộ năm 1951 là", pa: ["tiêu diệt một bộ phận sinh lực địch, giữ vững quyền chủ động; qua đó ta rút kinh nghiệm, chuyển hướng tiến công lên vùng rừng núi.", "giải phóng hoàn toàn đồng bằng Bắc Bộ.", "buộc Pháp kí hiệp định ngừng bắn.", "làm phá sản Kế hoạch Na-va."], da: 0, giai: "Sau năm 1951, ta chuyển hướng lên Hòa Bình, Tây Bắc, Thượng Lào."},
+      {cd: "1951", muc: "Hiểu", hoi: "Mục đích của Pháp khi lập «vành đai trắng» theo Kế hoạch Đờ Lát đơ Tát-xi-nhi là", pa: ["giúp nhân dân sản xuất.", "ngăn chặn sự tiếp tế, hoạt động của ta vào vùng tạm chiếm.", "mở đường liên lạc với Trung Quốc.", "bảo vệ căn cứ địa Việt Bắc."], da: 1, giai: "Một phần của âm mưu bình định vùng tạm chiếm."},
+      {cd: "1951", muc: "Hiểu", hoi: "Việc thành lập Liên minh nhân dân Việt – Miên – Lào (3/1951) có ý nghĩa", pa: ["thành lập một nhà nước chung của ba nước.", "tăng cường khối đoàn kết chiến đấu của ba dân tộc Đông Dương chống kẻ thù chung.", "chấm dứt chiến tranh ở Đông Dương.", "thay thế Mặt trận Liên Việt."], da: 1, giai: "Ba dân tộc có chung kẻ thù là thực dân Pháp."},
+      {cd: "1951", muc: "Vận dụng", hoi: "Vì sao từ năm 1952, ta chuyển hướng mở các chiến dịch ở vùng rừng núi (Tây Bắc, Thượng Lào)?", pa: ["Vì Pháp đã rút khỏi Bắc Bộ.", "Vì đồng bằng đã được giải phóng hoàn toàn.", "Vì ở đó địch tương đối yếu, địa hình có lợi cho ta, phát huy sở trường đánh vận động.", "Vì đó là nơi có nhiều đô thị lớn."], da: 2, giai: "Đánh vào nơi địch yếu, trên địa hình có lợi — tư tưởng chỉ đạo xuyên suốt."},
+      {cd: "1951", muc: "Vận dụng", hoi: "Điểm mới về tổ chức của Đại hội II (1951) so với Hội nghị thành lập Đảng (1930) là", pa: ["hợp nhất ba tổ chức cộng sản.", "lần đầu tiên thành lập Đảng.", "thành lập ở mỗi nước Đông Dương một đảng riêng, phù hợp điều kiện từng nước.", "đổi tên Đảng thành Đảng Cộng sản Đông Dương."], da: 2, giai: "Đảng Cộng sản Đông Dương được tách ra; ở Việt Nam là Đảng Lao động Việt Nam."},
+      {cd: "1951", muc: "Hiểu", hoi: "Chính sách cải cách ruộng đất (từ cuối năm 1953) nhằm", pa: ["xây dựng ngay hợp tác xã ở mọi nơi.", "tịch thu ruộng đất của nông dân.", "lập đồn điền cho Pháp.", "thực hiện khẩu hiệu «người cày có ruộng»."], da: 3, giai: "Đem lại ruộng đất cho nông dân, bồi dưỡng sức dân cho kháng chiến."},
+      {cd: "vb", muc: "Biết", hoi: "Chiến dịch Việt Bắc thu – đông 1947 kết thúc vào", pa: ["tháng 12/1947.", "tháng 10/1947.", "tháng 2/1948.", "tháng 6/1950."], da: 0, giai: "Từ tháng 10 đến tháng 12/1947, khoảng hai tháng."},
+      {cd: "dbp", muc: "Biết", hoi: "Tướng Na-va được cử sang làm Tổng chỉ huy quân đội Pháp ở Đông Dương vào năm", pa: ["1953.", "1950.", "1954.", "1947."], da: 0, giai: "Tháng 5/1953 Na-va sang Đông Dương, tháng 7/1953 đề ra Kế hoạch Na-va."},
+      {cd: "dbp", muc: "Hiểu", hoi: "Kế hoạch Na-va thể hiện sự can thiệp ngày càng sâu của Mỹ vì", pa: ["kế hoạch được đề ra với sự thỏa thuận và viện trợ ngày càng lớn của Mỹ.", "Mỹ trực tiếp đưa bộ binh vào Điện Biên Phủ.", "Na-va là tướng Mỹ.", "Mỹ thay Pháp chỉ huy chiến tranh."], da: 0, giai: "Na-va là tướng Pháp; Mỹ thỏa thuận và viện trợ cho kế hoạch."},
+      {cd: "dbp", muc: "Biết", hoi: "Tập đoàn cứ điểm Điện Biên Phủ có những sân bay nào?", pa: ["Tân Sơn Nhất.", "Mường Thanh và Hồng Cúm.", "Gia Lâm.", "Nội Bài."], da: 1, giai: "Sân bay Mường Thanh (phân khu Trung tâm) và Hồng Cúm (phân khu Nam)."},
+      {cd: "dbp", muc: "Biết", hoi: "Anh hùng Tô Vĩnh Diện hi sinh khi", pa: ["đánh cứ điểm Đông Khê.", "lấy thân mình lấp lỗ châu mai ở Him Lam.", "lấy thân mình chèn pháo trong lúc kéo pháo ở mặt trận Điện Biên Phủ.", "phục kích ở đèo Bông Lau."], da: 2, giai: "Lấp lỗ châu mai ở Him Lam là Phan Đình Giót."},
+      {cd: "gnv", muc: "Hiểu", hoi: "Hạn chế của Hiệp định Giơ-ne-vơ (1954) đối với Việt Nam là", pa: ["Việt Nam không được công nhận độc lập.", "Pháp tiếp tục cai trị miền Bắc.", "đất nước tạm thời bị chia cắt làm hai miền.", "Việt Nam phải bồi thường chiến tranh."], da: 2, giai: "Miền Bắc được giải phóng, miền Nam còn phải tiếp tục đấu tranh."},
+      {cd: "gnv", muc: "Biết", hoi: "Hội nghị Giơ-ne-vơ bắt đầu thảo luận về vấn đề Đông Dương từ ngày", pa: ["13/3/1954.", "7/5/1954.", "21/7/1954.", "8/5/1954."], da: 3, giai: "Một ngày sau chiến thắng Điện Biên Phủ (7/5/1954)."},
+      {cd: "chung", muc: "Vận dụng", hoi: "Điểm chung của các chiến dịch Biên giới (1950), Tây Bắc (1952), Thượng Lào (1953) là", pa: ["đều là chiến dịch phòng ngự.", "đều là chiến dịch tiến công do ta chủ động mở, giữ vững quyền chủ động trên chiến trường.", "đều diễn ra ở Nam Bộ.", "đều có quân đội Mỹ trực tiếp tham chiến."], da: 1, giai: "Từ năm 1950, ta liên tục chủ động mở các chiến dịch tiến công."},
+      {cd: "chung", muc: "Vận dụng", hoi: "Thắng lợi của các chiến dịch những năm 1950 – 1953 có tác động như thế nào tới cuộc kháng chiến?", pa: ["Buộc Mỹ rút khỏi Đông Dương.", "Kết thúc cuộc kháng chiến.", "Làm thay đổi cục diện chiến trường, tạo cơ sở để ta tiến tới cuộc Tiến công chiến lược Đông – Xuân 1953 – 1954.", "Làm Pháp chuyển sang chiến lược «đánh nhanh, thắng nhanh»."], da: 2, giai: "Ta tích lũy lực lượng, kinh nghiệm cho trận quyết chiến chiến lược."}
+    ],
+    phan2: [
+      {cd: "1951", tu_lieu: "Đại hội Chiến sĩ thi đua và Cán bộ gương mẫu toàn quốc lần thứ nhất họp ở chiến khu Việt Bắc (5/1952), bầu 7 anh hùng: Cù Chính Lan, La Văn Cầu, Nguyễn Quốc Trị, Nguyễn Thị Chiên, Ngô Gia Khảm, Trần Đại Nghĩa, Hoàng Hanh. Đại hội đánh dấu bước phát triển của phong trào thi đua ái quốc.", nguon: "(Tóm tắt tư liệu lịch sử)",
+        y: [{chu: "Đại hội diễn ra ở chiến khu Việt Bắc.", dung: true},
+          {chu: "Các anh hùng được bầu đều thuộc lực lượng vũ trang.", dung: false},
+          {chu: "Phong trào thi đua ái quốc góp phần xây dựng hậu phương vững mạnh.", dung: true},
+          {chu: "Đại hội diễn ra sau chiến thắng Điện Biên Phủ.", dung: false}],
+        giai: "Trong 7 anh hùng có cả công nhân, trí thức như Ngô Gia Khảm, Trần Đại Nghĩa, Hoàng Hanh. Đại hội họp năm 1952."},
+      {cd: "1951", tu_lieu: "Từ năm 1951, Chính phủ thành lập Ngân hàng Quốc gia Việt Nam, phát hành giấy bạc mới, ban hành chính sách thuế nông nghiệp, xây dựng nền tài chính độc lập. Năm 1953, Đảng và Chính phủ phát động quần chúng triệt để giảm tô và tiến hành cải cách ruộng đất.", nguon: "(Tóm tắt tư liệu lịch sử)",
+        y: [{chu: "Ta xây dựng nền tài chính độc lập để phục vụ kháng chiến.", dung: true},
+          {chu: "Cải cách ruộng đất nhằm thực hiện khẩu hiệu «người cày có ruộng».", dung: true},
+          {chu: "Ngân hàng Quốc gia Việt Nam được thành lập sau Hiệp định Giơ-ne-vơ.", dung: false},
+          {chu: "Các chính sách kinh tế này làm suy yếu hậu phương kháng chiến.", dung: false}],
+        giai: "Ngân hàng Quốc gia Việt Nam ra đời năm 1951; các chính sách đó củng cố hậu phương."},
+      {cd: "1951", tu_lieu: "Thu – đông 1952, quân đội Việt Nam mở chiến dịch Tây Bắc, giải phóng một vùng rộng lớn. Xuân – hè 1953, liên quân Việt – Lào mở chiến dịch Thượng Lào, giải phóng một vùng đất đai rộng lớn, tạo điều kiện mở rộng căn cứ kháng chiến của Lào.", nguon: "(Tóm tắt tư liệu lịch sử)",
+        y: [{chu: "Chiến dịch Tây Bắc diễn ra trước chiến dịch Thượng Lào.", dung: true},
+          {chu: "Chiến dịch Thượng Lào thể hiện tình đoàn kết chiến đấu Việt – Lào.", dung: true},
+          {chu: "Đây là những chiến dịch phòng ngự của ta.", dung: false},
+          {chu: "Hai chiến dịch này diễn ra ở đồng bằng Bắc Bộ.", dung: false}],
+        giai: "Cả hai đều là chiến dịch tiến công ở vùng rừng núi, nơi địch tương đối yếu."},
+      {cd: "dbp", tu_lieu: "Trong chiến dịch Điện Biên Phủ, hàng vạn dân công dùng xe đạp thồ, gánh bộ, thuyền bè vận chuyển lương thực, đạn dược ra mặt trận. Nhiều tấm gương chiến đấu dũng cảm xuất hiện như Phan Đình Giót lấy thân mình lấp lỗ châu mai, Tô Vĩnh Diện lấy thân mình chèn pháo.", nguon: "(Tóm tắt tư liệu lịch sử)",
+        y: [{chu: "Sức mạnh của hậu phương là một nhân tố đưa tới thắng lợi ở Điện Biên Phủ.", dung: true},
+          {chu: "Hậu cần cho chiến dịch của ta chủ yếu dựa vào máy bay vận tải.", dung: false},
+          {chu: "Phan Đình Giót hi sinh trong trận tiến công cứ điểm Him Lam.", dung: true},
+          {chu: "Tô Vĩnh Diện là anh hùng của chiến dịch Biên giới 1950.", dung: false}],
+        giai: "Máy bay vận tải là cách tiếp tế của Pháp; ta dựa vào sức người, sức của của hậu phương."}
+    ]
+  },
+  {
+    id: "de-8", ten: "Đề 8", mo_ta: "Trọng tâm 1953 – 1954: Kế hoạch Na-va, Đông – Xuân, chiến dịch Điện Biên Phủ",
+    phan1: [
+      {cd: "dbp", muc: "Biết", hoi: "Tháng 9/1953, Bộ Chính trị Trung ương Đảng họp, đề ra", pa: ["kế hoạch tác chiến Đông – Xuân 1953 – 1954.", "Kế hoạch Na-va.", "quyết định kí Hiệp định Sơ bộ.", "Lời kêu gọi toàn quốc kháng chiến."], da: 0, giai: "Kế hoạch Na-va là của Pháp (7/1953)."},
+      {cd: "dbp", muc: "Biết", hoi: "Phương hướng chiến lược của ta trong Đông – Xuân 1953 – 1954 là tập trung lực lượng tiến công vào", pa: ["Hà Nội và Hải Phòng.", "nơi địch tập trung đông nhất là đồng bằng Bắc Bộ.", "những hướng quan trọng về chiến lược mà địch tương đối yếu.", "Sài Gòn."], da: 2, giai: "Buộc địch phải phân tán lực lượng để đối phó."},
+      {cd: "dbp", muc: "Biết", hoi: "Sau khi quân ta tiến công Trung Lào (12/1953), Na-va phải điều quân tăng cường cho", pa: ["Plây-cu.", "Điện Biên Phủ.", "Luông Pha-bang.", "Xê-nô."], da: 3, giai: "Lai Châu → Điện Biên Phủ; Trung Lào → Xê-nô; Thượng Lào → Luông Pha-bang; Bắc Tây Nguyên → Plây-cu."},
+      {cd: "dbp", muc: "Biết", hoi: "Khi quân ta tiến công Bắc Tây Nguyên (2/1954), Pháp phải tăng cường lực lượng cho", pa: ["Luông Pha-bang.", "Xê-nô.", "Plây-cu.", "Hà Nội."], da: 2, giai: "Plây-cu trở thành một nơi tập trung binh lực của Pháp."},
+      {cd: "dbp", muc: "Hiểu", hoi: "Vì sao Na-va quyết định xây dựng Điện Biên Phủ thành tập đoàn cứ điểm mạnh nhất Đông Dương?", pa: ["Điện Biên Phủ là vùng đồng bằng.", "Điện Biên Phủ ở gần Hà Nội.", "Điện Biên Phủ có vị trí chiến lược then chốt, có thể bảo vệ Thượng Lào và làm bàn đạp tái chiếm những vùng đã mất.", "Để chuẩn bị rút quân về nước."], da: 2, giai: "Điện Biên Phủ trở thành trung tâm của Kế hoạch Na-va."},
+      {cd: "dbp", muc: "Biết", hoi: "Thực dân Pháp coi tập đoàn cứ điểm Điện Biên Phủ là", pa: ["«vành đai trắng».", "«pháo đài bất khả xâm phạm».", "«hành lang Đông – Tây».", "«ấp chiến lược»."], da: 1, giai: "«Vành đai trắng» thuộc Kế hoạch Đờ Lát; «ấp chiến lược» thuộc thời kì chống Mỹ."},
+      {cd: "dbp", muc: "Biết", hoi: "Sở chỉ huy chiến dịch Điện Biên Phủ của ta đặt ở", pa: ["Hồng Cúm.", "Mường Thanh.", "Mường Phăng.", "Tân Trào."], da: 2, giai: "Mường Thanh, Hồng Cúm là nơi Pháp đóng quân, có sân bay — xem sa bàn Điện Biên Phủ."},
+      {cd: "dbp", muc: "Biết", hoi: "Đợt 1 của chiến dịch Điện Biên Phủ diễn ra từ ngày", pa: ["20/11 đến 31/12/1953.", "30/3 đến 26/4/1954.", "1/5 đến 7/5/1954.", "13/3 đến 17/3/1954."], da: 3, giai: "Đợt 2: 30/3 – 26/4; đợt 3: 1/5 – 7/5/1954."},
+      {cd: "dbp", muc: "Hiểu", hoi: "Trong đợt 2 và đợt 3 của chiến dịch Điện Biên Phủ, cứ điểm nào là nơi diễn ra cuộc chiến đấu giằng co, ác liệt nhất?", pa: ["Đồi A1.", "Him Lam.", "Bản Kéo.", "Đồi Độc Lập."], da: 0, giai: "Him Lam, Độc Lập, Bản Kéo bị tiêu diệt ngay trong đợt 1."},
+      {cd: "dbp", muc: "Biết", hoi: "Chiến dịch Điện Biên Phủ kết thúc thắng lợi vào ngày", pa: ["13/3/1954.", "7/5/1954.", "21/7/1954.", "8/5/1954."], da: 1, giai: "21/7/1954 là ngày kí Hiệp định Giơ-ne-vơ; 8/5/1954 Hội nghị bắt đầu bàn về Đông Dương."},
+      {cd: "dbp", muc: "Hiểu", hoi: "Chiến thắng Điện Biên Phủ đã", pa: ["làm phá sản bước đầu Kế hoạch Na-va.", "đập tan hoàn toàn Kế hoạch Na-va, làm xoay chuyển cục diện chiến tranh ở Đông Dương.", "làm thất bại chiến lược «đánh nhanh, thắng nhanh».", "làm phá sản Kế hoạch Rơ-ve."], da: 1, giai: "Phá sản BƯỚC ĐẦU là do Đông – Xuân; phá sản hoàn toàn là sau Điện Biên Phủ."},
+      {cd: "dbp", muc: "Vận dụng", hoi: "Mối quan hệ giữa cuộc Tiến công chiến lược Đông – Xuân 1953 – 1954 và chiến dịch Điện Biên Phủ là", pa: ["Đông – Xuân làm phân tán lực lượng địch, tạo điều kiện cho Điện Biên Phủ; Điện Biên Phủ là đỉnh cao của Đông – Xuân.", "hai sự kiện không liên quan đến nhau.", "Điện Biên Phủ diễn ra trước, tạo điều kiện cho Đông – Xuân.", "Đông – Xuân là chiến dịch phòng ngự của ta."], da: 0, giai: "Điện Biên Phủ là trận quyết chiến chiến lược, đỉnh cao của Đông – Xuân."},
+      {cd: "dbp", muc: "Vận dụng", hoi: "Nhận xét nào đúng về nghệ thuật chỉ đạo chiến dịch Điện Biên Phủ?", pa: ["Kiên quyết, linh hoạt: dám thay đổi phương châm khi tình hình thay đổi, đánh chắc, tiến chắc.", "Chỉ dựa vào ưu thế vũ khí.", "Đánh nhanh, thắng nhanh bằng mọi giá.", "Hoàn toàn dựa vào cố vấn nước ngoài."], da: 0, giai: "Quyết định chuyển phương châm cuối tháng 1/1954 thể hiện bản lĩnh của người chỉ huy."},
+      {cd: "dbp", muc: "Vận dụng", hoi: "Hình ảnh đoàn xe đạp thồ trong chiến dịch Điện Biên Phủ phản ánh", pa: ["sự yếu kém của hậu cần ta.", "ưu thế vũ khí hiện đại của ta.", "sự giúp đỡ của quân Pháp.", "sức mạnh của chiến tranh nhân dân và hậu phương rộng lớn."], da: 3, giai: "Sức người, sức của của hậu phương dồn cho tiền tuyến."},
+      {cd: "gnv", muc: "Biết", hoi: "Hội nghị Giơ-ne-vơ về Đông Dương được tổ chức ở nước", pa: ["Liên Xô.", "Pháp.", "Mỹ.", "Thụy Sĩ."], da: 3, giai: "Giơ-ne-vơ (Geneva) là một thành phố của Thụy Sĩ."},
+      {cd: "gnv", muc: "Hiểu", hoi: "Theo Hiệp định Giơ-ne-vơ, quân đội nhân dân Việt Nam và quân đội Pháp", pa: ["tập kết ở hai vùng: quân đội nhân dân Việt Nam ở miền Bắc, quân Pháp ở miền Nam.", "cùng đóng quân ở cả hai miền.", "đều rút khỏi Việt Nam.", "sáp nhập thành một quân đội."], da: 0, giai: "Lấy vĩ tuyến 17 làm giới tuyến quân sự tạm thời để tập kết."},
+      {cd: "gnv", muc: "Vận dụng", hoi: "Vì sao Hiệp định Giơ-ne-vơ chưa phản ánh đầy đủ thắng lợi trên chiến trường của nhân dân Việt Nam?", pa: ["Do Pháp đã chiếm được miền Bắc.", "Do ta thất bại ở Điện Biên Phủ.", "Do Mỹ là nước kí Hiệp định.", "Do sự chi phối của các nước lớn và xu thế hòa hoãn trong quan hệ quốc tế khi đó."], da: 3, giai: "Thắng lợi quân sự to lớn nhưng kết quả đàm phán còn chịu tác động của các nước lớn."},
+      {cd: "bg", muc: "Biết", hoi: "Trận đánh mở màn chiến dịch Biên giới 1950 diễn ra ở tỉnh", pa: ["Lào Cai.", "Lạng Sơn.", "Hà Giang.", "Cao Bằng."], da: 3, giai: "Đông Khê thuộc tỉnh Cao Bằng."},
+      {cd: "vb", muc: "Biết", hoi: "Chiến dịch Việt Bắc thu – đông 1947 kéo dài khoảng", pa: ["56 ngày đêm.", "hai tháng.", "một năm.", "60 ngày đêm."], da: 1, giai: "Từ tháng 10 đến tháng 12/1947."},
+      {cd: "1951", muc: "Biết", hoi: "Chiến dịch Thượng Lào (1953) diễn ra trên lãnh thổ", pa: ["Tây Bắc Việt Nam.", "Cam-pu-chia.", "Lào.", "Tây Nguyên."], da: 2, giai: "Liên quân Việt – Lào giải phóng một vùng rộng lớn ở Thượng Lào."},
+      {cd: "chung", muc: "Vận dụng", hoi: "Ba chiến dịch Việt Bắc (1947), Biên giới (1950), Điện Biên Phủ (1954) phản ánh quá trình", pa: ["từ phản công đến tiến công, từ giành quyền chủ động đến quyết chiến chiến lược.", "từ tiến công chuyển sang phòng ngự.", "từ đánh lớn chuyển sang chỉ đánh du kích.", "từ đấu tranh ngoại giao chuyển sang quân sự."], da: 0, giai: "Đây cũng là trình tự ba sa bàn trong app."},
+      {cd: "chung", muc: "Hiểu", hoi: "Nhân tố nào sau đây KHÔNG phải là nguyên nhân chủ quan dẫn tới thắng lợi của cuộc kháng chiến chống Pháp?", pa: ["Sự lãnh đạo của Đảng với đường lối kháng chiến đúng đắn.", "Sự giúp đỡ của Trung Quốc, Liên Xô.", "Hậu phương rộng lớn, vững chắc.", "Lực lượng vũ trang ba thứ quân không ngừng lớn mạnh."], da: 1, giai: "Sự giúp đỡ từ bên ngoài là nguyên nhân khách quan."},
+      {cd: "gnv", muc: "Hiểu", hoi: "Thắng lợi của cuộc kháng chiến chống thực dân Pháp đã giáng đòn nặng nề vào", pa: ["Liên Xô và các nước xã hội chủ nghĩa.", "phong trào giải phóng dân tộc.", "tham vọng xâm lược, nô dịch của chủ nghĩa đế quốc, góp phần làm tan rã hệ thống thuộc địa.", "phong trào hòa bình thế giới."], da: 2, giai: "Ý nghĩa quốc tế của thắng lợi."},
+      {cd: "dbp", muc: "Vận dụng", hoi: "Vì sao chiến thắng Điện Biên Phủ được ca ngợi là «lừng lẫy năm châu, chấn động địa cầu»?", pa: ["Vì chiến dịch kéo dài nhất thế giới.", "Vì đây là thắng lợi của một dân tộc bị áp bức trước một đế quốc lớn, cổ vũ mạnh mẽ phong trào giải phóng dân tộc trên thế giới.", "Vì có nhiều nước cùng tham chiến.", "Vì Pháp chủ động rút quân."], da: 1, giai: "Ý nghĩa vượt ra ngoài phạm vi một quốc gia."}
+    ],
+    phan2: [
+      {cd: "dbp", tu_lieu: "Được sự thỏa thuận của Mỹ, tháng 7/1953, Na-va đề ra kế hoạch quân sự gồm hai bước. Bước thứ nhất, trong thu – đông 1953 và xuân 1954, giữ thế phòng ngự chiến lược ở Bắc Bộ, tiến công chiến lược để bình định miền Trung và miền Nam Đông Dương. Bước thứ hai, từ thu – đông 1954, chuyển lực lượng ra chiến trường Bắc Bộ, thực hiện tiến công chiến lược, giành thắng lợi quân sự quyết định.", nguon: "(Tóm tắt tư liệu lịch sử)",
+        y: [{chu: "Kế hoạch Na-va gồm hai bước.", dung: true},
+          {chu: "Trong bước thứ nhất, Pháp tiến công chiến lược ở Bắc Bộ.", dung: false},
+          {chu: "Kế hoạch dự định giành thắng lợi quân sự quyết định ở chiến trường Bắc Bộ.", dung: true},
+          {chu: "Kế hoạch Na-va được đề ra không có sự thỏa thuận của Mỹ.", dung: false}],
+        giai: "Bước 1: phòng ngự ở Bắc Bộ, tiến công ở miền Trung, miền Nam Đông Dương; bước 2 mới tiến công ở Bắc Bộ."},
+      {cd: "dbp", tu_lieu: "Điện Biên Phủ là một thung lũng rộng lớn ở phía tây vùng rừng núi Tây Bắc, gần biên giới Việt – Lào. Pháp xây dựng ở đây tập đoàn cứ điểm mạnh nhất Đông Dương, gồm 49 cứ điểm, chia thành ba phân khu: Bắc, Trung tâm và Nam, có hai sân bay. Pháp coi Điện Biên Phủ là «pháo đài bất khả xâm phạm».", nguon: "(Tóm tắt tư liệu lịch sử)",
+        y: [{chu: "Tập đoàn cứ điểm Điện Biên Phủ được chia thành ba phân khu.", dung: true},
+          {chu: "Điện Biên Phủ nằm ở vùng đồng bằng Bắc Bộ.", dung: false},
+          {chu: "Pháp tin rằng quân ta khó có thể tiến công thắng lợi Điện Biên Phủ.", dung: true},
+          {chu: "Phân khu Trung tâm là nơi phòng thủ yếu nhất của tập đoàn cứ điểm.", dung: false}],
+        giai: "Điện Biên Phủ ở vùng rừng núi Tây Bắc; phân khu Trung tâm có Sở chỉ huy, là nơi mạnh nhất."},
+      {cd: "dbp", tu_lieu: "Ngày 1/5/1954, quân ta mở đợt tiến công thứ ba, đồng loạt tiến công phân khu Trung tâm và phân khu Nam. Chiều 7/5/1954, quân ta đánh vào Sở chỉ huy của địch; 17 giờ 30 phút, tướng Đờ Ca-xtơ-ri cùng toàn bộ Bộ Tham mưu của Pháp đầu hàng.", nguon: "(Tóm tắt tư liệu lịch sử)",
+        y: [{chu: "Đợt 3 là đợt tiến công cuối cùng của chiến dịch.", dung: true},
+          {chu: "Trong đợt 3, quân ta chỉ tiến công phân khu Nam.", dung: false},
+          {chu: "Chiến dịch kết thúc khi tướng Đờ Ca-xtơ-ri và Bộ Tham mưu Pháp đầu hàng.", dung: true},
+          {chu: "Đợt 3 diễn ra trước khi ta kiểm soát sân bay Mường Thanh.", dung: false}],
+        giai: "Ta kiểm soát sân bay Mường Thanh trong đợt 2; đợt 3 đánh đồng loạt phân khu Trung tâm và phân khu Nam."},
+      {cd: "gnv", tu_lieu: "Chiến thắng Điện Biên Phủ được đánh giá như một Bạch Đằng, một Chi Lăng, một Đống Đa của thế kỉ XX; đó là một chiến công chói lọi, đột phá thành trì của hệ thống thuộc địa của chủ nghĩa đế quốc.", nguon: "(Tóm tắt tư liệu lịch sử)",
+        y: [{chu: "Chiến thắng Điện Biên Phủ được so sánh với những chiến thắng lớn trong lịch sử chống ngoại xâm của dân tộc.", dung: true},
+          {chu: "Chiến thắng Điện Biên Phủ chỉ có ý nghĩa đối với Việt Nam.", dung: false},
+          {chu: "Chiến thắng góp phần làm lung lay hệ thống thuộc địa của chủ nghĩa đế quốc.", dung: true},
+          {chu: "Bạch Đằng, Chi Lăng, Đống Đa là những trận đánh trong cuộc kháng chiến chống Pháp.", dung: false}],
+        giai: "Bạch Đằng, Chi Lăng, Đống Đa là các chiến thắng thời phong kiến; Điện Biên Phủ có ý nghĩa quốc tế to lớn."}
+    ]
+  },
+  {
+    id: "de-9", ten: "Đề 9", mo_ta: "Giơ-ne-vơ, nguyên nhân thắng lợi, ý nghĩa lịch sử và bài học kinh nghiệm",
+    phan1: [
+      {cd: "gnv", muc: "Biết", hoi: "Hội nghị Giơ-ne-vơ bàn về vấn đề Đông Dương trong bối cảnh", pa: ["Pháp vừa chiếm lại Việt Bắc.", "quân dân Việt Nam vừa giành thắng lợi ở Điện Biên Phủ.", "Mỹ vừa rút khỏi Đông Dương.", "Chiến tranh thế giới thứ hai vừa kết thúc."], da: 1, giai: "Hội nghị bàn về Đông Dương từ 8/5/1954, ngay sau chiến thắng Điện Biên Phủ."},
+      {cd: "gnv", muc: "Biết", hoi: "Theo Hiệp định Giơ-ne-vơ, giới tuyến quân sự tạm thời ở Việt Nam chạy dọc theo", pa: ["đèo Hải Vân (vĩ tuyến 16).", "sông Hồng.", "sông Gianh.", "sông Bến Hải (vĩ tuyến 17)."], da: 3, giai: "Giới tuyến quân sự tạm thời: vĩ tuyến 17, dọc sông Bến Hải (Quảng Trị)."},
+      {cd: "gnv", muc: "Biết", hoi: "Hiệp định Giơ-ne-vơ quy định các bên tham chiến", pa: ["ngừng bắn, lập lại hòa bình trên toàn Đông Dương.", "tiếp tục chiến tranh ở Lào.", "chia Đông Dương thành bốn nước.", "để Pháp tiếp tục quản lí miền Bắc."], da: 0, giai: "Ngừng bắn đồng thời ở Việt Nam, Lào, Cam-pu-chia."},
+      {cd: "gnv", muc: "Hiểu", hoi: "Đối với cách mạng Việt Nam, Hiệp định Giơ-ne-vơ (1954)", pa: ["mở đầu cuộc kháng chiến chống Pháp.", "kết thúc hoàn toàn sự nghiệp giải phóng dân tộc trong cả nước.", "đánh dấu thắng lợi của cuộc kháng chiến chống Pháp, miền Bắc hoàn toàn giải phóng.", "buộc Mỹ rút quân khỏi miền Nam."], da: 2, giai: "Miền Nam còn phải tiếp tục đấu tranh để thống nhất đất nước."},
+      {cd: "gnv", muc: "Hiểu", hoi: "Thắng lợi của cuộc kháng chiến chống Pháp (1945 – 1954) tạo cơ sở cho", pa: ["Việt Nam gia nhập khối Liên hiệp Pháp.", "Pháp quay lại xâm lược lần nữa.", "cách mạng Việt Nam tiến lên giải phóng miền Nam, thống nhất đất nước.", "Mỹ giúp Việt Nam xây dựng đất nước."], da: 2, giai: "Miền Bắc được giải phóng trở thành hậu phương lớn cho cả nước."},
+      {cd: "chung", muc: "Hiểu", hoi: "Sự ủng hộ của nhân dân Pháp và các lực lượng yêu chuộng hòa bình trên thế giới đối với kháng chiến của Việt Nam thuộc nhóm nguyên nhân nào?", pa: ["Nguyên nhân khách quan.", "Nguyên nhân chủ quan.", "Nguyên nhân trực tiếp gây ra chiến tranh.", "Hệ quả của Hiệp định Giơ-ne-vơ."], da: 0, giai: "Các yếu tố bên ngoài là nguyên nhân khách quan."},
+      {cd: "chung", muc: "Biết", hoi: "Lực lượng vũ trang ba thứ quân trong kháng chiến chống Pháp gồm", pa: ["quân đội Việt Nam, Lào và Cam-pu-chia.", "lục quân, hải quân và không quân.", "bộ binh, pháo binh và công binh.", "bộ đội chủ lực, bộ đội địa phương và dân quân du kích."], da: 3, giai: "Ba thứ quân là đặc trưng của chiến tranh nhân dân Việt Nam."},
+      {cd: "chung", muc: "Hiểu", hoi: "Vai trò của Mặt trận dân tộc thống nhất trong kháng chiến chống Pháp là", pa: ["thay thế Chính phủ.", "trực tiếp chỉ huy các chiến dịch.", "tập hợp, đoàn kết mọi lực lượng yêu nước, phát huy sức mạnh toàn dân tộc.", "chỉ đạo đấu tranh ngoại giao."], da: 2, giai: "Mặt trận Việt Minh, Hội Liên Việt, rồi Mặt trận Liên Việt (1951)."},
+      {cd: "chung", muc: "Vận dụng", hoi: "Bài học «kết hợp sức mạnh dân tộc với sức mạnh thời đại» trong kháng chiến chống Pháp được thể hiện qua việc", pa: ["dựa vào sức mình là chính, đồng thời tranh thủ sự ủng hộ của các nước xã hội chủ nghĩa và nhân dân yêu chuộng hòa bình.", "chỉ dựa vào viện trợ bên ngoài.", "chỉ dựa vào sức mình, không quan hệ quốc tế.", "liên minh với Pháp để chống Mỹ."], da: 0, giai: "Tự lực cánh sinh đi đôi với tranh thủ ủng hộ quốc tế."},
+      {cd: "gnv", muc: "Hiểu", hoi: "Quy định «tổng tuyển cử tự do trong cả nước vào tháng 7/1956» trong Hiệp định Giơ-ne-vơ thể hiện", pa: ["quyền cai trị của Pháp ở miền Nam.", "sự chia cắt vĩnh viễn Việt Nam.", "sự thừa nhận quyền thống nhất của Việt Nam.", "Việt Nam nằm trong khối Liên hiệp Pháp."], da: 2, giai: "Việt Nam là một quốc gia thống nhất; vĩ tuyến 17 chỉ là giới tuyến tạm thời."},
+      {cd: "1945", muc: "Biết", hoi: "Ngày 19/12/1946, ai ra Lời kêu gọi toàn quốc kháng chiến?", pa: ["Chủ tịch Hồ Chí Minh.", "Tổng Bí thư Trường Chinh.", "Đại tướng Võ Nguyên Giáp.", "Phạm Văn Đồng."], da: 0, giai: "Lời kêu gọi khẳng định quyết tâm «thà hi sinh tất cả, chứ nhất định không chịu mất nước»."},
+      {cd: "1945", muc: "Hiểu", hoi: "Việc kí bản Tạm ước ngày 14/9/1946 nhằm", pa: ["công nhận chủ quyền của Pháp ở Việt Nam.", "kéo dài thời gian hòa hoãn để chuẩn bị lực lượng cho cuộc kháng chiến lâu dài.", "chấm dứt vĩnh viễn kháng chiến ở Nam Bộ.", "liên minh với Pháp."], da: 1, giai: "Ta nhân nhượng thêm một số quyền lợi kinh tế, văn hóa để có thêm thời gian."},
+      {cd: "vb", muc: "Biết", hoi: "Sau thất bại ở Việt Bắc (1947), thực dân Pháp thực hiện âm mưu", pa: ["«tìm diệt và bình định».", "«đánh nhanh, thắng nhanh».", "«Việt Nam hóa chiến tranh».", "«dùng người Việt đánh người Việt, lấy chiến tranh nuôi chiến tranh»."], da: 3, giai: "«Việt Nam hóa chiến tranh», «tìm diệt và bình định» là của Mỹ trong kháng chiến chống Mỹ."},
+      {cd: "bg", muc: "Hiểu", hoi: "Kết quả nào sau đây KHÔNG thuộc chiến dịch Biên giới 1950?", pa: ["Khai thông biên giới Việt – Trung.", "Đập tan Kế hoạch Na-va.", "Làm phá sản Kế hoạch Rơ-ve.", "Chọc thủng Hành lang Đông – Tây."], da: 1, giai: "Kế hoạch Na-va bị đập tan ở Điện Biên Phủ năm 1954."},
+      {cd: "1951", muc: "Hiểu", hoi: "Việc Đảng ra hoạt động công khai với tên Đảng Lao động Việt Nam (1951) có tác dụng", pa: ["tăng cường sự lãnh đạo của Đảng đối với cuộc kháng chiến.", "chấm dứt vai trò lãnh đạo của Đảng.", "giải tán Mặt trận Liên Việt.", "kết thúc chiến tranh."], da: 0, giai: "Đại hội II được gọi là «Đại hội kháng chiến thắng lợi»."},
+      {cd: "dbp", muc: "Biết", hoi: "Trong Đông – Xuân 1953 – 1954, phối hợp với quân ta, quân dân Lào tiến công giải phóng", pa: ["một số vùng ở Trung Lào, Hạ Lào, Thượng Lào.", "Thủ đô Viêng Chăn.", "toàn bộ nước Lào.", "Thủ đô Phnôm Pênh."], da: 0, giai: "Liên quân Lào – Việt tiến công nhiều hướng, buộc Pháp phân tán lực lượng."},
+      {cd: "dbp", muc: "Hiểu", hoi: "Vì sao Điện Biên Phủ trở thành nơi diễn ra trận quyết chiến chiến lược giữa ta và Pháp?", pa: ["Ở đây Pháp có ít quân nhất.", "Đây là vùng đồng bằng thuận lợi cho ta.", "Pháp tập trung ở đây lực lượng lớn, tập đoàn cứ điểm là trung tâm của Kế hoạch Na-va; tiêu diệt nó sẽ làm kế hoạch thất bại hoàn toàn.", "Đây là nơi gần Hà Nội nhất."], da: 2, giai: "Đánh vào trung tâm của Kế hoạch Na-va để giành thắng lợi quyết định."},
+      {cd: "dbp", muc: "Biết", hoi: "Chiến dịch Điện Biên Phủ được chia thành mấy đợt tiến công?", pa: ["Hai.", "Ba.", "Bốn.", "Năm."], da: 1, giai: "Ba đợt: 13 – 17/3; 30/3 – 26/4; 1 – 7/5/1954."},
+      {cd: "chung", muc: "Vận dụng", hoi: "Nhận xét nào đúng về cuộc kháng chiến chống thực dân Pháp (1945 – 1954)?", pa: ["Chỉ dựa vào quân đội chính quy.", "Là cuộc chiến tranh nhân dân, chính nghĩa, vừa kháng chiến vừa kiến quốc.", "Chỉ diễn ra trên mặt trận quân sự.", "Là cuộc chiến tranh do Việt Nam gây ra."], da: 1, giai: "Kháng chiến toàn dân, toàn diện, kết hợp với xây dựng chế độ mới."},
+      {cd: "chung", muc: "Hiểu", hoi: "Vì sao trong kháng chiến chống Pháp, ta vừa kháng chiến vừa kiến quốc?", pa: ["Vì không cần đánh giặc.", "Vì ta đã giành thắng lợi hoàn toàn.", "Vì Pháp cho phép.", "Để xây dựng hậu phương vững mạnh, đáp ứng nhu cầu ngày càng cao của kháng chiến lâu dài."], da: 3, giai: "Kháng chiến trường kì đòi hỏi hậu phương ngày càng vững mạnh."},
+      {cd: "gnv", muc: "Biết", hoi: "Hiệp định Giơ-ne-vơ năm 1954 ghi nhận các quyền dân tộc cơ bản của", pa: ["riêng Việt Nam.", "Việt Nam và Trung Quốc.", "Việt Nam và Thái Lan.", "Việt Nam, Lào và Cam-pu-chia."], da: 3, giai: "Cả ba nước Đông Dương."},
+      {cd: "1951", muc: "Biết", hoi: "Tháng 3/1951, nhân dân ba nước Việt Nam, Lào, Cam-pu-chia thành lập", pa: ["Hiệp hội các quốc gia Đông Nam Á.", "khối Liên hiệp Pháp.", "Liên minh nhân dân Việt – Miên – Lào.", "Mặt trận Việt Minh."], da: 2, giai: "Tăng cường đoàn kết chiến đấu chống kẻ thù chung."},
+      {cd: "chung", muc: "Vận dụng", hoi: "Bài học nào từ kháng chiến chống Pháp phù hợp nhất với xây dựng nền quốc phòng toàn dân hiện nay?", pa: ["Chỉ dựa vào vũ khí hiện đại.", "Xây dựng lực lượng vũ trang nhân dân vững mạnh gắn với thế trận lòng dân.", "Dựa hoàn toàn vào liên minh quân sự.", "Không cần xây dựng hậu phương."], da: 1, giai: "Sức mạnh của chiến tranh nhân dân dựa vào lòng dân."},
+      {cd: "chung", muc: "Hiểu", hoi: "Vì sao Việt Nam cần đoàn kết với Lào và Cam-pu-chia trong kháng chiến chống Pháp?", pa: ["Vì Pháp yêu cầu như vậy.", "Vì ba nước là một quốc gia.", "Vì Lào và Cam-pu-chia đã giành độc lập trước.", "Vì ba nước có chung kẻ thù, chiến trường Đông Dương gắn bó mật thiết với nhau."], da: 3, giai: "Đông Dương là một chiến trường thống nhất trong kháng chiến chống Pháp."}
+    ],
+    phan2: [
+      {cd: "gnv", tu_lieu: "Hiệp định Giơ-ne-vơ là văn bản pháp lí quốc tế ghi nhận các quyền dân tộc cơ bản của nhân dân Đông Dương. Hiệp định đánh dấu thắng lợi của cuộc kháng chiến chống thực dân Pháp, nhưng Việt Nam mới giải phóng được miền Bắc; cuộc đấu tranh để hoàn thành giải phóng dân tộc, thống nhất đất nước còn tiếp tục.", nguon: "(Tóm tắt tư liệu lịch sử)",
+        y: [{chu: "Hiệp định Giơ-ne-vơ là thắng lợi của cuộc đấu tranh ngoại giao.", dung: true},
+          {chu: "Sau Hiệp định, Việt Nam đã hoàn thành sự nghiệp thống nhất đất nước.", dung: false},
+          {chu: "Hiệp định ghi nhận các quyền dân tộc cơ bản của nhân dân Đông Dương.", dung: true},
+          {chu: "Hiệp định Giơ-ne-vơ được kí trước chiến dịch Điện Biên Phủ.", dung: false}],
+        giai: "Hiệp định kí ngày 21/7/1954, sau Điện Biên Phủ; nhiệm vụ thống nhất đất nước còn tiếp tục."},
+      {cd: "chung", tu_lieu: "Thắng lợi của cuộc kháng chiến chống thực dân Pháp (1945 – 1954) đã chấm dứt cuộc chiến tranh xâm lược và ách thống trị của thực dân Pháp gần một thế kỉ trên đất nước Việt Nam; miền Bắc hoàn toàn giải phóng, chuyển sang giai đoạn cách mạng xã hội chủ nghĩa, tạo cơ sở để giải phóng miền Nam, thống nhất đất nước. Thắng lợi đó cổ vũ mạnh mẽ phong trào giải phóng dân tộc trên thế giới.", nguon: "(Tóm tắt tư liệu lịch sử)",
+        y: [{chu: "Thắng lợi chấm dứt ách thống trị gần một thế kỉ của thực dân Pháp ở Việt Nam.", dung: true},
+          {chu: "Sau năm 1954, miền Bắc chuyển sang giai đoạn cách mạng xã hội chủ nghĩa.", dung: true},
+          {chu: "Thắng lợi của Việt Nam làm suy yếu phong trào giải phóng dân tộc trên thế giới.", dung: false},
+          {chu: "Sau thắng lợi, cả nước Việt Nam lập tức tiến lên chủ nghĩa xã hội.", dung: false}],
+        giai: "Chỉ miền Bắc tiến lên chủ nghĩa xã hội; thắng lợi cổ vũ (không làm suy yếu) phong trào giải phóng dân tộc."},
+      {cd: "chung", tu_lieu: "Trong kháng chiến chống thực dân Pháp, lực lượng vũ trang nhân dân Việt Nam gồm ba thứ quân: bộ đội chủ lực, bộ đội địa phương và dân quân du kích, được xây dựng và phát triển không ngừng. Cùng với đó, Mặt trận dân tộc thống nhất được củng cố, mở rộng, tập hợp mọi tầng lớp nhân dân.", nguon: "(Tóm tắt tư liệu lịch sử)",
+        y: [{chu: "Dân quân du kích là một bộ phận của lực lượng vũ trang ba thứ quân.", dung: true},
+          {chu: "Mặt trận dân tộc thống nhất góp phần phát huy sức mạnh đại đoàn kết toàn dân tộc.", dung: true},
+          {chu: "Lực lượng vũ trang ba thứ quân chỉ được thành lập sau năm 1954.", dung: false},
+          {chu: "Ba thứ quân là lục quân, hải quân và không quân.", dung: false}],
+        giai: "Ba thứ quân phát triển ngay trong kháng chiến; đó không phải là ba quân chủng."},
+      {cd: "1945", tu_lieu: "Ở Hà Nội, cuộc chiến đấu diễn ra ác liệt suốt 60 ngày đêm (19/12/1946 – 17/2/1947). Quân dân Thủ đô giam chân địch, tạo điều kiện cho các cơ quan đầu não của Đảng và Chính phủ rút lên căn cứ địa Việt Bắc an toàn. Trung đoàn Thủ đô sau đó rút ra ngoài an toàn để tiếp tục kháng chiến.", nguon: "(Tóm tắt tư liệu lịch sử)",
+        y: [{chu: "Cuộc chiến đấu ở Hà Nội góp phần làm thất bại một bước kế hoạch «đánh nhanh, thắng nhanh» của Pháp.", dung: true},
+          {chu: "Mục tiêu của cuộc chiến đấu ở Hà Nội là giải phóng ngay toàn bộ miền Bắc.", dung: false},
+          {chu: "Cơ quan đầu não kháng chiến rút lên Việt Bắc trong thời gian quân dân Hà Nội giam chân địch.", dung: true},
+          {chu: "Cuộc chiến đấu ở Hà Nội kéo dài 56 ngày đêm.", dung: false}],
+        giai: "60 ngày đêm ở Hà Nội; 56 ngày đêm là Điện Biên Phủ."}
+    ]
+  },
+  {
+    id: "de-10", ten: "Đề 10", mo_ta: "Đề tổng hợp cuối chủ đề — sát cấu trúc đề thi tốt nghiệp, nhiều câu vận dụng",
+    phan1: [
+      {cd: "1945", muc: "Biết", hoi: "Ngày 2/9/1945, tại Quảng trường Ba Đình (Hà Nội), đã diễn ra sự kiện nào?", pa: ["Chủ tịch Hồ Chí Minh đọc Tuyên ngôn độc lập.", "Chủ tịch Hồ Chí Minh ra Lời kêu gọi toàn quốc kháng chiến.", "Hiệp định Sơ bộ được kí kết.", "Pháp gửi tối hậu thư."], da: 0, giai: "Nước Việt Nam Dân chủ Cộng hòa ra đời; ba tuần sau Pháp trở lại xâm lược Nam Bộ."},
+      {cd: "1945", muc: "Biết", hoi: "Khi thực dân Pháp trở lại xâm lược Nam Bộ (9/1945), quân đội nước nào đã tạo điều kiện, giúp sức cho Pháp?", pa: ["Mỹ.", "Anh.", "Nhật Bản.", "Trung Hoa Dân quốc."], da: 1, giai: "Quân Anh vào phía Nam vĩ tuyến 16, dọn đường cho Pháp."},
+      {cd: "1945", muc: "Hiểu", hoi: "Sau Cách mạng tháng Tám, nước Việt Nam Dân chủ Cộng hòa ở trong tình thế", pa: ["đã kết thúc chiến tranh.", "hoàn toàn thuận lợi.", "«ngàn cân treo sợi tóc», phải đối phó với nhiều kẻ thù cùng lúc.", "được các nước lớn công nhận độc lập."], da: 2, giai: "Thù trong, giặc ngoài, khó khăn chồng chất — vì thế phải mềm dẻo về sách lược."},
+      {cd: "1945", muc: "Hiểu", hoi: "Lời kêu gọi toàn quốc kháng chiến (19/12/1946) thể hiện", pa: ["sự đầu hàng thực dân Pháp.", "mong muốn tiếp tục nhân nhượng Pháp.", "chủ trương dựa vào Mỹ.", "quyết tâm bảo vệ độc lập: «thà hi sinh tất cả, chứ nhất định không chịu mất nước»."], da: 3, giai: "Kêu gọi toàn dân đứng lên kháng chiến."},
+      {cd: "vb", muc: "Biết", hoi: "Chiến thắng nào làm thất bại hoàn toàn chiến lược «đánh nhanh, thắng nhanh» của thực dân Pháp?", pa: ["Hòa Bình 1951 – 1952.", "Biên giới thu – đông 1950.", "Việt Bắc thu – đông 1947.", "Điện Biên Phủ 1954."], da: 2, giai: "Biên giới phá sản Kế hoạch Rơ-ve; Điện Biên Phủ đập tan Kế hoạch Na-va."},
+      {cd: "vb", muc: "Vận dụng", hoi: "Vì sao quân dân Việt Nam chọn khúc sông hẹp ở Đoan Hùng, Khe Lau để phục kích tàu Pháp (1947)?", pa: ["Đó là khúc sông rộng nhất.", "Hai bờ là núi rừng, sông hẹp — tàu địch khó cơ động, quân ta dễ ẩn nấp.", "Đó là nơi gần Hà Nội nhất.", "Tàu Pháp không đi qua đó."], da: 1, giai: "Lấy địa hình bù cho thiếu vũ khí — Quyết định 3 trên sa bàn Việt Bắc."},
+      {cd: "bg", muc: "Biết", hoi: "Trong chiến dịch Biên giới 1950, sau khi mất Đông Khê, Pháp cho quân rút khỏi", pa: ["Hà Nội.", "Cao Bằng theo Đường số 4.", "Điện Biên Phủ.", "Hòa Bình."], da: 1, giai: "Quân ta mai phục, đánh địch trên đường rút."},
+      {cd: "bg", muc: "Hiểu", hoi: "Thắng lợi của chiến dịch Biên giới 1950 đã phá vỡ thế bao vây của địch đối với", pa: ["căn cứ địa Việt Bắc.", "đồng bằng Bắc Bộ.", "Nam Bộ.", "Tây Nguyên."], da: 0, giai: "Việt Bắc nối liền với quốc tế qua biên giới Việt – Trung."},
+      {cd: "1951", muc: "Biết", hoi: "Đại hội đại biểu toàn quốc lần thứ II của Đảng diễn ra vào thời gian nào?", pa: ["Tháng 3/1935.", "Tháng 2/1930.", "Tháng 2/1951.", "Tháng 12/1976."], da: 2, giai: "Đại hội II họp ở Tuyên Quang."},
+      {cd: "1951", muc: "Hiểu", hoi: "Các phong trào thi đua ái quốc trong kháng chiến chống Pháp có tác dụng", pa: ["làm giảm tinh thần kháng chiến.", "thay thế cho chiến đấu.", "chỉ phục vụ sản xuất công nghiệp.", "động viên sức người, sức của, góp phần xây dựng hậu phương và chi viện tiền tuyến."], da: 3, giai: "Thi đua ái quốc gắn với mọi ngành, mọi giới."},
+      {cd: "1951", muc: "Biết", hoi: "Kế hoạch Đờ Lát đơ Tát-xi-nhi được thực dân Pháp đề ra sau thất bại ở chiến dịch", pa: ["Tây Bắc 1952.", "Việt Bắc 1947.", "Điện Biên Phủ 1954.", "Biên giới 1950."], da: 3, giai: "Pháp muốn giành lại quyền chủ động đã mất sau Biên giới 1950."},
+      {cd: "dbp", muc: "Biết", hoi: "Theo Kế hoạch Na-va, lực lượng cơ động chiến lược của Pháp lúc đầu được tập trung chủ yếu ở", pa: ["Thượng Lào.", "Nam Bộ.", "Tây Nguyên.", "đồng bằng Bắc Bộ."], da: 3, giai: "Cuộc Tiến công Đông – Xuân buộc lực lượng này phải phân tán."},
+      {cd: "dbp", muc: "Hiểu", hoi: "Âm mưu của Pháp khi tập trung quân ở Điện Biên Phủ là", pa: ["mở đường sang Trung Quốc.", "rút quân về nước.", "thu hút và tiêu diệt bộ đội chủ lực của ta, bảo vệ Thượng Lào.", "tiến công Việt Bắc ngay lập tức."], da: 2, giai: "Biến Điện Biên Phủ thành «cối xay thịt» quân chủ lực của ta — nhưng đã thất bại."},
+      {cd: "dbp", muc: "Biết", hoi: "Cứ điểm nào ở Điện Biên Phủ bị quân ta tiến công đầu tiên (13/3/1954)?", pa: ["Mường Thanh.", "Đồi A1.", "Hồng Cúm.", "Him Lam."], da: 3, giai: "Trận mở màn chiến dịch Điện Biên Phủ."},
+      {cd: "dbp", muc: "Hiểu", hoi: "Ý nghĩa thắng lợi đợt 1 chiến dịch Điện Biên Phủ là", pa: ["kết thúc chiến dịch.", "mở toang cửa phía bắc, đông bắc, tạo điều kiện siết chặt vòng vây phân khu Trung tâm.", "buộc Pháp đầu hàng ngay.", "giải phóng toàn bộ Tây Bắc."], da: 1, giai: "Đánh vòng ngoài trước, tiến dần vào trung tâm."},
+      {cd: "dbp", muc: "Vận dụng", hoi: "Điểm khác nhau cơ bản giữa chiến dịch Biên giới 1950 và chiến dịch Điện Biên Phủ 1954 về đối tượng tiến công là", pa: ["cả hai đều là chiến dịch phòng ngự.", "Biên giới tiến công tập đoàn cứ điểm, Điện Biên Phủ đánh địch ngoài công sự.", "cả hai đều đánh địch ở đô thị.", "Biên giới đánh hệ thống phòng ngự trên Đường số 4 và địch ngoài công sự; Điện Biên Phủ tiến công một tập đoàn cứ điểm mạnh."], da: 3, giai: "Điện Biên Phủ là lần đầu ta tiến công một tập đoàn cứ điểm lớn."},
+      {cd: "gnv", muc: "Biết", hoi: "Ngày 21/7/1954 gắn liền với sự kiện", pa: ["Hiệp định Giơ-ne-vơ về Đông Dương được kí kết.", "chiến thắng Điện Biên Phủ.", "Hội nghị Giơ-ne-vơ bắt đầu bàn về Đông Dương.", "Pháp đề ra Kế hoạch Na-va."], da: 0, giai: "Điện Biên Phủ: 7/5/1954; Hội nghị bàn về Đông Dương: 8/5/1954; Kế hoạch Na-va: 7/1953."},
+      {cd: "gnv", muc: "Hiểu", hoi: "Vì sao nói Hiệp định Giơ-ne-vơ (1954) là thắng lợi của nhân dân Việt Nam?", pa: ["Vì các nước tham dự cam kết tôn trọng độc lập, chủ quyền, thống nhất, toàn vẹn lãnh thổ của Việt Nam; Pháp phải rút quân.", "Vì cả nước được thống nhất ngay lập tức.", "Vì Mỹ ủng hộ hoàn toàn Hiệp định.", "Vì Việt Nam giành được quyền cai quản Lào và Cam-pu-chia."], da: 0, giai: "Các quyền dân tộc cơ bản được quốc tế ghi nhận."},
+      {cd: "chung", muc: "Hiểu", hoi: "Hậu phương kháng chiến chống Pháp được xây dựng vững chắc trên các mặt", pa: ["chính trị, kinh tế, văn hóa – giáo dục, quân sự.", "chỉ quân sự.", "chỉ kinh tế.", "chỉ ngoại giao."], da: 0, giai: "Xây dựng hậu phương toàn diện."},
+      {cd: "chung", muc: "Vận dụng", hoi: "Thứ tự thời gian đúng của các sự kiện: (1) chiến dịch Biên giới; (2) Hiệp định Sơ bộ; (3) chiến dịch Điện Biên Phủ; (4) chiến dịch Việt Bắc là", pa: ["2, 1, 4, 3.", "4, 2, 1, 3.", "2, 4, 1, 3.", "1, 2, 4, 3."], da: 2, giai: "Hiệp định Sơ bộ (1946) → Việt Bắc (1947) → Biên giới (1950) → Điện Biên Phủ (1954)."},
+      {cd: "chung", muc: "Vận dụng", hoi: "Thứ tự thời gian đúng của các kế hoạch quân sự của Pháp: (1) Kế hoạch Na-va; (2) Kế hoạch Rơ-ve; (3) Kế hoạch Đờ Lát đơ Tát-xi-nhi là", pa: ["1, 2, 3.", "2, 3, 1.", "3, 2, 1.", "2, 1, 3."], da: 1, giai: "Rơ-ve (1949) → Đờ Lát đơ Tát-xi-nhi (1950) → Na-va (1953)."},
+      {cd: "chung", muc: "Vận dụng", hoi: "Điểm xuyên suốt trong cách ta chọn hướng đánh ở ba chiến dịch Việt Bắc, Biên giới, Điện Biên Phủ là", pa: ["dựa vào địa hình có lợi cho ta, đánh vào chỗ yếu, nắm thời cơ để giành thắng lợi chắc chắn.", "luôn đánh vào nơi địch mạnh nhất.", "luôn đánh ở đồng bằng.", "luôn chờ địch rút rồi mới đánh."], da: 0, giai: "Đây chính là ba căn cứ khi ra quyết định trên sa bàn: địa hình, lực lượng, thời cơ."},
+      {cd: "gnv", muc: "Vận dụng", hoi: "Hạn chế của Hiệp định Giơ-ne-vơ đặt ra cho cách mạng Việt Nam nhiệm vụ tiếp theo là", pa: ["đánh bại quân Pháp ở miền Bắc.", "tiếp tục đấu tranh giải phóng miền Nam, thống nhất đất nước.", "gia nhập khối Liên hiệp Pháp.", "đưa quân giải phóng Lào."], da: 1, giai: "Đất nước tạm thời bị chia cắt."},
+      {cd: "chung", muc: "Vận dụng", hoi: "Là học sinh hôm nay, em có thể làm gì để phát huy truyền thống của cuộc kháng chiến chống Pháp?", pa: ["Không cần quan tâm tới lịch sử.", "Chỉ cần nhớ ngày tháng các sự kiện.", "Học tập, rèn luyện tốt, tìm hiểu lịch sử dân tộc, sẵn sàng góp sức xây dựng và bảo vệ Tổ quốc.", "Chỉ tham gia các hoạt động quân sự."], da: 2, giai: "Hiểu lịch sử để hành động đúng hôm nay."}
+    ],
+    phan2: [
+      {cd: "1945", tu_lieu: "Sau Cách mạng tháng Tám, nước Việt Nam Dân chủ Cộng hòa phải đối phó với nhiều kẻ thù: ở miền Bắc có quân Trung Hoa Dân quốc, ở miền Nam có quân Anh mở đường cho thực dân Pháp trở lại xâm lược. Chính phủ Việt Nam tạm thời hòa hoãn với quân Trung Hoa Dân quốc ở miền Bắc để tập trung kháng chiến chống Pháp ở Nam Bộ; sau đó kí Hiệp định Sơ bộ (6/3/1946) để hòa hoãn với Pháp.", nguon: "(Tóm tắt tư liệu lịch sử)",
+        y: [{chu: "Việt Nam đã lợi dụng mâu thuẫn giữa các kẻ thù để tránh phải đối phó cùng lúc với nhiều kẻ thù.", dung: true},
+          {chu: "Quân Anh vào miền Nam với mục đích giúp Việt Nam bảo vệ độc lập.", dung: false},
+          {chu: "Hòa hoãn với Pháp năm 1946 nhằm đẩy quân Trung Hoa Dân quốc về nước.", dung: true},
+          {chu: "Việt Nam hòa hoãn với Pháp trước khi hòa hoãn với quân Trung Hoa Dân quốc.", dung: false}],
+        giai: "Trình tự: hòa với Trung Hoa Dân quốc (9/1945 – 3/1946) rồi hòa với Pháp (từ 6/3/1946)."},
+      {cd: "chung", tu_lieu: "Năm 1947, thực dân Pháp tấn công lên Việt Bắc; quân dân Việt Nam phản công, làm thất bại hoàn toàn chiến lược «đánh nhanh, thắng nhanh». Năm 1950, bộ đội chủ lực Việt Nam chủ động mở chiến dịch Biên giới, khai thông biên giới Việt – Trung, giành thế chủ động trên chiến trường chính Bắc Bộ.", nguon: "(Tóm tắt tư liệu lịch sử)",
+        y: [{chu: "Trong chiến dịch Việt Bắc, Pháp là bên tấn công trước.", dung: true},
+          {chu: "Chiến dịch Biên giới đánh dấu bước phát triển từ phản công lên chủ động tiến công.", dung: true},
+          {chu: "Cả hai chiến dịch đều diễn ra ở đồng bằng Bắc Bộ.", dung: false},
+          {chu: "Ngay sau chiến dịch Việt Bắc, quân đội Việt Nam đã giành thế chủ động trên chiến trường chính Bắc Bộ.", dung: false}],
+        giai: "Cả hai diễn ra ở vùng rừng núi phía Bắc; thế chủ động trên chiến trường chính có được từ sau Biên giới 1950."},
+      {cd: "dbp", tu_lieu: "Trong Đông – Xuân 1953 – 1954, quân dân Việt Nam phối hợp với quân dân Lào mở nhiều cuộc tiến công, buộc Pháp phải phân tán lực lượng. Ngày 6/12/1953, Bộ Chính trị quyết định mở chiến dịch Điện Biên Phủ nhằm tiêu diệt lực lượng địch ở đây, giải phóng Tây Bắc, tạo điều kiện cho Lào giải phóng Bắc Lào.", nguon: "(Tóm tắt tư liệu lịch sử)",
+        y: [{chu: "Quyết định mở chiến dịch Điện Biên Phủ được đưa ra trong thời gian diễn ra cuộc Tiến công chiến lược Đông – Xuân.", dung: true},
+          {chu: "Một mục tiêu của chiến dịch là giải phóng Tây Bắc.", dung: true},
+          {chu: "Chiến dịch Điện Biên Phủ diễn ra trước khi Pháp chiếm đóng Điện Biên Phủ.", dung: false},
+          {chu: "Cuộc Tiến công Đông – Xuân làm lực lượng của Pháp ngày càng tập trung hơn.", dung: false}],
+        giai: "Pháp chiếm Điện Biên Phủ từ 20/11/1953; Đông – Xuân làm lực lượng Pháp bị phân tán."},
+      {cd: "chung", tu_lieu: "Thắng lợi của cuộc kháng chiến chống thực dân Pháp để lại nhiều bài học: giữ vững sự lãnh đạo của Đảng, phát huy sức mạnh đại đoàn kết toàn dân tộc, kết hợp kháng chiến với kiến quốc, kết hợp đấu tranh quân sự với đấu tranh ngoại giao, kết hợp sức mạnh dân tộc với sức mạnh thời đại.", nguon: "(Tóm tắt tư liệu lịch sử)",
+        y: [{chu: "Kết hợp đấu tranh quân sự với đấu tranh ngoại giao là một bài học của cuộc kháng chiến.", dung: true},
+          {chu: "Kháng chiến và kiến quốc là hai nhiệm vụ tách rời nhau.", dung: false},
+          {chu: "Phát huy sức mạnh đại đoàn kết toàn dân tộc vẫn còn nguyên giá trị hiện nay.", dung: true},
+          {chu: "Cuộc kháng chiến thắng lợi chủ yếu nhờ sự giúp đỡ từ bên ngoài.", dung: false}],
+        giai: "Kháng chiến gắn với kiến quốc; nguyên nhân chủ quan giữ vai trò quyết định."}
+    ]
   }
 ];
 
@@ -1297,11 +1753,25 @@ var AM = (function () {   // tiếng động ngắn + tiếng động cho từng
   function cu(ac, t, dai, loai, tan, v) { nen(ac, t, dai, loai, tan, v, false); }
   function tom(ac, t, f, v) { n(ac, t, f * 1.7, "sine", v, .5, f); }
   function ken(ac, t, ds, kieu, v, nhip) { ds.forEach(function (f, i) { n(ac, t + i * (nhip || .22), f, kieu, v, .32); }); }
+  function bus(ac) { if (!sfx) { sfx = ac.createGain(); sfx.gain.value = .6; sfx.connect(ac.destination); } return sfx; }
+  function bung(ac, t, dai, loai, tan, v) { var s = ac.createBufferSource(), f = ac.createBiquadFilter(), g = ac.createGain(); s.buffer = onBuf(ac); f.type = loai; f.frequency.setValueAtTime(tan, t); if (loai === "lowpass") f.frequency.exponentialRampToValueAtTime(Math.max(80, tan / 5), t + dai); g.gain.setValueAtTime(v, t); g.gain.exponentialRampToValueAtTime(.0001, t + dai); s.connect(f); f.connect(g); g.connect(sfx); s.start(t, Math.random() * 1.5); s.stop(t + dai + .05); }
+  function hu(loai, x) {   // tiếng động đi cùng hình trên sa bàn (nhỏ hơn lời kể)
+    if (!S.nhac || CHUP) return; var ac = moAC(); if (!ac) return;
+    try {
+      bus(ac); var t = ac.currentTime + .02, i;
+      if (loai === "no") { var v = Math.min(1, x || 1); tom(ac, t, 44, .6 * v); bung(ac, t, .9, "lowpass", 900, .5 * v); }
+      else if (loai === "phao") { tom(ac, t, 64, .45); bung(ac, t, .35, "lowpass", 1400, .3); }
+      else if (loai === "sung") { for (i = 0; i < 6; i++) bung(ac, t + i * .075 + Math.random() * .02, .06, "highpass", 1300, .28); }
+      else if (loai === "vut") n(ac, t, 1700, "sine", .035, Math.max(.4, (x || 1) - .05), 380);
+      else if (loai === "may-bay") { var T = x || 5, o1 = ac.createOscillator(), o2 = ac.createOscillator(), f = ac.createBiquadFilter(), g = ac.createGain(); o1.type = o2.type = "sawtooth"; o1.frequency.setValueAtTime(92, t); o1.frequency.linearRampToValueAtTime(70, t + T); o2.frequency.setValueAtTime(97, t); o2.frequency.linearRampToValueAtTime(74, t + T); f.type = "lowpass"; f.frequency.value = 480; g.gain.setValueAtTime(.0001, t); g.gain.linearRampToValueAtTime(.12, t + T * .45); g.gain.linearRampToValueAtTime(.0001, t + T); o1.connect(f); o2.connect(f); f.connect(g); g.connect(sfx); o1.start(t); o2.start(t); o1.stop(t + T + .05); o2.stop(t + T + .05); }
+      else if (loai === "phao-hoa") { bung(ac, t, .25, "highpass", 2500, .15); for (i = 0; i < 4; i++) n(ac, t + .1 + i * .06, 1500 + Math.random() * 1500, "sine", .04, .2); }
+    } catch (e) {}
+  }
   function dungCanh() { try { if (sfx) { var g = sfx; g.gain.setTargetAtTime(.0001, AC.currentTime, .15); setTimeout(function () { try { g.disconnect(); } catch (e) {} }, 700); } } catch (e) {} sfx = null; }
   function canh(loai, giay) {
     dungCanh(); if (!S.nhac || CHUP) return; var ac = moAC(); if (!ac) return;
     try {
-      sfx = ac.createGain(); sfx.gain.value = .9; sfx.connect(ac.destination);
+      sfx = ac.createGain(); sfx.gain.value = .6; sfx.connect(ac.destination);
       var t = ac.currentTime + .05, T = giay, i;
       if (loai === "du" || loai === "may-bay") { var o1 = ac.createOscillator(), o2 = ac.createOscillator(), f = ac.createBiquadFilter(), g = ac.createGain(); o1.type = o2.type = "sawtooth"; o1.frequency.value = 70; o2.frequency.value = 74.5; f.type = "lowpass"; f.frequency.value = 420; g.gain.setValueAtTime(.0001, t); g.gain.linearRampToValueAtTime(.09, t + 1.2); g.gain.linearRampToValueAtTime(.0001, t + T); o1.connect(f); o2.connect(f); f.connect(g); g.connect(sfx); o1.start(t); o2.start(t); o1.stop(t + T + .1); o2.stop(t + T + .1); nen(ac, t, T, "lowpass", 700, .05, true); if (loai === "may-bay") for (i = 1.5; i < T; i += 2.2) tom(ac, t + i, 60, .25); }
       else if (loai === "gong-kim" || loai === "rut-lui" || loai === "phong-ngu") { nen(ac, t, T, "lowpass", 170, loai === "rut-lui" ? .32 : .26, true); var e = ac.createOscillator(), eg = ac.createGain(); e.type = "sawtooth"; e.frequency.value = 46; eg.gain.setValueAtTime(.05, t); eg.gain.linearRampToValueAtTime(.0001, t + T); e.connect(eg); eg.connect(sfx); e.start(t); e.stop(t + T); if (loai === "phong-ngu") for (i = 1; i < T; i += 2.4) n(ac, t + i, 880, "sine", .05, .35); }
@@ -1322,7 +1792,7 @@ var AM = (function () {   // tiếng động ngắn + tiếng động cho từng
     dung: function () { goi(function (ac, t) { [523, 659, 784, 1047].forEach(function (f, i) { n(ac, t + i * .11, f, "triangle", .13, .4); n(ac, t + i * .11, f / 2, "sawtooth", .03, .3); }); }); },
     khac: function () { goi(function (ac, t) { n(ac, t, 392, "triangle", .1, .4); n(ac, t + .18, 349, "triangle", .09, .5); }); },
     motif: function (k) { goi(function (ac, t) { var bo = [[[196, 175, 147], "sawtooth", .05], [[523, 587, 659, 784], "triangle", .09], [[330, 415, 494, 659], "square", .045]][k % 3]; bo[0].forEach(function (f, i) { n(ac, t + i * .1, f, bo[1], bo[2], .28); }); }); },
-    canh: canh, dungCanh: dungCanh
+    canh: canh, dungCanh: dungCanh, hu: hu
   };
 })();
 function doc(t) {   // chỉ một giọng: Hoài My (nữ, miền Bắc) đã thu sẵn; câu chưa thu thì im, không đổi sang giọng khác
@@ -1711,10 +2181,9 @@ VE["sa-ban"] = function (o, m) {
   SB.c = c; SB.buoc = bs; SB.b = b; S.vitri[c.id] = b; luuKho();
   datNen(c.canh);
   if (moi) {
-    m.innerHTML = '<div class="sb-khung"><section class="sb-trai kinh">' + veSaBan(c) +
-      '<div class="sb-tieu"><b>' + c.bieu + " " + esc(c.ten_dai) + '</b><span>' + esc(c.thoi_gian) + '</span><div class="chu-giai"><span><i style="background:#ef4444"></i>Hướng đánh của ta</span><span><i style="background:#38bdf8"></i>Hướng đánh, âm mưu của địch</span><span><i style="background:repeating-linear-gradient(90deg,#f87171 0 6px,transparent 6px 10px)"></i>Mũi tên đỏ có dấu ? — em quyết định</span></div></div>' +
-      '<div class="cam-nut"><button onclick="camXoay(-20)" title="Xoay trái">⟲</button><button onclick="camXoay(20)" title="Xoay phải">⟳</button><button onclick="camZoom(1.15)" title="Phóng to">＋</button><button onclick="camZoom(1/1.15)" title="Thu nhỏ">－</button><button onclick="cam2D()" title="Nhìn từ trên xuống / 3D">🗺️</button><button onclick="veGoc()" title="Về góc nhìn chuẩn">🎯</button></div>' +
-      '<div class="truc-moc" id="truc-moc"></div></section><aside class="sb-phai kinh" id="sb-phai"></aside></div>';
+    m.innerHTML = '<div class="sb-khung"><div class="sb-cot"><section class="sb-trai kinh">' +
+      '<div class="sb-giua"><div class="sb-ban">' + veSaBan(c) + '<div class="chu-giai"><span><svg viewBox="0 0 30 12" width="20" height="8"><path d="M2 6H21" stroke="#38bdf8" stroke-width="3" stroke-linecap="round"/><path d="M20 1l9 5-9 5z" fill="#38bdf8"/></svg>Âm mưu của địch</span><span><svg viewBox="0 0 30 12" width="20" height="8"><path d="M2 6H21" stroke="#ef4444" stroke-width="3" stroke-linecap="round"/><path d="M20 1l9 5-9 5z" fill="#ef4444"/></svg>Hướng đánh của ta</span></div><div class="cam-nut"><button onclick="camXoay(-20)" title="Xoay trái">⟲</button><button onclick="camXoay(20)" title="Xoay phải">⟳</button><button onclick="camZoom(1.15)" title="Phóng to">＋</button><button onclick="camZoom(1/1.15)" title="Thu nhỏ">－</button><button onclick="cam2D()" title="Nhìn từ trên xuống / 3D">🗺️</button><button onclick="veGoc()" title="Về góc nhìn chuẩn">🎯</button></div></div></div>' +
+      '</section><div class="truc-moc" id="truc-moc"></div></div><aside class="sb-phai kinh" id="sb-phai"></aside></div>';
     vuaKhung(); ganKeo(); veGoc();
   } else { m.classList.add("hien"); }
   var cur = bs[b];
@@ -1800,7 +2269,7 @@ function phim(loai, ben, cd) {
   return '<svg viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice" aria-hidden="true">' + s + "</svg>";
 }
 function thoiLuong(t) { return kep(String(t).split(/\s+/).length / 3.1, 7, 24); }
-function dungTap() { clearTimeout(SB.phimHen); clearTimeout(SB.docHen); clearTimeout(SB.chonHen); DOC_TK++; AM.dungCanh(); dungDoc(); NHAC.nho(false); }
+function dungTap() { xoaHieuUng(); clearTimeout(SB.phimHen); clearTimeout(SB.docHen); clearTimeout(SB.chonHen); DOC_TK++; AM.dungCanh(); dungDoc(); NHAC.nho(false); }
 function phatTap(m, xemLai) {
   dungTap();
   var g = $('.mt[data-id="' + m.id + '"]');
@@ -1816,8 +2285,118 @@ function phatTap(m, xemLai) {
   var tt = $("#thanh-tien", ph);
   if (CHUP) { tt.style.width = "62%"; return; }
   tt.style.transition = "none"; tt.style.width = "0"; void tt.offsetWidth; tt.style.transition = "width " + D + "s linear"; tt.style.width = "100%";
-  NHAC.dung(); doc(loi);
+  NHAC.dung(); doc(loi); hieuUng(m, D);
   SB.phimHen = setTimeout(function () { NHAC.chon(NHAC.cho()); var n = $("#nut-tien"); if (n) n.classList.add("nhay"); }, D * 1000);
+}
+/* ================= Hiệu ứng trên sa bàn: máy bay, quân dù, pháo, súng, tiếng nổ — chạy cùng lời kể ================= */
+var HU = {hen: [], svg: null};
+var HU_HINH = {
+  "may-bay": '<svg width="76" height="32" viewBox="-38 -30 76 32"><path d="M-31 -13 Q-21 -20 10 -19 Q29 -18 35 -13 Q29 -8 10 -8 L-25 -9 Z" fill="#cbd5e1" stroke="#475569" stroke-width="1.2"/><path d="M-29 -13 L-36 -27 L-25 -25 L-18 -14 Z" fill="#94a3b8" stroke="#475569" stroke-width="1"/><path d="M-6 -12 L7 -12 L-2 2 L-13 2 Z" fill="#94a3b8" stroke="#475569" stroke-width="1"/><path d="M20 -17 L28 -15" stroke="#1e293b" stroke-width="2"/><circle cx="-14" cy="-13" r="3.3" fill="#1d4ed8"/><circle cx="-14" cy="-13" r="2.1" fill="#fff"/><circle cx="-14" cy="-13" r="1" fill="#dc2626"/><path d="M36 -20 L36 -6" stroke="#64748b" stroke-width="1.6"/></svg>',
+  "du": '<svg width="34" height="46" viewBox="-17 -46 34 46"><path d="M-16 -31 Q0 -52 16 -31 Q8 -34 0 -31 Q-8 -34 -16 -31 Z" fill="#e0f2fe" stroke="#38bdf8" stroke-width="1.3"/><path d="M-16 -31 L-2 -12 M16 -31 L2 -12 M0 -31 L0 -12" stroke="#cbd5e1" stroke-width=".9"/><circle cy="-10" r="2.8" fill="#1e3a8a"/><path d="M-2.6 -7.5 h5.2 l1 7.5 h-7.2 z" fill="#1e3a8a"/></svg>',
+  "hang": '<svg width="34" height="44" viewBox="-17 -44 34 44"><path d="M-16 -30 Q0 -50 16 -30 Q8 -33 0 -30 Q-8 -33 -16 -30 Z" fill="#fed7aa" stroke="#f97316" stroke-width="1.3"/><path d="M-16 -30 L-5 -11 M16 -30 L5 -11" stroke="#e2e8f0" stroke-width=".9"/><rect x="-6" y="-12" width="12" height="11" rx="1.5" fill="#92400e" stroke="#fde68a" stroke-width="1"/></svg>',
+  "no": '<svg width="66" height="66" viewBox="-33 -62 66 66"><circle cy="-28" r="27" fill="#f97316" opacity=".5"/><polygon points="0,-60 7,-40 27,-46 15,-30 32,-20 11,-18 14,0 0,-12 -14,0 -11,-18 -32,-20 -15,-30 -27,-46 -7,-40" fill="#fb923c"/><circle cy="-28" r="15" fill="#fbbf24"/><circle cy="-28" r="7" fill="#fff7d6"/></svg>',
+  "khoi": '<svg width="58" height="52" viewBox="-29 -50 58 52"><circle cx="-9" cy="-18" r="13" fill="#475569" opacity=".75"/><circle cx="8" cy="-24" r="15" fill="#64748b" opacity=".65"/><circle cy="-36" r="12" fill="#94a3b8" opacity=".55"/></svg>',
+  "lua": '<svg width="28" height="28" viewBox="-14 -26 28 28"><polygon points="0,-26 4,-16 14,-14 5,-9 8,0 0,-5 -8,0 -5,-9 -14,-14 -4,-16" fill="#fde047"/><circle cy="-12" r="4.5" fill="#fff"/></svg>',
+  "dan": '<svg width="14" height="14" viewBox="-7 -12 14 14"><circle cy="-5" r="5" fill="#fde68a"/><circle cy="-5" r="2.4" fill="#fff"/></svg>',
+  "xe-tai": '<svg width="42" height="24" viewBox="-21 -22 42 24"><rect x="-19" y="-17" width="25" height="12" rx="1.5" fill="#475569" stroke="#cbd5e1" stroke-width="1"/><path d="M6 -14 h8 l5 6 v3 h-13 z" fill="#64748b" stroke="#cbd5e1" stroke-width="1"/><circle cx="-12" cy="-4" r="3.6" fill="#0f172a"/><circle cx="11" cy="-4" r="3.6" fill="#0f172a"/><circle cx="-7" cy="-11" r="2.6" fill="#38bdf8"/></svg>',
+  "bo-doi": '<svg width="18" height="26" viewBox="-9 -26 18 26"><path d="M-6.5 -21 Q0 -27 6.5 -21 Z" fill="#4d7c0f"/><circle cy="-18.5" r="3.4" fill="#fcd34d"/><path d="M-4.5 -15 h9 l1 9 h-3.5 l-1 6 h-2 l-1 -6 h-3.5 z" fill="#3f6212"/><path d="M4 -13 l8 -7" stroke="#1f2937" stroke-width="1.8"/><circle cx="-3" cy="-11" r="1.4" fill="#dc2626"/></svg>',
+  "phao-hoa": '<svg width="70" height="70" viewBox="-35 -35 70 70"><g stroke-width="3" stroke-linecap="round"><path d="M0 -8 V-30 M0 8 V30 M-8 0 H-30 M8 0 H30" stroke="#fde047"/><path d="M6 -6 L21 -21 M-6 6 L-21 21 M-6 -6 L-21 -21 M6 6 L21 21" stroke="#f87171"/></g><circle r="6" fill="#fff7d6"/></svg>'
+};
+function xoaHieuUng() { HU.hen.forEach(clearTimeout); HU.hen = []; $$("#ban .hu").forEach(function (e) { e.remove(); }); $$("#ban .vat.hu-cho").forEach(function (e) { e.classList.remove("hu-cho"); }); }
+function huSau(giay, fn) { HU.hen.push(setTimeout(function () { if ($("#ban")) fn(); }, giay * 1000)); }
+function huDat(x, y, z, hinh, lop, lat) { var b = $("#ban"); if (!b) return null; var d = document.createElement("div"); d.innerHTML = bb(Math.round(x), Math.round(y), Math.round(z), lat ? '<span class="lat">' + hinh + "</span>" : hinh, "hu " + (lop || "")); var e = d.firstChild; b.appendChild(e); return e; }
+function huXoa(e, giay) { if (e) huSau(giay, function () { e.remove(); }); }
+function huCao(x, y) { return SB.c ? diaHinh(SB.c.ban_do).cao(x, y) : 0; }
+function huTrai(dx, dy) { var a = CAM.xoay * Math.PI / 180; return dx * Math.cos(a) - dy * Math.sin(a) < 0; }   // đi sang trái màn hình thì lật hình cho đúng hướng
+function huDuong(d, n) {   // n + 1 điểm dọc một đường mũi tên (tọa độ sa bàn 1000 × 780)
+  if (!HU.svg) { HU.svg = document.createElementNS("http://www.w3.org/2000/svg", "svg"); HU.svg.setAttribute("style", "position:absolute;width:0;height:0;visibility:hidden"); document.body.appendChild(HU.svg); }
+  var p = document.createElementNS("http://www.w3.org/2000/svg", "path"); p.setAttribute("d", d); HU.svg.appendChild(p);
+  var L = p.getTotalLength(), ds = []; for (var i = 0; i <= n; i++) { var q = p.getPointAtLength(L * i / n); ds.push([q.x, q.y]); } p.remove(); return ds;
+}
+function huChay(e, ds, giay, nen) {   // cho một hình chạy qua các điểm [x, y, z]
+  if (!e || !e.animate) return;
+  e.animate(ds.map(function (q) { return {left: q[0] + "px", top: q[1] + "px", transform: "translateZ(" + q[2] + "px)"}; }), {duration: giay * 1000, easing: nen || "linear", fill: "forwards"});
+}
+function huNo(x, y, to) {   // tiếng nổ: chớp lửa + khói
+  var z = huCao(x, y) + 2, e = huDat(x, y, z, HU_HINH.no, "hu-no"), k = huDat(x + 6, y - 4, z + 4, HU_HINH.khoi, "hu-khoi");
+  if (e && to) $(".noi", e).style.setProperty("--to", to);
+  huXoa(e, .9); huXoa(k, 1.95); AM.hu("no", to || 1);
+}
+function huBan(x1, y1, x2, y2, loai) {   // bắn: chớp nòng ở (x1, y1); súng thì nổ ngay, pháo thì đạn bay vòng cung rồi nổ ở (x2, y2)
+  var z1 = huCao(x1, y1) + 4, z2 = huCao(x2, y2) + 4, xa = Math.hypot(x2 - x1, y2 - y1), bay = .7 + xa / 600;
+  var l = huDat(x1, y1, z1, HU_HINH.lua, "hu-lua"); huXoa(l, .35); AM.hu(loai === "sung" ? "sung" : "phao");
+  if (loai === "sung") { huSau(.3, function () { huNo(x2, y2, .55); }); return; }
+  var dn = huDat(x1, y1, z1 + 6, HU_HINH.dan, "hu-dan");
+  huChay(dn, [[x1, y1, z1 + 6], [(x1 + x2) / 2, (y1 + y2) / 2, Math.max(z1, z2) + 40 + xa * .35], [x2, y2, z2]], bay, "ease-in-out"); huXoa(dn, bay);
+  AM.hu("vut", bay); huSau(bay, function () { huNo(x2, y2, 1); });
+}
+function huMayBay(tu, den, giay, z, tha) {   // máy bay (có bóng dưới đất) bay từ tu tới den; tha = [{x, y, luc, hinh}] thả dù dọc đường
+  var e = huDat(tu[0], tu[1], z, HU_HINH["may-bay"], "hu-mb", huTrai(den[0] - tu[0], den[1] - tu[1])), b = $("#ban"), bo = null;
+  huChay(e, [[tu[0], tu[1], z], [den[0], den[1], z]], giay); huXoa(e, giay);
+  if (b) { bo = document.createElement("div"); bo.className = "hu hu-bong"; bo.style.cssText = "left:" + tu[0] + "px;top:" + tu[1] + "px;transform:translateZ(3px)"; b.appendChild(bo);
+    if (bo.animate) bo.animate([{left: tu[0] + "px", top: tu[1] + "px"}, {left: den[0] + "px", top: den[1] + "px"}], {duration: giay * 1000, fill: "forwards"}); huXoa(bo, giay); }
+  AM.hu("may-bay", giay);
+  (tha || []).forEach(function (q) { huSau(q.luc, function () {
+    var dat = huCao(q.x, q.y) + 2, d = huDat(q.x, q.y, z - 14, HU_HINH[q.hinh || "du"], "hu-du");
+    huChay(d, [[q.x, q.y, z - 14], [q.x + 8, q.y + 4, dat]], 3.2, "ease-out"); huXoa(d, 3.5);
+  }); });
+}
+function huDiDuong(d, hinh, so, giay, cach) {   // đoàn xe / tàu / pháo / bộ đội đi dọc một đường mũi tên, bám mặt đất
+  var ds = huDuong(d, 14), a = ds[0], c = ds[ds.length - 1], lat = huTrai(c[0] - a[0], c[1] - a[1]);
+  for (var i = 0; i < so; i++) huSau(i * cach, function () {
+    var e = huDat(a[0], a[1], huCao(a[0], a[1]) + 2, hinh, "hu-di", lat);
+    huChay(e, ds.map(function (q) { return [q[0], q[1], huCao(q[0], q[1]) + 2]; }), giay); huXoa(e, giay + .2);
+  });
+}
+function huHien(m, giay) {   // biểu tượng của mũi tên chỉ hiện khi quân dù hạ đất / pháo vào trận địa
+  var vs = $$('#ban .vat[data-mt="' + m.id + '"]'); vs.forEach(function (v) { v.classList.add("hu-cho"); });
+  huSau(giay, function () { vs.forEach(function (v) { v.classList.remove("hu-cho", "hien"); void v.offsetWidth; v.classList.add("hien"); }); });
+}
+function hieuUng(m, D) {
+  xoaHieuUng(); if (CHUP || !$("#ban") || !SB.c) return;
+  var loai = m.canh, T = Math.max(6, D), tran = diaHinh(SB.c.ban_do).tran, dau = [], cuoi = [];
+  m.d.forEach(function (d) { var q = huDuong(d, 1); dau.push(q[0]); cuoi.push(q[1]); });
+  var vat = (m.vat || []).filter(function (v) { return v.x != null && v.l !== "khu" && v.l !== "vong" && v.l !== "ho"; });
+  if (["tau", "gong-kim", "rut-lui", "phong-ngu", "xe-dap", "hanh-quan", "co"].indexOf(loai) >= 0) AM.canh(loai, T);   // tiếng nền của cảnh
+  if (loai === "du" || loai === "may-bay") {   // máy bay vận tải bay vào, thả dù người (hoặc dù hàng tiếp tế)
+    var dich = loai === "du" ? vat.filter(function (v) { return v.l === "du"; }) : [];
+    if (!dich.length) { var e0 = cuoi[0]; dich = [{x: e0[0], y: e0[1]}, {x: e0[0] - 40, y: e0[1] + 30}, {x: e0[0] + 40, y: e0[1] - 25}]; }
+    var S0 = dau[0], z = tran + 150;
+    dich.slice(0, 3).forEach(function (v, i) {
+      var vx = v.x - S0[0], vy = v.y - S0[1], L = Math.hypot(vx, vy) || 1, ux = vx / L, uy = vy / L;
+      var tu = [S0[0] - ux * 260 + i * 30, S0[1] - uy * 260 - i * 20], den = [v.x + ux * 420, v.y + uy * 420], giay = 5.2;
+      var toi = giay * Math.hypot(v.x - tu[0], v.y - tu[1]) / Math.hypot(den[0] - tu[0], den[1] - tu[1]);   // lúc máy bay bay tới trên điểm thả
+      huSau(.5 + i * .9, function () {
+        huMayBay(tu, den, giay, z + i * 12, [0, 1, 2].map(function (k) { return {x: v.x + (k - 1) * 22, y: v.y + (k - 1) * 10, luc: toi + k * .18, hinh: loai === "du" ? "du" : "hang"}; }));
+      });
+    });
+    if (loai === "du") huHien(m, 6.2);
+    else [T * .55, T * .55 + 1.3].forEach(function (s) { huSau(s, function () { var q = cuoi[0]; huMayBay([q[0] - 520, q[1] + 380], [q[0] + 520, q[1] - 380], 5, tran + 175, []); }); });
+  }
+  else if (loai === "gong-kim" || loai === "rut-lui" || loai === "phong-ngu") {   // đoàn xe Pháp trên đường, có máy bay yểm trợ
+    m.d.forEach(function (d, i) { huSau(.4 + i * .5, function () { huDiDuong(d, HU_HINH["xe-tai"], 3, Math.min(T - 1, 7), .8); }); });
+    huSau(1, function () { var a = dau[0], b = cuoi[0], vx = b[0] - a[0], vy = b[1] - a[1]; huMayBay([a[0] - vx * .3, a[1] - vy * .3], [b[0] + vx * .4, b[1] + vy * .4], 5, tran + 160, []); });
+    if (loai === "rut-lui") for (var r = 0; r < 4; r++) huSau(2 + r * 1.3, function () { var i = Math.floor(Math.random() * dau.length), p = dau[i], q = cuoi[i], k = .3 + Math.random() * .5; huNo(p[0] + (q[0] - p[0]) * k, p[1] + (q[1] - p[1]) * k, .8); });
+  }
+  else if (loai === "tau") m.d.forEach(function (d, i) { huSau(.4 + i * .6, function () { huDiDuong(d, bieuTuong("tau"), 2, Math.min(T - 1, 8), 1.4); }); });
+  else if (loai === "xe-dap" || loai === "hanh-quan" || loai === "phao") {   // xe đạp thồ, bộ đội hành quân, kéo pháo vào trận địa
+    var hinh = loai === "xe-dap" ? bieuTuong("xe") : loai === "phao" ? bieuTuong("phao") : HU_HINH["bo-doi"], toc = loai === "phao" ? Math.min(T - 1.5, 9) : Math.min(T - 1, 7);
+    m.d.forEach(function (d, i) { huSau(.3 + i * .4, function () { huDiDuong(d, hinh, loai === "phao" ? 1 : 4, toc, .7); }); });
+    if (loai === "phao") { huHien(m, toc + .6); huSau(toc + .8, function () { cuoi.forEach(function (q, i) { huSau(i * .25, function () { var l = huDat(q[0], q[1], huCao(q[0], q[1]) + 8, HU_HINH.lua, "hu-lua"); huXoa(l, .35); AM.hu("phao"); }); }); }); }
+  }
+  else if (loai === "co") {   // toàn thắng: pháo hoa
+    var noi = vat.length ? vat : cuoi.map(function (q) { return {x: q[0], y: q[1]}; });
+    for (var f = 0; f < 6; f++) huSau(.6 + f * .7, function () { var v = noi[Math.floor(Math.random() * noi.length)], e = huDat(v.x + (Math.random() - .5) * 60, v.y + (Math.random() - .5) * 40, huCao(v.x, v.y) + 60 + Math.random() * 40, HU_HINH["phao-hoa"], "hu-no"); huXoa(e, 1.2); AM.hu("phao-hoa"); });
+  }
+  else {   // tiến công, phục kích, bao vây, đánh trên sông, đợt 2: bắn từ đầu mũi tên vào cuối mũi tên
+    var sung = loai === "phuc-kich" || loai === "bao-vay" || loai === "giao-thong-hao", lan = 0, t;
+    if (loai === "song-lo") cuoi.forEach(function (q) { huXoa(huDat(q[0], q[1], huCao(q[0], q[1]) + 2, bieuTuong("tau"), "hu-tau"), T); });
+    if (loai === "giao-thong-hao") m.d.forEach(function (d, i) { huSau(.3 + i * .4, function () { huDiDuong(d, HU_HINH["bo-doi"], 3, Math.min(T - 1, 6), .6); }); });
+    for (t = 1.2; t < T - .6 && lan < 14; t += sung ? .7 : 1.05, lan++) (function (lan) { huSau(t, function () {
+      var i = lan % m.d.length, a = dau[i], b = cuoi[i], j = (Math.random() - .5) * 24;
+      huBan(a[0], a[1], b[0] + j, b[1] + j / 2, sung && lan % 3 ? "sung" : "phao");
+    }); })(lan);
+  }
 }
 function thuVideo(ph, id) {   // thầy cô có thể đặt video riêng: thư mục video/<mã mũi tên>.mp4 cạnh file app
   if (CHUP || VIDEO_RIENG.indexOf(id) < 0) return;
@@ -1934,12 +2513,10 @@ function quayLai() {
   di(d.man, d.man === "sa-ban" ? {cd: d.cd, b: d.b} : null);
 }
 function capNhatThanh(o) {
-  $("#tab-cd").innerHTML = DL.chien_dich.map(function (c) { return '<button class="nut-cd' + (o.man === "sa-ban" && SB.c === c ? " dang" : "") + '" style="--m:' + c.mau + '" onclick="AM.bam();di(\'sa-ban\',{cd:\'' + c.id + '\'})"><i>' + c.bieu + "</i><span>" + esc(c.ten.replace(/ \d{4}$/, "")) + "<small>" + esc(c.thoi_gian) + "</small></span></button>"; }).join("");
+  $("#tab-cd").innerHTML = '<button class="nut-cd' + (o.man === "trang-chu" ? " dang" : "") + '" onclick="AM.bam();di(\'trang-chu\')"><i>🏠</i><span>Trang chủ</span></button>' + DL.chien_dich.map(function (c) { var xong = c.quyet_dinh.every(function (q) { return S.qd[q.id]; }); return '<button class="nut-cd' + (o.man === "sa-ban" && SB.c === c ? " dang" : "") + '" style="--m:' + c.mau + '" title="' + esc(c.ten_dai + " · " + c.thoi_gian) + '" onclick="AM.bam();di(\'sa-ban\',{cd:\'' + c.id + '\'})"><i>' + c.bieu + "</i><span>" + esc(c.ten.replace(/ \d{4}$/, "")) + (xong ? '<b class="ok">✓</b>' : "") + "</span></button>"; }).join("");
+  var tb = $("#tab-cd .dang"); if (tb) { var tk = $("#tab-cd"); tk.scrollLeft = Math.max(0, tb.getBoundingClientRect().left - tk.getBoundingClientRect().left + tk.scrollLeft - (tk.clientWidth - tb.offsetWidth) / 2); }
   $$("#thanh .dh").forEach(function (b) { b.classList.toggle("dang", b.getAttribute("data-man") === o.man); });
   var mc = $("#chip-ma"); if (mc) mc.innerHTML = "👥 " + (S.ma ? esc(S.ma) : "Mã nhóm");
-  var phan = [["trang-chu", "🏠 Trang chủ"], ["vb", "⛰️ Việt Bắc"], ["bg", "🛣️ Biên giới"], ["dbp", "🚩 Điện Biên Phủ"], ["hoc", "🤖 Học cùng AI"], ["luyen-de", "📝 Luyện đề"]];
-  var dang = o.man === "sa-ban" ? SB.c.id : o.man, chiSo = phan.findIndex(function (p) { return p[0] === dang; });
-  $("#chang").innerHTML = phan.map(function (p, i) { var x = p[0], fn = ["vb", "bg", "dbp"].indexOf(x) >= 0 ? "di('sa-ban',{cd:'" + x + "'})" : "di('" + x + "')"; return (i ? "<i></i>" : "") + '<button class="' + (i === chiSo ? "dang" : i < chiSo ? "qua" : "") + '" onclick="' + fn + '">' + p[1] + "</button>"; }).join("");
   var bn = $("#buoc-nho");
   if (o.man === "sa-ban" && SB.c) { var cur = SB.buoc[SB.b], ten = cur.loai === "tq" ? "Giới thiệu chiến dịch" : cur.loai === "kq" ? "Kết quả, ý nghĩa" : cur.loai === "qd" ? "⚔️ Quyết định " + (SB.c.quyet_dinh.indexOf(cur.q) + 1) + "/" + SB.c.quyet_dinh.length : cur.m.ten; bn.innerHTML = "<b>" + SB.c.bieu + " Bước " + (SB.b + 1) + "/" + SB.buoc.length + '</b><span class="cham-buoc">' + SB.buoc.map(function (s, i) { return '<s class="' + (i < SB.b ? "qua" : i === SB.b ? "dang" : "") + (s.loai === "qd" ? " qd" : "") + '"></s>'; }).join("") + "</span>" + esc(ten); }
   else if (o.man === "luyen-de" && DE && !DE.nop && $("#de-cau")) bn.innerHTML = "<b>📝 " + esc(DE.ten) + "</b> · Câu " + (DE.hien + 1) + "/" + DE.ds.length + " · ◀ ▶ chuyển câu";
@@ -1952,7 +2529,7 @@ document.addEventListener("keydown", function (e) {
   if (e.key === "PageDown" || e.key === "ArrowRight") { e.preventDefault(); tienLen(); }
   else if (e.key === "PageUp" || e.key === "ArrowLeft") { e.preventDefault(); quayLai(); }
 });
-window.addEventListener("resize", function () { vuaKhung(); });
+window.addEventListener("resize", function () { vuaKhung(); vuaKhungXT(); });
 
 /* ================= Hộp thoại, mã nhóm ================= */
 function hopThoai(html, nut) {
@@ -1975,12 +2552,39 @@ function hoiMa(sau) {
 /* ================= Màn: Trang chủ ================= */
 VE["trang-chu"] = function (o, m) {
   datNen("trang-chu");
-  m.innerHTML = '<section class="trang-chu"><div><div class="nhan-tren">🏆 Ngày hội Nhà giáo sáng tạo với CNS &amp; AI 2026 · Lịch sử 12</div>' +
-    '<h1 class="ten-lon">SA BÀN SỐ</h1><div class="ten-phu">«EM LÀ THAM MƯU»</div><p class="khau-hieu">Cùng AI ra quyết định — hiểu <b>vì sao ta thắng</b> (1945 – 1954)</p>' +
-    '<div class="dac-diem"><div><span>🧊</span>Sa bàn 3D xoay, phóng to được</div><div><span>🎬</span>Bấm mũi tên xem thước phim có lời kể</div><div><span>🔴</span>Mũi tên đỏ: em ra 3 quyết định mỗi chiến dịch</div><div><span>🤖</span>AI gợi ý 3 bậc, phân tích lựa chọn</div><div><span>🔊</span>Giọng đọc kể diễn biến, đọc yêu cầu quyết định</div><div><span>📝</span>3 đề luyện thi tốt nghiệp, hỏi AI từng câu</div></div>' +
-    '<div class="luoi-nut"><button class="nut chinh" onclick="vaoSaBan()">🧊 Vào sa bàn ▶</button><button class="nut tim" onclick="di(\'hoc\')">🤖 Học cùng AI</button><button class="nut" onclick="di(\'luyen-de\')">📝 Luyện đề tốt nghiệp</button></div></div>' +
-    '<div class="ba-tran">' + DL.chien_dich.map(function (c) { var x = c.quyet_dinh.filter(function (q) { return S.qd[q.id]; }).length; return '<button class="the-tran" style="--m:' + c.mau + '" onclick="AM.bam();di(\'sa-ban\',{cd:\'' + c.id + '\',b:0})"><div class="anh">' + canh(c.canh) + "</div><div><h3>" + c.bieu + " " + esc(c.ten_dai) + "</h3><p>" + esc(c.y_nghia[0]) + '</p><div class="dong"><span class="huy-hieu">🗓️ ' + esc(c.thoi_gian) + '</span><span class="huy-hieu">🎬 ' + c.mui_ten.length + ' thước phim</span><span class="huy-hieu">⚔️ ' + x + "/" + c.quyet_dinh.length + " quyết định</span></div></div></button>"; }).join("") + "</div></section>";
+  m.innerHTML = '<section class="trang-chu"><div class="tc-trai">' +
+    '<h1 class="ten-lon"><span class="c1">SA</span><span class="c2">BÀN</span><span class="c3">SỐ</span></h1><div class="ten-phu"><span class="c4">«EM LÀ</span><span class="c5">THAM MƯU»</span></div><p class="khau-hieu">Cùng AI ra quyết định — <b>vì sao ta chiến thắng</b> (1945 – 1954)</p>' +
+    '<div class="dac-diem"><div><span>🧊</span>Sa bàn 3D xoay, phóng to được</div><div><span>🎬</span>Bấm mũi tên xem thước phim có lời kể</div><div><span>🔴</span>Mũi tên đỏ: em ra 3 quyết định mỗi chiến dịch</div><div><span>🤖</span>AI gợi ý 3 bậc, phân tích lựa chọn</div><div><span>🔊</span>Giọng đọc kể diễn biến, đọc yêu cầu quyết định</div><div><span>📝</span>' + DL.de.length + ' đề luyện thi tốt nghiệp, hỏi AI từng câu</div></div>' +
+    '<div class="luoi-nut"><button class="nut chinh" onclick="vaoSaBan()">🧊 Vào sa bàn ▶</button><button class="nut tim" onclick="di(\'hoc\')">🤖 Học cùng AI</button><button class="nut" onclick="di(\'luyen-de\')">📝 Luyện đề</button></div></div>' +
+    '<div class="tc-phai"><div class="tc-xem"><div class="tc-xem-ban" id="tc-xem-ban"></div><div class="tc-chu-giai"><span><svg viewBox="0 0 30 12" width="20" height="8"><path d="M2 6H21" stroke="#60a5fa" stroke-width="3" stroke-linecap="round" stroke-dasharray="5 3"/><path d="M20 1l9 5-9 5z" fill="#60a5fa"/></svg>Âm mưu của địch</span><span><svg viewBox="0 0 30 12" width="20" height="8"><path d="M2 6H21" stroke="#f87171" stroke-width="3" stroke-linecap="round"/><path d="M20 1l9 5-9 5z" fill="#f87171"/></svg>Hướng đánh của ta</span></div></div>' +
+    '<div class="ba-tran">' + DL.chien_dich.map(function (c) {
+      var x = c.quyet_dinh.filter(function (q) { return S.qd[q.id]; }).length, nam = (c.ten.match(/\d{4}$/) || [""])[0], sao = "";
+      for (var k = 0; k < c.quyet_dinh.length; k++) sao += k < x ? "<b>★</b>" : "★";
+      return '<button class="the-tran" style="--m:' + c.mau + '" onmouseenter="veXemTruoc(\'' + c.id + '\')" onfocus="veXemTruoc(\'' + c.id + '\')" onclick="AM.bam();di(\'sa-ban\',{cd:\'' + c.id + '\',b:0})"><div class="anh">' + canh(c.canh) + '</div><div class="nd"><h3>' + c.bieu + " " + esc(c.ten.replace(/ \d{4}$/, "")) + '</h3><div class="dong"><span class="nam">' + nam + '</span><span class="sao" title="' + x + "/" + c.quyet_dinh.length + ' quyết định">' + sao + "</span></div></div></button>";
+    }).join("") + "</div></div></section>";
+  vuaKhungXT();
 };
+/* Trang chủ: sa bàn 3D xem trước, chỉ để nhìn (không kéo, không bấm). Dùng lại veSaBan, đổi id để không đụng màn sa bàn. */
+var XT = {id: null};
+function veXemTruoc(id) {
+  var h = $("#tc-xem-ban"), c = layCd(id); if (!h || (XT.id === c.id && $("#xt-ban"))) return;
+  XT.id = c.id;
+  h.innerHTML = veSaBan(c).replace('id="san-khau"', 'id="xt-khau"').replace('id="tam"', 'id="xt-tam"').replace('id="ban"', 'id="xt-ban"');
+  $$("#xt-ban .mt").forEach(function (e) {
+    e.classList.remove("an"); e.classList.add("ve");
+    var k = e.classList.contains("ta") ? "ta" : e.classList.contains("hc") ? "hc" : "dich";
+    $$(".chinh", e).forEach(function (p) { p.setAttribute("marker-end", "url(#dau-" + k + ")"); });
+  });
+  var b = $("#xt-ban"), g = GOC[c.id];
+  b.style.setProperty("--xoay", g.xoay + "deg"); b.style.setProperty("--nghieng", g.nghieng + "deg"); b.style.setProperty("--tl", g.tl); b.style.setProperty("--dx", g.dx + "px"); b.style.setProperty("--dy", g.dy + "px");
+  vuaKhungXT();
+}
+function vuaKhungXT() {
+  var h = $("#tc-xem-ban"); if (!h || !h.clientWidth) return;
+  var k = $("#xt-khau"), t = $("#xt-tam");
+  if (!k || !t) { veXemTruoc(XT.id || DL.chien_dich[0].id); return; }
+  var w = k.clientWidth, y = k.clientHeight; t.style.transform = "scale(" + Math.min(w / 1200, y / 944).toFixed(3) + ")";   // to, chỉ mép góc bàn chạm khung khi xoay tới góc chéo
+}
 function vaoSaBan() { AM.bam(); if (!S.ma && !THU && !CHUP) hoiMa(function () { di("sa-ban", {cd: "vb", b: 0}); }); else di("sa-ban", {cd: "vb", b: 0}); }
 
 /* ================= Màn: Học lịch sử cùng AI ================= */
@@ -2056,10 +2660,10 @@ VE["luyen-de"] = function (o, m) {
     if (o.kq) DE.nop = true;
   }
   if (!DE || (!o.lam && !o.mau && !DE.nop)) {
-    m.innerHTML = '<div class="dau-man"><h2>📝 Luyện đề tốt nghiệp THPT — Lịch sử</h2><p class="phu">Theo cấu trúc định dạng QĐ 764/QĐ-BGDĐT · chủ đề: Kháng chiến chống thực dân Pháp (1945 – 1954) · ngân hàng 72 câu nhiều lựa chọn + 12 câu Đúng – Sai</p></div>' +
+    m.innerHTML = '<div class="dau-man"><h2>📝 Luyện đề tốt nghiệp THPT — Lịch sử</h2><p class="phu">Theo cấu trúc định dạng QĐ 764/QĐ-BGDĐT · chủ đề: Kháng chiến chống thực dân Pháp (1945 – 1954) · ' + DL.de.length + ' đề, ngân hàng ' + tatCaCau().p1.length + ' câu nhiều lựa chọn + ' + tatCaCau().p2.length + ' câu Đúng – Sai</p></div>' +
       '<div class="che-do"><button class="' + (S.che_do !== "ai" ? "dang" : "") + '" onclick="chonCheDo(\'thi\')">📝 Thi thử<small>Làm hết rồi nộp — máy chấm điểm, giải thích lỗi sai</small></button><button class="' + (S.che_do === "ai" ? "dang" : "") + '" onclick="chonCheDo(\'ai\')">🤖 Luyện cùng AI<small>Mỗi câu hỏi được AI: gợi ý, kiến thức liên quan, đáp án</small></button></div>' +
       '<div class="luoi-de">' + DL.de.map(function (d, i) { return '<button class="the-de kinh" onclick="batDauDe(\'' + d.id + '\')"><span class="so-de">' + (i + 1) + "</span><b>" + esc(d.ten) + "</b><span>" + esc(d.mo_ta) + "</span><em>24 câu + 4 câu Đúng – Sai · 50 phút</em></button>"; }).join("") +
-      '<button class="the-de kinh" onclick="batDauDe(\'ngau-nhien\')"><span class="so-de">🎲</span><b>Đề ngẫu nhiên</b><span>Bốc 24 + 4 câu từ ngân hàng 84 câu — mỗi lần một đề mới</span><em>50 phút · thang 10 điểm</em></button>' +
+      '<button class="the-de kinh" onclick="batDauDe(\'ngau-nhien\')"><span class="so-de">🎲</span><b>Đề ngẫu nhiên</b><span>Bốc 24 + 4 câu từ ngân hàng ' + (tatCaCau().p1.length + tatCaCau().p2.length) + ' câu — mỗi lần một đề mới</span><em>50 phút · thang 10 điểm</em></button>' +
       '<button class="the-de kinh" onclick="batDauDe(\'nhanh\')"><span class="so-de">⚡</span><b>Luyện nhanh 10 câu</b><span>10 câu nhiều lựa chọn ngẫu nhiên</span><em>15 phút · xem giải thích ngay</em></button></div>' +
       '<div class="kinh khoi cach-cham"><h3>📏 Cách tính điểm (QĐ 764)</h3><div class="luoi-cham"><div><b>Phần I · 24 câu</b>0,25 điểm/câu đúng</div><div><b>Phần II · 4 câu × 4 ý</b>đúng 1 ý: 0,1 · 2 ý: 0,25 · 3 ý: 0,5 · 4 ý: 1 điểm</div><div><b>Sau khi nộp</b>Xem lại câu sai, hỏi AI «vì sao em sai?»</div></div></div>';
     return;
@@ -2197,6 +2801,7 @@ function xinXoa() { hopThoai("<h3>🗑️ Xoá dữ liệu trên máy này?</h3>
 /* ================= Khởi động ================= */
 window.addEventListener("hashchange", moMan);
 document.getElementById("logo-o").innerHTML = logo(40);
+try { var __ph = document.getElementById("thanh"); if (__ph && window.ResizeObserver) new ResizeObserver(function () { document.documentElement.style.setProperty("--th-do", __ph.offsetHeight + "px"); }).observe(__ph); } catch (e) {}
 moMan();
 
 </script>
