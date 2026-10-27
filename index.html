@@ -167,6 +167,12 @@ button{font-family:inherit;font-size:inherit;color:inherit}
 .sb-trai{position:relative;overflow:hidden;padding:0;display:flex;flex-direction:column;flex:1 1 auto;min-height:0;background:radial-gradient(900px 500px at 50% 40%,rgba(30,58,48,.55),rgba(8,12,26,.6))}
 .san-khau{position:absolute;inset:0;perspective:1800px;perspective-origin:50% 28%;overflow:hidden;touch-action:none;cursor:grab}
 .san-khau.keo{cursor:grabbing}
+.san-khau{-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none}
+.san-khau.keo .ban-3d{will-change:transform}
+/* điện thoại, máy cảm ứng: bỏ làm mờ nền và làm mờ SVG (nặng GPU, hay gây vỡ hình, giật khi kéo sa bàn) */
+body.nhe .kinh,body.nhe #thanh,body.nhe #dieu-huong{-webkit-backdrop-filter:none;backdrop-filter:none}
+body.nhe .mt .sang{filter:none;stroke-width:14}
+body.nhe .hu-bong,body.nhe .hu-dan svg,body.nhe .hu-mb .noi{filter:none}
 .tam{position:absolute;left:50%;top:53%;width:0;height:0;transform-style:preserve-3d}
 .ban-3d{position:absolute;left:-500px;top:-390px;width:1000px;height:780px;transform-style:preserve-3d;transform-origin:500px 390px;
   transform:rotateX(var(--nghieng)) rotateZ(var(--xoay)) scale(var(--tl)) translate(var(--dx),var(--dy));
@@ -587,6 +593,8 @@ body.chup #phao-giay{display:none}
   /* điện thoại: chú giải chữ nhỏ hơn */
   .chu-giai{font-size:10px;padding:4px 8px}
   .cam-nut{right:8px;top:8px;padding:5px;gap:5px}
+  /* sa bàn cao gần hết màn hình điện thoại */
+  .sb-trai{flex:none;height:calc(100vh - var(--th-do,140px) - var(--thanh-duoi) - 62px);height:calc(100svh - var(--th-do,140px) - var(--thanh-duoi) - 62px);min-height:400px}
   .cam-nut button{width:32px;height:32px;font-size:14px}
 }
 </style>
@@ -1652,6 +1660,8 @@ const CAU_DOC = ["Thu – đông năm 1947, thực dân Pháp mở cuộc tấn 
    ===================================================================== */
 "use strict";
 var VE = {}, HEN_GIO = [];
+var NHE = false;   // điện thoại / máy cảm ứng: giảm số vật thể 3D và bỏ hiệu ứng nặng
+try { NHE = window.matchMedia("(pointer:coarse)").matches || Math.min(window.innerWidth, window.innerHeight) < 700; document.body.classList.toggle("nhe", NHE); } catch (e) {}
 var VIDEO_RIENG = [];   // thầy cô đặt video riêng: thêm mã mũi tên vào đây (VD "dbp-him-lam") và chép video/dbp-him-lam.mp4 cạnh file app
 function $(s, r) { return (r || document).querySelector(s); }
 function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
@@ -2027,7 +2037,7 @@ function canhVat(ban) {
   function cach(x, y, d) { for (var j = 0; j < dat.length; j++) if (Math.hypot(dat[j][0] - x, dat[j][1] - y) < d) return false; return true; }
   // núi trên vùng cao
   var dem = 0;
-  for (i = 0; i < 1500 && dem < (ban === "bac" ? 26 : 22); i++) {
+  for (i = 0; i < 1500 && dem < (NHE ? 14 : ban === "bac" ? 26 : 22); i++) {
     x = 25 + r() * 950; y = 25 + r() * 730; c = dh.cao(x, y);
     if (c < (ban === "bac" ? 3 : 4) * BUOC) continue;
     var n = nuiSvg(r, ban === "bac" && x > 520 && y < 560 && r() < .7 ? "da" : "nui");
@@ -2035,7 +2045,7 @@ function canhVat(ban) {
     dat.push([x, y]); dem++; s += bb(x.toFixed(0), y.toFixed(0), c - 1, n.svg, "canh-vat");
   }
   // đồi thấp
-  for (i = 0, dem = 0; i < 1200 && dem < 12; i++) {
+  for (i = 0, dem = 0; i < 1200 && dem < (NHE ? 6 : 12); i++) {
     x = 25 + r() * 950; y = 25 + r() * 730; c = dh.cao(x, y);
     if (c < BUOC || c > (ban === "bac" ? 2 : 3) * BUOC) continue;
     var dd = nuiSvg(r, "doi");
@@ -2058,7 +2068,7 @@ function canhVat(ban) {
     dat.push([x, y]); dem++; s += bb(x.toFixed(0), y.toFixed(0), 0, banLang(r, false), "canh-vat");
   }
   // rừng cây
-  for (i = 0, dem = 0; i < 1500 && dem < 30; i++) {
+  for (i = 0, dem = 0; i < 1500 && dem < (NHE ? 14 : 30); i++) {
     x = 20 + r() * 960; y = 20 + r() * 740; c = dh.cao(x, y);
     if (c === 0 && r() < .65) continue;
     if (!cach(x, y, 34) || khuat(x, y, 30, 26)) continue;
@@ -2120,26 +2130,69 @@ function veSaBan(c) {
 var CAM = {xoay: -10, nghieng: 48, tl: 1, dx: 0, dy: 30};
 var GOC = {vb: {xoay: -10, nghieng: 48, tl: 1, dx: 0, dy: 40}, bg: {xoay: -6, nghieng: 48, tl: 1, dx: -50, dy: 40}, dbp: {xoay: -16, nghieng: 46, tl: 1.02, dx: 0, dy: 20}};
 function apCam() { var b = $("#ban"); if (!b) return; b.style.setProperty("--xoay", CAM.xoay + "deg"); b.style.setProperty("--nghieng", CAM.nghieng + "deg"); b.style.setProperty("--tl", CAM.tl); b.style.setProperty("--dx", CAM.dx + "px"); b.style.setProperty("--dy", CAM.dy + "px"); }
-function vuaKhung() { var k = $("#san-khau"), t = $("#tam"); if (!k || !t) return; var w = k.clientWidth, h = k.clientHeight, rong = w < 600 ? 1300 : 1060; t.style.transform = "scale(" + Math.min(w / rong, h / 640).toFixed(3) + ")"; }
-function veGoc() { if (!SB.c) return; var g = GOC[SB.c.id]; CAM.xoay = g.xoay; CAM.nghieng = g.nghieng; CAM.tl = g.tl; CAM.dx = g.dx; CAM.dy = g.dy; apCam(); }
-function camXoay(d) { CAM.xoay += d; apCam(); AM.bam(); }
-function camZoom(k) { CAM.tl = kep(CAM.tl * k, .6, 2.4); apCam(); AM.bam(); }
-function cam2D() { CAM.nghieng = CAM.nghieng > 5 ? 0 : 48; CAM.xoay = CAM.nghieng ? GOC[SB.c.id].xoay : 0; apCam(); AM.bam(); }
+var CAM_S = 1, CAM_HEN = 0, CAM_QT = 0;   // CAM_S: tỉ lệ khung hiện tại · CAM_HEN: chờ vẽ khung kế · CAM_QT: quán tính sau khi thả tay
+function vuaKhung() { var k = $("#san-khau"), t = $("#tam"); if (!k || !t) return; var w = k.clientWidth, h = k.clientHeight, rong = w < 600 ? 1040 : 1060; CAM_S = Math.min(w / rong, h / 640); t.style.transform = "scale(" + CAM_S.toFixed(3) + ")"; }
+function apCamMuot() { if (CAM_HEN) return; CAM_HEN = requestAnimationFrame(function () { CAM_HEN = 0; apCam(); }); }   // gom nhiều cử chỉ trong một khung hình
+function camDung() { cancelAnimationFrame(CAM_QT); CAM_QT = 0; var k = $("#san-khau"); if (k) k.classList.remove("keo"); }
+function veGoc() { if (!SB.c) return; camDung(); var g = GOC[SB.c.id], k = $("#san-khau"), nho = NHE && k && k.clientWidth < 600; CAM.xoay = g.xoay; CAM.nghieng = nho ? Math.min(g.nghieng, 32) : g.nghieng; CAM.tl = nho ? g.tl * 1.3 : g.tl; CAM.dx = g.dx; CAM.dy = g.dy; apCam(); if (nho) canGiua(); }
+function camXoay(d) { camDung(); CAM.xoay += d; apCam(); AM.bam(); }
+function camZoom(k) { camDung(); CAM.tl = kep(CAM.tl * k, .6, 2.4); apCam(); AM.bam(); }
+function cam2D() { camDung(); CAM.nghieng = CAM.nghieng > 5 ? 0 : 48; CAM.xoay = CAM.nghieng ? GOC[SB.c.id].xoay : 0; apCam(); AM.bam(); }
 function nhinMuiTen(m) {
   var g = $('.mt[data-id="' + m.id + '"]'); if (!g) return;
   var x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
   $$(".chinh", g).forEach(function (p) { try { var b = p.getBBox(); x0 = Math.min(x0, b.x); y0 = Math.min(y0, b.y); x1 = Math.max(x1, b.x + b.width); y1 = Math.max(y1, b.y + b.height); } catch (e) {} });
-  if (x0 > x1) return;
+  if (x0 > x1) return; camDung();
   var cx = (x0 + x1) / 2, cy = (y0 + y1) / 2, kt = Math.max(x1 - x0, y1 - y0, 120);
   CAM.tl = kep(520 / kt, 1.08, 1.75); CAM.dx = kep(500 - cx, -420, 420); CAM.dy = kep(390 - cy + 20, -330, 330); CAM.nghieng = 46; CAM.xoay = GOC[SB.c.id].xoay; apCam();
 }
+function camDich(sx, sy) {   // dời sa bàn theo ngón tay: độ dời trên màn hình -> độ dời trên mặt sa bàn (tính theo góc xoay, độ nghiêng, độ phóng)
+  var a = CAM.xoay * Math.PI / 180, c = Math.max(.25, Math.cos(CAM.nghieng * Math.PI / 180)), u = sx / (CAM_S * CAM.tl), v = sy / (CAM_S * CAM.tl * c);
+  CAM.dx = kep(CAM.dx + u * Math.cos(a) + v * Math.sin(a), -560, 560); CAM.dy = kep(CAM.dy - u * Math.sin(a) + v * Math.cos(a), -460, 460);
+}
+function canGiua() {   // điện thoại: đặt bản đồ vào giữa khung nhìn, không chừa trống nửa trên
+  var k = $("#san-khau"), m = $("#ban .mat-dat") || $("#ban .lop-3d"); if (!k || !m) return;
+  k.classList.add("keo"); apCam();   // tạm tắt chuyển động để đo vị trí cuối cùng
+  for (var i = 0; i < 2; i++) { var a = k.getBoundingClientRect(), b = m.getBoundingClientRect(); camDich(0, (a.top + a.height / 2) - (b.top + b.height / 2)); apCam(); }
+  k.classList.remove("keo");
+}
 function ganKeo() {
+  /* chuột: kéo = xoay, nghiêng; lăn = phóng · cảm ứng: 1 ngón = dịch sa bàn (có quán tính), 2 ngón = chụm để phóng, xoay vòng để xoay */
   var k = $("#san-khau"); if (!k) return;
-  var dang = false, x0 = 0, y0 = 0, xa = 0, na = 0, di0 = false;
-  k.addEventListener("pointerdown", function (e) { if (e.button) return; dang = true; di0 = false; x0 = e.clientX; y0 = e.clientY; xa = CAM.xoay; na = CAM.nghieng; });
-  window.addEventListener("pointermove", function (e) { if (!dang) return; var dx = e.clientX - x0, dy = e.clientY - y0; if (!di0 && Math.abs(dx) + Math.abs(dy) < 6) return; di0 = true; k.classList.add("keo"); CAM.xoay = xa + dx * .25; CAM.nghieng = kep(na - dy * .2, 0, 72); apCam(); });
-  window.addEventListener("pointerup", function () { if (!dang) return; dang = false; k.classList.remove("keo"); });
-  k.addEventListener("wheel", function (e) { e.preventDefault(); CAM.tl = kep(CAM.tl * (1 - e.deltaY * .0012), .6, 2.4); k.classList.add("keo"); apCam(); clearTimeout(k.__w); k.__w = setTimeout(function () { k.classList.remove("keo"); }, 150); }, {passive: false});
+  var P = {}, che = "xoay", x0 = 0, y0 = 0, xa = 0, na = 0, di0 = false, g0 = null, vx = 0, vy = 0, tr = 0;
+  function so() { return Object.keys(P).length; }
+  function hai() { var a = Object.keys(P).map(function (i) { return P[i]; }); if (a.length < 2) return null; return {cx: (a[0].x + a[1].x) / 2, cy: (a[0].y + a[1].y) / 2, d: Math.hypot(a[0].x - a[1].x, a[0].y - a[1].y) || 1, g: Math.atan2(a[1].y - a[0].y, a[1].x - a[0].x)}; }
+  function dich(sx, sy) { camDich(sx, sy); }
+  function quanTinh() { vx *= .93; vy *= .93; if (Math.abs(vx) + Math.abs(vy) < .02) { camDung(); return; } dich(vx * 16, vy * 16); apCam(); CAM_QT = requestAnimationFrame(quanTinh); }
+  k.addEventListener("pointerdown", function (e) {
+    if (e.button) return; camDung(); try { k.setPointerCapture(e.pointerId); } catch (x) {}
+    P[e.pointerId] = {x: e.clientX, y: e.clientY, tp: e.pointerType, t: performance.now()};
+    if (so() === 1) { che = e.pointerType === "mouse" ? "xoay" : "dich"; x0 = e.clientX; y0 = e.clientY; xa = CAM.xoay; na = CAM.nghieng; di0 = false; vx = vy = 0; }
+    else { g0 = hai(); k.classList.add("keo"); di0 = true; }
+  });
+  k.addEventListener("pointermove", function (e) {
+    var p = P[e.pointerId]; if (!p) return;
+    var dx = e.clientX - p.x, dy = e.clientY - p.y, bay = performance.now(), dt = Math.max(1, bay - p.t);
+    p.x = e.clientX; p.y = e.clientY; p.t = bay;
+    if (so() >= 2) {
+      var n = hai(); if (!n || !g0) return;
+      var dg = Math.atan2(Math.sin(n.g - g0.g), Math.cos(n.g - g0.g));
+      CAM.tl = kep(CAM.tl * n.d / g0.d, .5, 3); CAM.xoay += dg * 180 / Math.PI; dich(n.cx - g0.cx, n.cy - g0.cy); g0 = n; apCamMuot(); return;
+    }
+    if (!di0 && Math.abs(e.clientX - x0) + Math.abs(e.clientY - y0) < 6) return;
+    di0 = true; k.classList.add("keo");
+    if (che === "xoay") { CAM.xoay = xa + (e.clientX - x0) * .25; CAM.nghieng = kep(na - (e.clientY - y0) * .2, 0, 72); }
+    else { dich(dx, dy); vx = vx * .6 + dx / dt * .4; vy = vy * .6 + dy / dt * .4; }
+    apCamMuot();
+  });
+  function tha(e) {
+    var p = P[e.pointerId]; if (!p) return; var dungVa = performance.now() - p.t < 90; delete P[e.pointerId];
+    try { k.releasePointerCapture(e.pointerId); } catch (x) {}
+    var con = Object.keys(P); if (con.length) { P[con[0]].t = performance.now(); che = P[con[0]].tp === "mouse" ? "xoay" : "dich"; x0 = P[con[0]].x; y0 = P[con[0]].y; xa = CAM.xoay; na = CAM.nghieng; vx = vy = 0; return; }
+    if (che === "dich" && di0 && dungVa && Math.abs(vx) + Math.abs(vy) > .15) { k.classList.add("keo"); CAM_QT = requestAnimationFrame(quanTinh); } else k.classList.remove("keo");
+  }
+  k.addEventListener("pointerup", tha); k.addEventListener("pointercancel", tha);
+  k.addEventListener("wheel", function (e) { e.preventDefault(); CAM.tl = kep(CAM.tl * (1 - e.deltaY * .0012), .6, 2.4); k.classList.add("keo"); apCamMuot(); clearTimeout(k.__w); k.__w = setTimeout(function () { k.classList.remove("keo"); }, 150); }, {passive: false});
 }
 
 /* ================= Trạng thái sa bàn theo bước ================= */
